@@ -75,7 +75,7 @@ Examples in vignette `v3_knitrContainer`.
 
 Other X.code.knitrContainer..functions: \code{\link{Join}},
   \code{\link{add_as_section}}, \code{\link{add_as_}},
-  \code{\link{knitrContainer}},
+  \code{\link{as.knitrContainer}},
   \code{\link{print_objects}}, \code{\link{print}},
   \code{\link{summary}}
 }

@@ -70,8 +70,8 @@ Vilmantas Gegzna
 \seealso{
 Other X.code.knitrContainer..functions: \code{\link{Join}},
   \code{\link{add_as_section}},
+  \code{\link{as.knitrContainer}},
   \code{\link{knitrContainer-class}},
-  \code{\link{knitrContainer}},
   \code{\link{print_objects}}, \code{\link{print}},
   \code{\link{summary}}
 }

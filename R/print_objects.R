@@ -35,7 +35,7 @@ print_objects <- function(container
 
         #  we know only character and htmlwidget in this case
         #   if more need to handle appropriately
-        cat("  \n  ")
+        cat("  \n")
         if (inherits(x,"character") & added_as(x)!= "As is"){
             # noquote critical here  also turn off auto.asis very important
             noquote(paste0(x, collapse="\n")) %>% cat# %>% knitr::asis_output(.)
@@ -43,9 +43,12 @@ print_objects <- function(container
             # print the html piece of the htmlwidgets
             htmltools::renderTags(x)$html %>% cat# %>% knitr::asis_output(.)
         } else {
+            # Remove aattribute "added_as" to prevent from printing it
+            attributes(x)$added_as <- NULL
+            # Print
             print(x)
         }
-        cat("  \n\n  ")
+        cat("\n\n  ")
     }
 
     # Attach the Dependencies ================================================

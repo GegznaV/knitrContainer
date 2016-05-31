@@ -1,4 +1,3 @@
-# @param knitr.auto.asis Value for \pkg{pander} parameter \code{knitr.auto.asis}.
 
 #' @name knitrContainer
 #' @title Create, test and convert to `knitrContainer` object
@@ -16,8 +15,6 @@
 #' \code{list(object)} and then class attribute is added;\cr
 #' for \code{knitrContainer} objects - they are returned as-is.
 #'
-#'
-#'
 #' @export
 #'
 #' @examples
@@ -26,55 +23,15 @@
 #'
 #' @author Vilmantas Gegzna
 #' @family \code{knitrContainer} functions
-knitrContainer <- function(
-    # results = 'asis'
-    # , knitr.auto.asis = FALSE
-){
-    # knitr::opts_chunk$set(results = results)
-
+knitrContainer <- function(){
     container <- list()
     # container <- htmltools::tagList()
     class(container) <- c("knitrContainer", setdiff(class(container), "knitrContainer"))
     return(container)
 }
 
-# is.knitrContainer --------------------------------------------------------------------
 
-#' @rdname knitrContainer
-#' @param obj object to be tested or converted to \code{knitrContainer} object.
-#'
-#' @export
-is.knitrContainer <- function(obj){
-    inherits(obj, "knitrContainer")
-}
-
-# as.knitrContainer --------------------------------------------------------------------
-#
-#' @rdname knitrContainer
-#' @export
-#
-as.knitrContainer <- function(obj = NULL){
-    # if (missing(obj)) stop("`obj` is missing.")
-    if (is.null(obj)) obj <- knitrContainer()
-
-    # If NOT a container and NOT a list
-    if (!inherits(obj, c("knitrContainer","list"))){
-        obj <- added_as(obj, TYPE =  "As is")
-        obj <- list(obj)
-    }
-
-    # Add class attribute for list
-    if (inherits(obj, c("list"))){
-        obj <- lapply(obj, added_as, TYPE =  "As is")
-        class(obj)  <-  c("knitrContainer", setdiff(class(obj), "knitrContainer"))
-    }
-
-    if (inherits(obj, "knitrContainer")) {
-        return(obj)
-    }
-    else {
-        stop(paste("Object of class ",
-                   paste(class(obj), collapse = ", "),
-                   "can not be converted to class 'knitrContainer'."))
-    }
-}
+# @param knitr.auto.asis Value for \pkg{pander} parameter \code{knitr.auto.asis}.
+    # knitr::opts_chunk$set(results = results)
+    # results = 'asis'
+    # , knitr.auto.asis = FALSE

@@ -63,8 +63,11 @@
 #'
 #' @author Vilmantas Gegzna
 #' @family \code{knitrContainer} functions
-add_as_section <- function(container = NULL, obj = "", level = 1){
+add_as_section <- function(container = NULL, obj, level = 1){
+    if (missing(obj)) stop("`obj` is missing.")
+
     force(level)
+
     container <- as.knitrContainer(container)
 
     obj <- sprintf("\n\n%s %s\n\n  ",

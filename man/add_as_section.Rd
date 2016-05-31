@@ -9,7 +9,7 @@
 \alias{add_as_subsection}
 \title{Add object as a heading/section name to \code{knitrContainer}}
 \usage{
-add_as_section(container = NULL, obj = "", level = 1)
+add_as_section(container = NULL, obj, level = 1)
 
 add_as_subsection(container = NULL, obj = "")
 
@@ -86,9 +86,8 @@ Vilmantas Gegzna
 }
 \seealso{
 Other X.code.knitrContainer..functions: \code{\link{Join}},
-  \code{\link{add_as_}},
+  \code{\link{add_as_}}, \code{\link{as.knitrContainer}},
   \code{\link{knitrContainer-class}},
-  \code{\link{knitrContainer}},
   \code{\link{print_objects}}, \code{\link{print}},
   \code{\link{summary}}
 }
