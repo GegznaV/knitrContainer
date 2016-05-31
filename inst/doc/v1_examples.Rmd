@@ -7,6 +7,7 @@ output:
     rmarkdown::html_vignette: 
         toc: yes
         number_sections: yes
+        toc_depth: 2
 
 vignette: >
   %\VignetteIndexEntry{1 knitrContainer Examples}
@@ -21,28 +22,74 @@ knitr::opts_chunk$set(collapse = TRUE,
 optDEF <- knitr::opts_chunk$get()
 ```
 
+Introduction
+=============
+
+About `knitrContainer`
+----------------------
+
+`knitrContainer` is an [R](https://cran.r-project.org/) package designed 
+to collect objects and print them in [`knitr`](http://yihui.name/knitr/) 
+reports.
+
+###  Why was it created? 
+
+Some objects such as  `pander` tables and `plotly` plots, are not printed from
+inside loop in a `knitr` report file in a regular way.`knitrContainer` solves
+this problem by providing fuctions to get these objects printed and included 
+in `HTML` files.
+ 
+### What king of objects can be collectd and printed with `knitrContainer`?
+
+ An object used by `knitrContainer` can be any object, that is
+ includable in R list an that is printable, such as :
+ 
+ 1. objects printable with [`pander`](http://rapporter.github.io/pander/);
+ 2. text;
+ 3. [`ggplot2`](http://ggplot2.org/), [`plotly`](https://plot.ly/r/) 
+ plots;
+ 4. etc.
+ 
+
+How to install the package?
+-----------------------------
+
+From Git Hub repository:
+```{r Install package, eval=FALSE}
+library(devtools)
+install_github("GegznaV/knitrContainer")
+```
+
+
 How to use `knitrContainer`? 
-===============================================
+-----------------------------
 
-For basic use `knitrContainer` only 3 things should be done:
+Only 4 things should be done for basic use of `knitrContainer` package :
 
-1. A container must be created (e.g. function `knitrContainer()`);
-2. The container must filled (`add_as_*` family functions, e.g. function `add_as_is()`);
-3. The collected contents of the container must be printed appropriately (option `results` in R code chunk set to `'asis'` and use function `print_objects()`).
-  
-Example:
+1. Create a container(e.g. function `knitrContainer()`);
+2. Add objects to the container (use `add_as_*` family functions, e.g. function 
+`add_as_is()`);
+3. In a R code chunk of [`knitr`](http://yihui.name/knitr/) report file set 
+option `results` to `results='asis'`;
+4. Print the objects appropriately: apply
+function `print_objects()` in the chunk which has option `results='asis'`.
+
+
+### Example 1
+
 ```{r, eval = FALSE}
 library(knitrContainer)
-
+```
+```{r, eval = FALSE}
 container <- knitrContainer()
 container <- add_as_text(container, "Text to be added.")
 print_objects(container)
 ```
 
+### Example 2
 
-
-Example how to add objects using operator `%<>%` from package `magrittr`:
-
+Example how to add objects using the operator `%<>%` from package
+[`magrittr`](https://github.com/smbache/magrittr#compound-assignment-pipe-operations):
 ```{r, eval = FALSE}
 container %<>% add_as_text("Text added using `%<>%` operator.")
 ```
@@ -50,17 +97,16 @@ container %<>% add_as_text("Text added using `%<>%` operator.")
 It is the same as:
 ```{r, eval = FALSE}
 container <- add_as_text(container, "Text added using `<-` operator.")
-```
-  
+```  
+
 Type the following code in R to learn more about operator `%<>%`:
 
 ```{r, eval = FALSE}
 ?`%<>%`
 ```
-   
 
 
-More detailed examples are in following sections.
+More detailed examples are presented in the following sections.
 
 Functions for class `knitrContainer`   
 ===============================================
@@ -83,8 +129,8 @@ plotly_obj <- plot_ly(economics, x = date, y = uempmed, type = "scatter",
 ggplot_obj <- qplot(mpg, wt, data = mtcars, colour = cyl)
 ```
 
-Create `knitrContainer`
-----------------------
+Create a `knitrContainer` object
+---------------------------------
 
 ```{r}
 container <- knitrContainer()

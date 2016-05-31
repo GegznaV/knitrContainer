@@ -4,9 +4,14 @@ knitr::opts_chunk$set(collapse = TRUE,
                       fig.align = 'center')
 optDEF <- knitr::opts_chunk$get()
 
+## ----Install package, eval=FALSE-----------------------------------------
+#  library(devtools)
+#  install_github("GegznaV/knitrContainer")
+
 ## ---- eval = FALSE-------------------------------------------------------
 #  library(knitrContainer)
-#  
+
+## ---- eval = FALSE-------------------------------------------------------
 #  container <- knitrContainer()
 #  container <- add_as_text(container, "Text to be added.")
 #  print_objects(container)

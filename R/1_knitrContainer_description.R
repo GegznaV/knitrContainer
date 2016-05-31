@@ -1,19 +1,10 @@
 #' @name knitrContainer
 #' @docType package
-#' @title Print \pkg{pander} and \pkg{plotly} objects and  from inside a loop in \code{R Markdown}
+#' @title Print \pkg{pander} and \pkg{plotly} objects and  from inside a loop in a \code{knitr} report.
 #'
 #' @description
-#' `knitrContainer` is an R package designed to collect objects and print them
-#' in `R Markdown`.\cr
-#'
-#' \bold{Why was it created?}\cr
-#'
-#' Some objecs such as \code{pander} tables and \code{plotly} plots,
-#' are not printed from
-#' insite loop in \code{R Markdown} file in a regular way.
-#' \code{knitrContainer} solves this problem by allowing these objects
-#' to be printed in \code{HTML} files.
-#'
+#' \code{knitrContainer} is an R package designed to collect objects and print
+#' them in a \pkg{knitr}report.\cr
 #'
 #' @section Objects:
 #' \bold{What objects can be collectd and printed with `knitrContainer`?}\cr
@@ -41,6 +32,10 @@
 #' @seealso
 #' \code{knitrContainer}'s
 #' \href{https://github.com/GegznaV/knitrContainer}{gitHub repository}.
+#'
+#' @references
+#' Some ideas for functions of \code{knitrContainer} package are taken from
+#'  \href{https://github.com/ropensci/plotly/issues/273#issuecomment-217982315}{this answer} on github.com.
 #'
 #' @author Vilmantas Gegzna
 #'

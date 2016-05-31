@@ -5,13 +5,13 @@
 #' @exportClass knitrContainer
 #'
 #' @description
-#'  \code{knitrContainer} is an object for collecting other objects,
+#'  \code{knitrContainer} is an object (class S3) for collecting other objects,
 #'  such as section headings, text (as character vectors),
 #'  \code{ggplot} and \code{plotly} objects, \code{pander} tables, etc.
-#'  in an R Markdown file and print them in one function call. The advantage
+#'  in a \code{knitr} report file and print them in one function call. The advantage
 #'  of such printing is obvious in those cases, where otherwise the object are
-#'  not printed, e.g., from inside \code{for} loop when \code{HTML} output
-#'  is desired.
+#'  not printed, e.g., from inside \code{for} loop (when \code{HTML} output
+#'  is desired).
 #'
 #' @author  Vilmantas Gegzna
 #' @seealso Examples in vignette `v3_knitrContainer`.
@@ -19,11 +19,6 @@
 #'
 #' @keywords classes
 #' @docType class
-#'
-#' @source
-#' Some ideas and pieces of code for \code{knitrContainer} functions are taken from
-#'  \href{https://github.com/ropensci/plotly/issues/273#issuecomment-217982315}{this answer} on github.com.
-#'
 #'
 #' @examples
 #'
