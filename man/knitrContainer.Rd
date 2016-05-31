@@ -12,12 +12,10 @@ knitrContainer()
 
 is.knitrContainer(obj)
 
-as.knitrContainer(obj = NULL, ...)
+as.knitrContainer(obj = NULL)
 }
 \arguments{
 \item{obj}{object to be tested or converted to \code{knitrContainer} object.}
-
-\item{...}{arguments to be passed to function \code{knitrContainer}.}
 }
 \description{
 \code{knitrContainer} is an R package designed to collect objects and print

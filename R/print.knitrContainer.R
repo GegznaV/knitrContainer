@@ -20,7 +20,7 @@
 #' @author Vilmantas Gegzna
 #' @family \code{knitrContainer} functions
 #'
-print.knitrContainer <- function(x, n = 30, len = 25, units = "Kb"){
+print.knitrContainer <- function(x, n = 30, len = 25, units = "Kb", ...){
     summary(x, n = n, len = len, units = units)
 }
 

@@ -21,18 +21,18 @@ Join <- function(..., list = NULL) {
     if (is.null(list)) list <- list(...)
 
     # Convert non `knitrContainers` to `knitrContainers`
-    list <- lapply(list, function(obj)
-        if (!inherits(obj, "knitrContainer")){
-            obj <- as.knitrContainer(obj)
-        } else {
-            obj
+    list <- lapply(list, function(obj){
+            if (!inherits(obj, "knitrContainer")){
+                obj <- as.knitrContainer(obj)
+            } else {
+                obj
+            }
         }
     )
 
     # Merge and return the result
-    if (length(list) == 1) {
-        return(list)
-    } else if  (length(list) > 1) {
-        return(as.knitrContainer(unlist(list,recursive = FALSE)))
-    }
+
+    list %<>% Reduce(c,.) %>% as.knitrContainer
+
+    return(list)
 }

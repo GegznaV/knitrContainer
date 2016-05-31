@@ -21,7 +21,7 @@
 #' @author Vilmantas Gegzna
 #' @family \code{knitrContainer} functions
 
-summary.knitrContainer <- function(object, n = 100, len = 30, units = "Kb"){
+summary.knitrContainer <- function(object, n = 100, len = 30, units = "Kb", ...){
     container <- object
 
     if (length(container)==0) {

@@ -60,7 +60,9 @@
 #' @author Vilmantas Gegzna
 #' @family \code{knitrContainer} functions
 #'
-add_as_is <- function(container, obj){
+add_as_is <- function(container = NULL, obj){
+    if (missing(obj)) stop("`obj` is missing.")
+
     container <- as.knitrContainer(container)
     # Add added_as TYPE
     obj <- added_as(obj, "As is")
@@ -73,6 +75,8 @@ add_as_is <- function(container, obj){
 #' @rdname add_as_
 #' @export
 add_as_text <- function(container = NULL, obj){
+    if (missing(obj)) stop("`obj` is missing.")
+
     container <- as.knitrContainer(container)
 
     # Extract added_as TYPE before it is lost
@@ -96,6 +100,8 @@ add_as_text <- function(container = NULL, obj){
 #' @rdname add_as_
 #' @export
 add_as_plotly_widget <- function(container = NULL, obj){
+    if (missing(obj)) stop("`obj` is missing.")
+
     container <- as.knitrContainer(container)
 
     obj <- plotly::as.widget(obj)
@@ -109,6 +115,8 @@ add_as_plotly_widget <- function(container = NULL, obj){
 #' @export
 #' @param ... Options to be passed to \code{\link[pander]{pander}}.
 add_as_pander <- function(container = NULL, obj, ...){
+    if (missing(obj)) stop("`obj` is missing.")
+
     container <- as.knitrContainer(container)
     # Get and set pander options
     op <- pander::panderOptions('knitr.auto.asis')

@@ -1,11 +1,11 @@
-#' @title S3 class "\code{knitrContainer}"
+#' @title Class "\code{knitrContainer}"
 #'
 #' @name knitrContainer-class
 #' @aliases knitrContainer-class
 #' @exportClass knitrContainer
 #'
 #' @description
-#'  \code{knitrContainer} is an object (class S3) for collecting other objects,
+#'  \code{knitrContainer} is an object for collecting other objects,
 #'  such as section headings, text (as character vectors),
 #'  \code{ggplot} and \code{plotly} objects, \code{pander} tables, etc.
 #'  in a \code{knitr} report file and print them in one function call. The advantage

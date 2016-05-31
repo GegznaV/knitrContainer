@@ -5,7 +5,8 @@
 \alias{summary.knitrContainer}
 \title{Print and summary methods for \code{knitrContainer}}
 \usage{
-\method{summary}{knitrContainer}(object, n = 100, len = 30, units = "Kb")
+\method{summary}{knitrContainer}(object, n = 100, len = 30, units = "Kb",
+  ...)
 }
 \arguments{
 \item{object}{\code{knitrContainer} object.}
@@ -22,6 +23,8 @@ Default is 100.}
     \code{"KiB"}, \code{"MiB"}, \code{"GiB"}, \code{"TiB"},
     \code{"PiB"}, \code{"EiB"}, \code{"ZiB"}, \code{"YiB"},
     and \code{"auto"} (see \sQuote{Details}).  Can be abbreviated.}
+
+\item{...}{arguments to be passed to or from other methods.}
 }
 \description{
 Print summary of \code{knitrContainer} object.

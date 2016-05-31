@@ -8,7 +8,7 @@
 \alias{add_as_text}
 \title{Add object to \code{knitrContainer}}
 \usage{
-add_as_is(container, obj)
+add_as_is(container = NULL, obj)
 
 add_as_text(container = NULL, obj)
 
