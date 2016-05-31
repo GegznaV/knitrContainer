@@ -8,15 +8,20 @@
 Developement version of package `knitrContainer`
 ================================================
 
-What is `knitrContainer`?
--------------------------
+About `knitrContainer`
+----------------------
+
+### What is `knitrContainer`?
 
 `knitrContainer` is an R package designed to collect objects and print them in `R Markdown`.
 
-Why was it created?
--------------------
+### Why was it created?
 
 Some objecs such as `pander` tables and `plotly` plots, are not printed from insite loop in `R Markdown` file in a regular way.`knitrContainer` solves this problem by allowing these objects to be printed and included in `HTML` files.
+
+### What objects can be collectd and printed with `knitrContainer`?
+
+An object used by `knitrContainer` can be any object, that is includable in R list an that is printable, such as objects, ptintable with `pander`, text, as well as `ggplot2`, `plotly` plots, etc.
 
 How to install the package?
 ---------------------------
@@ -37,13 +42,7 @@ For basic use `knitrContainer` only 3 things should be done:
 2.  The container must filled (`add_as_*` family functions, e.g. function `add_as_is()`);
 3.  The collected contens of the container must be printed appropriately (option `results` in R code chunk set to `'asis'` and use function `print_objects()`).
 
-What objects can be collectd and printed with `knitrContainer`?
----------------------------------------------------------------
-
-An object used by `knitrContainer` can be any object, that is includable in R list an that is printable, such as objects, ptintable with `pander`, text, as well as `ggplot2`, `plotly` plots, etc.
-
-Example 1
----------
+### Example 1
 
 ``` r
 library(knitrContainer)
@@ -55,8 +54,7 @@ container <- add_as_text(container, "Text to be added.")
 print_objects(container)
 ```
 
-Example 2
----------
+### Example 2
 
 Example how to add objects using the operator `%<>%` fom package [`magrittr`](https://github.com/smbache/magrittr#compound-assignment-pipe-operations):
 
@@ -76,8 +74,7 @@ Type the following code in R to learn more abput operator `%<>%`:
 ?`%<>%`
 ```
 
-More Examples
--------------
+### More Examples
 
 ``` r
 vignette("v1_examples", package = "knitrContainer")
