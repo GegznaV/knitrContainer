@@ -1,28 +1,25 @@
-#' @name knitrContainer
+#' @name knitrContainer-package
 #' @docType package
-#' @title Print \pkg{pander} and \pkg{plotly} objects and  from inside a loop in a \code{knitr} report.
+#' @title Print \pkg{pander}, \pkg{plotly} and other objects from inside a loop in a \code{knitr} report
 #'
 #' @description
 #' \code{knitrContainer} is an R package designed to collect objects and print
-#' them in a \pkg{knitr}report.\cr
+#' them in a \pkg{knitr} report.\cr
 #'
 #' @section Objects:
 #' \bold{What objects can be collectd and printed with `knitrContainer`?}\cr
 #'
-#'  An object used by `knitrContainer` can be any object, that is
-#' includable in R list an that is printable, such as objects,
-#' printable with `pander`, text, as well as `ggplot2`, `plotly`
-#' plots, etc. \cr
-#'
-#' Examples of hese objects are
+#'  An object used by \code{knitrContainer} can be any object, that is
+#' includable in R list an that is printable, such as:\cr
 #' \pkg{pander} tables
 #' (\href{http://rapporter.github.io/pander/}{pander: An R Pandoc Writer},
-#' \code{\link[pander]{pander}}),
+#' \code{\link[pander]{pander}});\cr
 #' \pkg{ggplot2} (\href{http://ggplot2.org/}{ggplot2 is a plotting system},
-#' \code{\link[ggplot2]{ggplot}}),
+#' \code{\link[ggplot2]{ggplot}});\cr
 #' \pkg{plotly} (\href{https://plot.ly/r/}{Plotly R Library},
-#' \code{\link[plotly]{plot_ly}}),
-#'  text and other objects, that can be collected into list.\cr\cr
+#' \code{\link[plotly]{plot_ly}});\cr
+#'  text;\cr
+#'  etc.\cr\cr
 #'
 #' @section About documentation:
 #' [+] - function is well described. \cr
