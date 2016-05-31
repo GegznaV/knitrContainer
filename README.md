@@ -21,7 +21,7 @@ Some objecs such as `pander` tables and `plotly` plots, are not printed from ins
 
 ### What objects can be collectd and printed with `knitrContainer`?
 
-An object used by `knitrContainer` can be any object, that is includable in R list an that is printable, such as objects, ptintable with `pander`, text, as well as `ggplot2`, `plotly` plots, etc.
+An object used by `knitrContainer` can be any object, that is includable in R list an that is printable, such as objects, printable with `pander`, text, as well as `ggplot2`, `plotly` plots, etc.
 
 How to install the package?
 ---------------------------

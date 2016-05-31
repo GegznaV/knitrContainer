@@ -8,7 +8,7 @@ Description: `knitrContainer` is an R package designed to collect objects
              `knitrContainer` solves this problem.
              An object used by `knitrContainer` can be any object, that is
              includable in R list an that is printable, such as objects,
-             ptintable with `pander`, text, as well as `ggplot2`, `plotly`
+             printable with `pander`, text, as well as `ggplot2`, `plotly`
              plots, etc.
 Version: 0.0.001
 Date: 2016-05-31

@@ -49,7 +49,7 @@ for \code{knitrContainer} objects - they are returned as-is.
 
  An object used by `knitrContainer` can be any object, that is
 includable in R list an that is printable, such as objects,
-ptintable with `pander`, text, as well as `ggplot2`, `plotly`
+printable with `pander`, text, as well as `ggplot2`, `plotly`
 plots, etc. \cr
 
 Examples of hese objects are

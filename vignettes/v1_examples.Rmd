@@ -28,7 +28,7 @@ For basic use `knitrContainer` only 3 things should be done:
 
 1. A container must be created (e.g. function `knitrContainer()`);
 2. The container must filled (`add_as_*` family functions, e.g. function `add_as_is()`);
-3. The collected contens of the container must be printed appropriately (option `results` in R code chunk set to `'asis'` and use function `print_objects()`).
+3. The collected contents of the container must be printed appropriately (option `results` in R code chunk set to `'asis'` and use function `print_objects()`).
   
 Example:
 ```{r, eval = FALSE}
@@ -41,7 +41,7 @@ print_objects(container)
 
 
 
-Example how to add objects using operator `%<>%` fom package `magrittr`:
+Example how to add objects using operator `%<>%` from package `magrittr`:
 
 ```{r, eval = FALSE}
 container %<>% add_as_text("Text added using `%<>%` operator.")
@@ -83,7 +83,7 @@ plotly_obj <- plot_ly(economics, x = date, y = uempmed, type = "scatter",
 ggplot_obj <- qplot(mpg, wt, data = mtcars, colour = cyl)
 ```
 
-Create `knitrContainer
+Create `knitrContainer`
 ----------------------
 
 ```{r}
