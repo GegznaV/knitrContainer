@@ -1,0 +1,208 @@
+---
+title: "Examples how to use `knitrContainer`"
+subtitle: "(knitrContainer v`r packageVersion('knitrContainer')`)"
+author: "Vilmantas Gegzna"
+date: "`r Sys.Date()`"
+output:
+    rmarkdown::html_vignette: 
+        toc: yes
+        number_sections: yes
+
+vignette: >
+  %\VignetteIndexEntry{1 knitrContainer Examples}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteDepends{plotly}
+  %\VignetteEncoding{UTF-8}
+---
+```{r options1, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(collapse = TRUE,
+                      comment = "#>",
+                      fig.align = 'center')
+optDEF <- knitr::opts_chunk$get()
+```
+
+How to use `knitrContainer`? 
+===============================================
+
+For basic use `knitrContainer` only 3 things should be done:
+
+1. A container must be created (e.g. function `knitrContainer()`);
+2. The container must filled (`add_as_*` family functions, e.g. function `add_as_is()`);
+3. The collected contens of the container must be printed appropriately (option `results` in R code chunk set to `'asis'` and use function `print_objects()`).
+  
+Example:
+```{r, eval = FALSE}
+library(knitrContainer)
+
+container <- knitrContainer()
+container <- add_as_text(container, "Text to be added.")
+print_objects(container)
+```
+
+
+
+Example how to add objects using operator `%<>%` fom package `magrittr`:
+
+```{r, eval = FALSE}
+container %<>% add_as_text("Text added using `%<>%` operator.")
+```
+
+It is the same as:
+```{r, eval = FALSE}
+container <- add_as_text(container, "Text added using `<-` operator.")
+```
+  
+Type the following code in R to learn more about operator `%<>%`:
+
+```{r, eval = FALSE}
+?`%<>%`
+```
+   
+
+
+More detailed examples are in following sections.
+
+Functions for class `knitrContainer`   
+===============================================
+
+Load packages 
+--------------
+
+```{r Load main package, message = FALSE, warning = FALSE}
+library(knitrContainer)
+
+library(ggplot2)
+library(plotly)
+```
+
+... and create necessary objects
+```{r}
+plotly_obj <- plot_ly(economics, x = date, y = uempmed, type = "scatter",
+             showlegend = FALSE)
+
+ggplot_obj <- qplot(mpg, wt, data = mtcars, colour = cyl)
+```
+
+Create `knitrContainer
+----------------------
+
+```{r}
+container <- knitrContainer()
+class(container)
+container
+```
+
+Attach objects to the end of the container
+-------------------------------------------
+
+
+```{r}
+# Section headings
+container <- add_as_section(container, "Plots")
+
+# Add `plotly` objects as `htmlwidgets`
+container <- add_as_section(container, "Add `plotly`", level = 2)
+container <- add_as_plotly_widget(container, plotly_obj)
+
+# Add `ggplot` objects as plotly `htmlwidgets`
+container <- add_as_section(container, "Add `ggplot` as `plotly`", level = 2)
+container <- add_as_plotly_widget(container, ggplot_obj)
+
+# Add `ggplot` objects as `ggplot` objects
+container <- add_as_section(container, "Add `ggplot`", level = 2)
+container <- add_as_is(container, ggplot_obj)
+
+# If `plotly` objects are aded as-is, they might not be plotted
+container <- add_as_section(container, "Attention: Not Plotted", level = 1)
+container <- add_as_is(container, plotly_obj)
+container <- add_as_text(container, paste("As you noticed, the last",
+      "`plotly` object was not plotted as it was added with ",
+      "`add_as_is()` and not with `add_as_plotly_widget()`"))
+
+# --- Add `pander` tables ---
+container <- add_as_section(container, "Pander and text", level = 1)
+
+# Add objects, printed as `pander` tables
+container <- add_as_section(container, "As pander", level = 2)
+container <- add_as_pander(container, summary(mtcars))
+
+# Add as text
+container <- add_as_section(container, "As text", level = 2)
+container <- add_as_text(container, summary(mtcars))
+
+# Add as-is
+container <- add_as_section(container, "As is", level = 2)
+container <- add_as_is(container, summary(mtcars))
+
+```
+
+Explore the container
+=======================
+
+Note, that functions `summary(container)` and `print(container)` do the same action: print
+summary of the object
+
+```{r}
+print(container)
+
+is.knitrContainer(container) 
+is.knitrContainer(ggplot_obj)
+
+as.knitrContainer(ggplot_obj) 
+
+class(container)
+```
+Merge several containers.
+
+```{r}
+Join(container, container)   %>% length()
+```
+
+Convert (as is) to `knitrContainer` and merge.
+```{r}
+Join(container, ggplot_obj)   %>% length()
+```
+
+
+As function uses method "as is" to convert to `knitrContainer`, 
+`plotly` objects might not be printed from the container in some situations
+(e.g. from inside `for` loops using `knitr`).
+
+```{r}
+Join(ggplot_obj, plotly_obj)
+```
+In these situations it is better to apply function `add_as_plotly_widget` first.
+
+
+
+
+Print objects from the container (`print_objects`)
+==================================================
+
+In section **2** there we demonstrated how to create a `knitr_nontainer`. In this
+section we will demonstrate how to print all the objects from the container.
+
+For this purpose a special function `print_objects` was created. As we use 
+`knitr` and `R MArkdown` we recommend to use separate R code chunk to apply the
+ function. It is <font color ="red"> IMPORTANT </font> to make 
+ sure that R chunk, in which `print_objects()` is called, has option `results` 
+ set to `as is` (`{r, results = 'asis'}`). Otherwise incorrect results are 
+ expected.
+
+The following text, section headings, figures etc. (except section 
+"Session information") are printed from the container
+using the following syntax:  
+
+```{r, results = 'asis'}
+print_objects(container)
+```
+
+
+
+Session information
+===================
+
+
+```{r session info}
+devtools::session_info()
+```

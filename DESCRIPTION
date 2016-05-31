@@ -1,0 +1,37 @@
+Package: knitrContainer
+Type: Package
+Title: Print `pander`, `plotly` and other objects from inside a loop in `R Markdown`
+Description: `knitrContainer` is an R package designed to collect objects
+             and print them in `R Markdown`.
+             Some objecs such as `pander` tables and `plotly` plots, are not
+             printed from insite loop in `R Markdown` in a regular way.
+             `knitrContainer` solves this problem.
+             An object used by `knitrContainer` can be any object, that is
+             includable in R list an that is printable, such as objects,
+             ptintable with `pander`, text, as well as `ggplot2`, `plotly`
+             plots, etc.
+Version: 0.0.001
+Date: 2016-05-31
+Encoding: UTF-8
+Authors@R: person("Vilmantas", "Gegzna", email = "GegznaV@gmail.com", role = c("aut", "cre"))
+Maintainer: Vilmantas Gegzna <GegeznaV@gmail.com>
+License: GPL (>= 3)
+LazyData: yes
+LazyLoad: yes
+RoxygenNote: 5.0.1
+VignetteBuilder: knitr
+Depends:
+    R (>= 3.2),
+    magrittr
+Imports:
+    ggplot2,
+    plotly,
+    devtools,
+    htmltools,
+    pander,
+    scales,
+    simsalapar
+Suggests:
+    knitr,
+    rmarkdown
+
