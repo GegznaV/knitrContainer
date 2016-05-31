@@ -54,3 +54,7 @@ NULL
 # \code{\link{}} \cr
 # \code{\link{}} \cr
 # @importFrom tidyr '%>%'
+#
+# [![Issue Stats](http://issuestats.com/github/GegznaV/knitrContainer/badge/pr?style=flat)](http://issuestats.com/github/GegznaV/knitrContainer)
+#
+# [![Issue Stats](http://issuestats.com/github/GegznaV/knitrContainer/badge/issue?style=flat)](http://issuestats.com/github/GegznaV/knitrContainer)

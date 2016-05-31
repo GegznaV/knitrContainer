@@ -21,8 +21,6 @@ knitr::opts_chunk$set(
 
 [![CRAN version](http://www.r-pkg.org/badges/version/knitrContainer)](http://cran.rstudio.com/web/packages/knitrContainer/index.html)
 [![CRAN mirror downloads](http://cranlogs.r-pkg.org/badges/knitrContainer)](http://cran.rstudio.com/web/packages/knitrContainer/index.html)
-<!-- [![Issue Stats](http://issuestats.com/github/GegznaV/knitrContainer/badge/pr?style=flat)](http://issuestats.com/github/GegznaV/knitrContainer) -->
-<!-- [![Issue Stats](http://issuestats.com/github/GegznaV/knitrContainer/badge/issue?style=flat)](http://issuestats.com/github/GegznaV/knitrContainer) -->
 [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master)
 [![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer)
 
