@@ -3,12 +3,12 @@ Type: Package
 Title: Collect and print `pander`, `plotly` and other objects in a `knitr` report
 Description: `knitrContainer` is an R package designed to collect objects
              to list-type container and print them in a `knitr` report.
-             Some objecs such as `pander` tables and `plotly` plots, are not
+             WHY? Some objecs such as `pander` tables and `plotly` plots, are not
              printed from insite loop of `knitr` reports in a regular way.
              `knitrContainer` solves this problem by providing fuctions to
              get these objects printed and included in `HTML` files.
-             An object used by `knitrContainer` can be any object, that is
-             includable in R list an that is printable, such as objects,
+             WHAT OBJECTS? An object used by `knitrContainer` can be any object,
+             that is includable in R list an that is printable, such as objects,
              printable with `pander`, text, as well as `ggplot2`, `plotly`
              plots, etc.
 Version: 0.0.5

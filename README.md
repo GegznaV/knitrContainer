@@ -13,7 +13,7 @@ About `knitrContainer`
 
 Some objects such as `pander` tables and `plotly` plots, are not printed from inside loop in a `knitr` report file in a regular way.`knitrContainer` solves this problem by providing fuctions to get these objects printed and included in `HTML` files.
 
-### What king of objects can be collectd and printed with `knitrContainer`?
+### What kind of objects can be collectd and printed with `knitrContainer`?
 
 An object used by `knitrContainer` can be any object, that is includable in R list an that is printable, such as :
 
@@ -40,7 +40,7 @@ Only 4 things should be done for basic use of `knitrContainer` package :
 1.  Create a container(e.g. function `knitrContainer()`);
 2.  Add objects to the container (use `add_as_*` family functions, e.g. function `add_as_is()`);
 3.  In a R code chunk of [`knitr`](http://yihui.name/knitr/) report file set option `results` to `results='asis'`;
-4.  Print the objects appropriately: apply function `print_objects()` in the chunk which has option `results='asis'`.
+4.  Print the objects appropriately: apply function `extract_and_print()` in the chunk which has option `results='asis'`.
 
 ### Example 1
 
@@ -51,7 +51,7 @@ library(knitrContainer)
 ``` r
 container <- knitrContainer()
 container <- add_as_text(container, "Text to be added.")
-print_objects(container)
+extract_and_print(container)
 ```
 
 ### Example 2
@@ -93,5 +93,5 @@ Meaning of symbols in function descriptions:
 ------------------------------------------------------------------------
 
 <p align="right">
-File updated on <b>2016-06-01</b> with version of package <b>0.0.4</b>
+File updated on <b>2016-06-01</b> with version of package <b>0.0.5</b>
 </p>

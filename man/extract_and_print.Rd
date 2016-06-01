@@ -12,20 +12,20 @@ print_objects(container, ...)
 \arguments{
 \item{container}{\code{knitr_container} object.}
 
-\item{...}{(NOT IMPLEMENTED YET) further arguments to methods.}
+\item{...}{not used.}
 }
 \description{
 Function is designed to be used in a \code{knitr} file which generates
  \code{HTML} output.\cr
  The function takes every element (i.e., object) of a
- \code{knitrContainer}, prints it appropriately
- \emph{(either as text (using \code{\link[base]{cat}}),
- as \code{\link[=htmlwidgets-package]{htmlwidget}} or object as-is using
- \code{\link[base]{print}})} and attaches \code{HTML} dependencies for
- \code{htmlwidgets} to show them correctly.
+ \code{knitrContainer}, prints it appropriately:
+ either as text (using \code{\link[base]{cat}}),
+ as htmlwidget (using \code{\link[base]{cat}}) or object as-is using
+ \code{\link[base]{print}}. Then attaches \code{HTML} dependencies for
+ \code{\link[htmlwidgets]{htmlwidgets}} to show them correctly.
 }
 \details{
-Functions \code{extract_and_print} and \code{print_objects} are aliases.
+Functions \code{extract_and_print()} and \code{print_objects()} are aliases.
 }
 \examples{
 

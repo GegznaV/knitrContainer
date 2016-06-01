@@ -3,7 +3,7 @@
 \docType{package}
 \name{knitrContainer-package}
 \alias{knitrContainer-package}
-\title{Print \pkg{pander}, \pkg{plotly} and other objects from inside a loop in a \code{knitr} report}
+\title{Collect and print \pkg{pander}, \pkg{plotly} and other objects in a \code{knitr} report}
 \description{
 \code{knitrContainer} is an R package designed to collect objects and print
 them in a \pkg{knitr} report.\cr
