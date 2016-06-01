@@ -1,6 +1,6 @@
 Package: knitrContainer
 Type: Package
-Title: Print `pander`, `plotly` and other objects from inside a loop in a `knitr` report
+Title: Collect and print `pander`, `plotly` and other objects in a `knitr` report
 Description: `knitrContainer` is an R package designed to collect objects
              to list-type container and print them in a `knitr` report.
              Some objecs such as `pander` tables and `plotly` plots, are not
@@ -11,7 +11,7 @@ Description: `knitrContainer` is an R package designed to collect objects
              includable in R list an that is printable, such as objects,
              printable with `pander`, text, as well as `ggplot2`, `plotly`
              plots, etc.
-Version: 0.0.4
+Version: 0.0.5
 Date: 2016-06-01
 Encoding: UTF-8
 Authors@R: person("Vilmantas", "Gegzna", email = "GegznaV@gmail.com", role = c("aut", "cre"))

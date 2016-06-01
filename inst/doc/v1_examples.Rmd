@@ -72,7 +72,7 @@ Only 4 things should be done for basic use of `knitrContainer` package :
 3. In a R code chunk of [`knitr`](http://yihui.name/knitr/) report file set 
 option `results` to `results='asis'`;
 4. Print the objects appropriately: apply
-function `print_objects()` in the chunk which has option `results='asis'`.
+function `extract_and_print()` in the chunk which has option `results='asis'`.
 
 
 ### Example 1
@@ -83,7 +83,7 @@ library(knitrContainer)
 ```{r, eval = FALSE}
 container <- knitrContainer()
 container <- add_as_text(container, "Text to be added.")
-print_objects(container)
+extract_and_print(container)
 ```
 
 ### Example 2
@@ -222,16 +222,16 @@ In these situations it is better to apply function `add_as_plotly_widget` first.
 
 
 
-Print objects from the container (`print_objects`)
+Print objects from the container (`extract_and_print`)
 ==================================================
 
 In section **2** there we demonstrated how to create a `knitr_nontainer`. In this
 section we will demonstrate how to print all the objects from the container.
 
-For this purpose a special function `print_objects` was created. As we use 
+For this purpose a special function `extract_and_print` was created. As we use 
 `knitr` and `R MArkdown` we recommend to use separate R code chunk to apply the
  function. It is <font color ="red"> IMPORTANT </font> to make 
- sure that R chunk, in which `print_objects()` is called, has option `results` 
+ sure that R chunk, in which `extract_and_print()` is called, has option `results` 
  set to `as is` (`{r, results = 'asis'}`). Otherwise incorrect results are 
  expected.
 
@@ -240,7 +240,7 @@ The following text, section headings, figures etc. (except section
 using the following syntax:  
 
 ```{r, results = 'asis'}
-print_objects(container)
+extract_and_print(container)
 ```
 
 

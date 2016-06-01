@@ -1,17 +1,23 @@
-#' @title Class "\code{knitrContainer}"
+#' @title Class \code{knitrContainer}
 #'
 #' @name knitrContainer-class
 #' @aliases knitrContainer-class
 #' @exportClass knitrContainer
 #'
 #' @description
-#'  \code{knitrContainer} is an object for collecting other objects,
-#'  such as section headings, text (as character vectors),
-#'  \code{ggplot} and \code{plotly} objects, \code{pander} tables, etc.
-#'  in a \code{knitr} report file and print them in one function call. The advantage
-#'  of such printing is obvious in those cases, where otherwise the object are
-#'  not printed, e.g., from inside \code{for} loop (when \code{HTML} output
-#'  is desired).
+#'  \code{knitrContainer} is an object dedicated for collecting other objects,
+#'  such as section headings, text, \code{ggplot} and \code{plotly} plots
+#'  (this kind of ojects before they are printed), \code{pander} tables, etc.
+#'  and printing them in one function call in a \code{knitr} report file
+#'  (usually when \code{HTML} output is desired).
+#'  The advantage  of such printing is obvious in those cases, where otherwise
+#'  the object are not printed, e.g., from inside \code{for} loop in
+#'  \code{knitr} report when \code{HTML} output is desired.\cr
+#'
+#'  Technically \code{knitrContainer} object is a list with attached
+#'  \code{class} attribute \code{knitrContainer} thus lists can easity be
+#'  converted to \code{knitrContainer}s by using funtion
+#'  \code{as.knitrContainer}.
 #'
 #' @author  Vilmantas Gegzna
 #' @seealso Examples in vignette `v3_knitrContainer`.

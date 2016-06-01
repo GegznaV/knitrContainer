@@ -2,6 +2,7 @@
 #' @name knitrContainer
 #' @title Create, test and convert to `knitrContainer` object
 #'
+#'
 #' @description
 #' \code{knitrContainer()} - creates a new empty \code{knitrContainer} object.
 #'
@@ -23,14 +24,15 @@
 #'
 #' @author Vilmantas Gegzna
 #' @family \code{knitrContainer} functions
+#'
 knitrContainer <- function(){
     container <- list()
-    # container <- htmltools::tagList()
     class(container) <- c("knitrContainer", setdiff(class(container), "knitrContainer"))
     return(container)
 }
 
 
+    # container <- htmltools::tagList()
 # @param knitr.auto.asis Value for \pkg{pander} parameter \code{knitr.auto.asis}.
     # knitr::opts_chunk$set(results = results)
     # results = 'asis'

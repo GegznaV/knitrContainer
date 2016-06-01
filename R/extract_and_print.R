@@ -1,15 +1,24 @@
-# print_objects ----------------------------------------------------------------
+# extract_and_print ----------------------------------------------------------------
 # @param results Value for \code{knitr} chunk parameter \code{results}.
 #  Default option is to set \code{results} to \code{asis}.
 
 
-#' [!] Print objects from \code{knitrContainer} in R Markdown / \code{knitr} file
+#' [!] Print objects from \code{knitrContainer}
 #'
-#'  Function takes every object from the \code{container}, prints it
-#'  and attaches \code{html} dependencies to show objects
-#'  (such as plotly htmlwidgets) correctly.
+#'  Function is designed to be used in a \code{knitr} file which generates
+#'  \code{HTML} output.\cr
+#'  The function takes every element (i.e., object) of a
+#'  \code{knitrContainer}, prints it appropriately
+#'  \emph{(either as text (using \code{\link[base]{cat}}),
+#'  as \code{\link[=htmlwidgets-package]{htmlwidget}} or object as-is using
+#'  \code{\link[base]{print}})} and attaches \code{HTML} dependencies for
+#'  \code{htmlwidgets} to show them correctly.
+#'
+#' @details
+#' Functions \code{extract_and_print} and \code{print_objects} are aliases.
 #'
 #' @template container
+#' @param ... (NOT IMPLEMENTED YET) further arguments to methods.
 #' @export
 #'
 #' @examples
@@ -19,17 +28,13 @@
 #' @author Vilmantas Gegzna
 #' @family \code{knitrContainer} functions
 #'
-print_objects <- function(container
-                          # , results = "asis"
-                          ){
-    # knitr::opts_chunk$set(results = results)
-
+extract_and_print <- function(container, ...) {
     if (length(container)==0) {
         stop("*** knitrContainer is empty!!! ***")
     }
 
     # Print ===================================================================
-    # now cat/print all of the content
+    # Extract and print all of the content
     for(j in 1:length(container)){
         x <- container[[j]]
 
@@ -37,11 +42,11 @@ print_objects <- function(container
         #   if more need to handle appropriately
         cat("  \n")
         if (inherits(x,"character") & added_as(x)!= "As is"){
-            # noquote critical here  also turn off auto.asis very important
-            noquote(paste0(x, collapse="\n")) %>% cat# %>% knitr::asis_output(.)
+            # noquote critical here also turn off auto.asis very important
+            noquote(paste0(x, collapse="\n")) %>% cat
         } else  if (inherits(x,"htmlwidget")) {
             # print the html piece of the htmlwidgets
-            htmltools::renderTags(x)$html %>% cat# %>% knitr::asis_output(.)
+            htmltools::renderTags(x)$html %>% cat
         } else {
             # Remove aattribute "added_as" to prevent from printing it
             attributes(x)$added_as <- NULL
@@ -54,8 +59,10 @@ print_objects <- function(container
     # Attach the Dependencies ================================================
     # since they do not get included with renderTags(...)$html
 
-    # List dependencies
+    # Find the htmlwidgets
     widget_obj <- Filter(function(x){inherits(x,'htmlwidget')},container)
+
+    # Extract dependencies
     list_dependencies <- function(hw){htmltools::renderTags(hw)$dependencies}
     deps <- lapply(widget_obj, list_dependencies)
 
@@ -63,6 +70,13 @@ print_objects <- function(container
     htmltools::attachDependencies(
         htmltools::tagList(),
         unlist(deps,recursive=FALSE))
-
-
 }
+
+#  ------------------------------------------------------------------------
+#' @export
+#' @rdname extract_and_print
+print_objects <- function(container, ...){
+    extract_and_print(container, ...)
+}
+#  ------------------------------------------------------------------------
+# %>% knitr::asis_output(.)
