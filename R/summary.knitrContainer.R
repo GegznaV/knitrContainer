@@ -52,7 +52,9 @@ summary.knitrContainer <- function(object, n = 100, len = 30, units = "Kb", ...)
             REZ <- rbind(REZ[1:n,], c("...","...","...","...") )
               rownames(REZ)[n+1] = "..."
               print(REZ, right = FALSE, quote = FALSE)
-              cat(sprintf("\n *** Only the first %s lines are displayed! *** \n", n))
+              # cat(sprintf("\n *** Only the first %s lines are displayed! *** \n", n))
+              cat(sprintf("\n *** %s lines were not displayed! *** \n", LENGTH-n))
+
         } else {
             print(REZ, right = FALSE, quote = FALSE)
         }

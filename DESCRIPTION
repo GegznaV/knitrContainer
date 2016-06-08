@@ -11,11 +11,11 @@ Description: `knitrContainer` is an R package designed to collect objects
              that is includable in R list an that is printable, such as objects,
              printable with `pander`, text, as well as `ggplot2`, `plotly`
              plots, etc.
-Version: 0.0.5
-Date: 2016-06-01
+Version: 0.0.6
+Date: 2016-06-02
 Encoding: UTF-8
 Authors@R: person("Vilmantas", "Gegzna", email = "GegznaV@gmail.com", role = c("aut", "cre"))
-Maintainer: Vilmantas Gegzna <GegeznaV@gmail.com>
+Maintainer: Vilmantas Gegzna <GegznaV@gmail.com>
 License: GPL (>= 3)
 URL: https://github.com/GegznaV/knitrContainer
 BugReports: https://github.com/GegznaV/knitrContainer/issues

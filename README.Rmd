@@ -19,8 +19,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-[![CRAN version](http://www.r-pkg.org/badges/version/knitrContainer)](http://cran.rstudio.com/web/packages/knitrContainer/index.html)
-[![CRAN mirror downloads](http://cranlogs.r-pkg.org/badges/knitrContainer)](http://cran.rstudio.com/web/packages/knitrContainer/index.html)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/knitrContainer)](https://cran.r-project.org/package=knitrContainer)
 [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master)
 [![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer)
 

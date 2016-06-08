@@ -1,5 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN version](http://www.r-pkg.org/badges/version/knitrContainer)](http://cran.rstudio.com/web/packages/knitrContainer/index.html) [![CRAN mirror downloads](http://cranlogs.r-pkg.org/badges/knitrContainer)](http://cran.rstudio.com/web/packages/knitrContainer/index.html) [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master) [![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/knitrContainer)](https://cran.r-project.org/package=knitrContainer) [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master) [![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer)
 
 Development version of package **knitrContainer**
 =================================================
@@ -93,5 +93,5 @@ Meaning of symbols in function descriptions:
 ------------------------------------------------------------------------
 
 <p align="right">
-File updated on <b>2016-06-01</b> with version of package <b>0.0.5</b>
+File updated on <b>2016-06-08</b> with version of package <b>0.0.6</b>
 </p>
