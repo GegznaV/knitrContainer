@@ -15,7 +15,7 @@
 #'  \code{knitr} report when \code{HTML} output is desired.\cr
 #'
 #'  Technically \code{knitrContainer} object is a list with attached
-#'  \code{class} attribute \code{knitrContainer} thus lists can easity be
+#'  \code{class} attribute "\code{knitrContainer}" thus lists can be easily
 #'  converted to \code{knitrContainer}s by using funtion
 #'  \code{as.knitrContainer}.
 #'

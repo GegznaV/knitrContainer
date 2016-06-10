@@ -3,43 +3,47 @@
 \docType{package}
 \name{knitrContainer-package}
 \alias{knitrContainer-package}
-\title{Collect and print \pkg{pander}, \pkg{plotly} and other objects in a \code{knitr} report}
+\title{Collect and Print \pkg{pander}, \pkg{plotly} and Other Objects in a \pkg{knitr}/\pkg{rmarkdown} Report}
 \description{
-\code{knitrContainer} is an R package designed to collect objects and print
-them in a \pkg{knitr} report.\cr
+The purpose of \code{knitrContainer} is to collect objects and print
+them in a \code{knitr}/\code{rmarkdown} report.\cr
+
+ WHY? Some objects such as \code{pander} tables and \code{plotly} plots,
+ are not printed from inside a loop and are not displayed in `knitr` reports.
+`knitrContainer` solves this problem by providing convenience
+functions to get these objects printed and included in \code{HTML} files.
 }
 \section{Objects}{
 
-\bold{What objects can be collectd and printed with `knitrContainer`?}\cr
+\bold{What objects can be collectd and printed with \code{knitrContainer}?}\cr
 
  An object used by \code{knitrContainer} can be any object, that is
-includable in R list an that is printable, such as:\cr
-\pkg{pander} tables
-(\href{http://rapporter.github.io/pander/}{pander: An R Pandoc Writer},
-\code{\link[pander]{pander}});\cr
-\pkg{ggplot2} (\href{http://ggplot2.org/}{ggplot2 is a plotting system},
-\code{\link[ggplot2]{ggplot}});\cr
-\pkg{plotly} (\href{https://plot.ly/r/}{Plotly R Library},
-\code{\link[plotly]{plot_ly}});\cr
- text;\cr
- etc.\cr\cr
+includible in an R list and that is printable, such as:
+\itemize{
+
+\item{objects printable with \pkg{pander}
+     (\href{http://rapporter.github.io/pander/}{pander: An R Pandoc Writer},
+     \code{\link[pander]{pander}});}
+
+\item{\pkg{ggplot2} (\href{http://ggplot2.org/}{ggplot2 is a plotting system},
+     \code{\link[ggplot2]{ggplot}});}
+
+\item{\pkg{plotly} (\href{https://plot.ly/r/}{Plotly R Library},
+     \code{\link[plotly]{plot_ly}});}
+
+\item{text, strings;}
+
+\item{etc.}
 }
-
-\section{About documentation}{
-
-[+] - function is well described. \cr
-
-[!] - a description is incomplete and needs revision.\cr\cr
 }
 \author{
 Vilmantas Gegzna
 }
 \references{
-Some ideas for functions of \code{knitrContainer} package are taken from
+Some ideas for functions in \code{knitrContainer} package are taken from
  \href{https://github.com/ropensci/plotly/issues/273#issuecomment-217982315}{this answer} on github.com.
 }
 \seealso{
-\code{knitrContainer}'s
-\href{https://github.com/GegznaV/knitrContainer}{gitHub repository}.
+\href{https://github.com/GegznaV/knitrContainer}{\code{knitrContainer}'s gitHub repository}.
 }
 

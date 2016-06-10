@@ -1,13 +1,14 @@
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/knitrContainer)](https://cran.r-project.org/package=knitrContainer) [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master) [![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer)
 
-Development version of package **knitrContainer**
-=================================================
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/knitrContainer)](https://cran.r-project.org/package=knitrContainer) [![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer) [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master)
+
+Development version of R package **knitrContainer**
+===================================================
 
 About `knitrContainer`
 ----------------------
 
-`knitrContainer` is an [R](https://cran.r-project.org/) package designed to collect objects and print them in [`knitr`](http://yihui.name/knitr/) reports.
+`knitrContainer` is an [R](https://cran.r-project.org/) package. Its to collect objects and print them in [`knitr`](http://yihui.name/knitr/) reports.
 
 ### Why was it created?
 
@@ -25,9 +26,10 @@ An object used by `knitrContainer` can be any object, that is includable in R li
 How to install the package?
 ---------------------------
 
-From a GitHub repository:
+Install development version from GitHub:
 
 ``` r
+if (!require(devtools)) install.packages("devtools")
 library(devtools)
 install_github("GegznaV/knitrContainer")
 ```
@@ -37,10 +39,10 @@ How to use `knitrContainer`?
 
 Only 4 things should be done for basic use of `knitrContainer` package :
 
-1.  Create a container(e.g. function `knitrContainer()`);
-2.  Add objects to the container (use `add_as_*` family functions, e.g. function `add_as_is()`);
-3.  In a R code chunk of [`knitr`](http://yihui.name/knitr/) report file set option `results` to `results='asis'`;
-4.  Print the objects appropriately: apply function `extract_and_print()` in the chunk which has option `results='asis'`.
+1.  Create a container (e.g. use function `knitrContainer()`);
+2.  Add objects to the container (use `add_as_*` family functions, e.g. `add_as_is()`);
+3.  In a chunk of R code in [`knitr`](http://yihui.name/knitr/) report file set option `results` to `results='asis'`;
+4.  Print the collected objects appropriately by applying function `extract_and_print()` in the chunk which has option `results='asis'`.
 
 ### Example 1
 
@@ -49,8 +51,11 @@ library(knitrContainer)
 ```
 
 ``` r
+# Create
 container <- knitrContainer()
+# Collect
 container <- add_as_text(container, "Text to be added.")
+# Print
 extract_and_print(container)
 ```
 
@@ -93,5 +98,5 @@ Meaning of symbols in function descriptions:
 ------------------------------------------------------------------------
 
 <p align="right">
-File updated on <b>2016-06-08</b> with version of package <b>0.0.6</b>
+File updated on <b>2016-06-09</b> with version of package <b>0.0.7</b>
 </p>
