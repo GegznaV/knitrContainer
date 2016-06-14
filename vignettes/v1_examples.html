@@ -12,7 +12,7 @@
 
 <meta name="author" content="Vilmantas Gegzna" />
 
-<meta name="date" content="2016-06-01" />
+<meta name="date" content="2016-06-15" />
 
 <title>Examples how to use knitrContainer</title>
 
@@ -73,9 +73,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 <h1 class="title toc-ignore">Examples how to use <code>knitrContainer</code></h1>
-<h3 class="subtitle"><em>(knitrContainer v0.0.5)</em></h3>
+<h3 class="subtitle"><em>(knitrContainer v0.0.8)</em></h3>
 <h4 class="author"><em>Vilmantas Gegzna</em></h4>
-<h4 class="date"><em>2016-06-01</em></h4>
+<h4 class="date"><em>2016-06-15</em></h4>
 
 
 <div id="TOC">
@@ -93,17 +93,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="#explore-the-container"><span class="toc-section-number">3</span> Explore the container</a></li>
 <li><a href="#print-objects-from-the-container-extract_and_print"><span class="toc-section-number">4</span> Print objects from the container (<code>extract_and_print</code>)</a></li>
 <li><a href="#plots"><span class="toc-section-number">5</span> Plots</a><ul>
-<li><a href="#add-plotly"><span class="toc-section-number">5.1</span> Add <code>plotly</code></a></li>
-<li><a href="#add-ggplot-as-plotly"><span class="toc-section-number">5.2</span> Add <code>ggplot</code> as <code>plotly</code></a></li>
-<li><a href="#add-ggplot"><span class="toc-section-number">5.3</span> Add <code>ggplot</code></a></li>
+<li><a href="#add-plotly-as-plotly-htmlwidget"><span class="toc-section-number">5.1</span> Add <code>plotly</code> as <code>plotly htmlwidget</code></a></li>
+<li><a href="#add-ggplot-as-plotly-htmlwidget"><span class="toc-section-number">5.2</span> Add <code>ggplot</code> as <code>plotly htmlwidget</code></a></li>
+<li><a href="#add-ggplot-as-is"><span class="toc-section-number">5.3</span> Add <code>ggplot</code> as-is</a></li>
 </ul></li>
 <li><a href="#attention-not-plotted"><span class="toc-section-number">6</span> Attention: Not Plotted</a></li>
-<li><a href="#pander-and-text"><span class="toc-section-number">7</span> Pander and text</a><ul>
-<li><a href="#as-pander"><span class="toc-section-number">7.1</span> As pander</a></li>
-<li><a href="#as-text"><span class="toc-section-number">7.2</span> As text</a></li>
-<li><a href="#as-is"><span class="toc-section-number">7.3</span> As is</a></li>
+<li><a href="#print-summary-as-pander-table-and-as-text"><span class="toc-section-number">7</span> Print SUMMARY as pander table and as text</a><ul>
+<li><a href="#as-pander-table"><span class="toc-section-number">7.1</span> As pander table</a></li>
+<li><a href="#as-r-output-text"><span class="toc-section-number">7.2</span> As R output text</a></li>
+<li><a href="#as-textparagraph"><span class="toc-section-number">7.3</span> As text/paragraph</a></li>
+<li><a href="#as-is"><span class="toc-section-number">7.4</span> As is</a></li>
 </ul></li>
-<li><a href="#session-information"><span class="toc-section-number">8</span> Session information</a></li>
+<li><a href="#advanced-as-data-and-as-code-to-evaluate"><span class="toc-section-number">8</span> ADVANCED: as data and as code to evaluate</a></li>
+<li><a href="#session-information"><span class="toc-section-number">9</span> Session information</a></li>
 </ul>
 </div>
 
@@ -156,7 +158,7 @@ container &lt;-<span class="st"> </span><span class="kw">add_as_text</span>(cont
 <p>It is the same as:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">container &lt;-<span class="st"> </span><span class="kw">add_as_text</span>(container, <span class="st">&quot;Text added using `&lt;-` operator.&quot;</span>)</code></pre></div>
 <p>Type the following code in R to learn more about operator <code>%&lt;&gt;%</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?<span class="st">`</span><span class="dt">%&lt;&gt;%</span><span class="st">`</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">?</span><span class="st">`</span>(<span class="st">`</span><span class="dt">%&lt;&gt;%</span><span class="st">`</span>)</code></pre></div>
 <p>More detailed examples are presented in the following sections.</p>
 </div>
 </div>
@@ -170,8 +172,7 @@ container &lt;-<span class="st"> </span><span class="kw">add_as_text</span>(cont
 <span class="kw">library</span>(ggplot2)
 <span class="kw">library</span>(plotly)</code></pre></div>
 <p>… and create necessary objects</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plotly_obj &lt;-<span class="st"> </span><span class="kw">plot_ly</span>(economics, <span class="dt">x =</span> date, <span class="dt">y =</span> uempmed, <span class="dt">type =</span> <span class="st">&quot;scatter&quot;</span>,
-             <span class="dt">showlegend =</span> <span class="ot">FALSE</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plotly_obj &lt;-<span class="st"> </span><span class="kw">plot_ly</span>(economics, <span class="dt">x =</span> date, <span class="dt">y =</span> uempmed, <span class="dt">type =</span> <span class="st">&quot;scatter&quot;</span>, <span class="dt">showlegend =</span> <span class="ot">FALSE</span>)
 
 ggplot_obj &lt;-<span class="st"> </span><span class="kw">qplot</span>(mpg, wt, <span class="dt">data =</span> mtcars, <span class="dt">colour =</span> cyl)</code></pre></div>
 </div>
@@ -189,38 +190,57 @@ container
 container &lt;-<span class="st"> </span><span class="kw">add_as_section</span>(container, <span class="st">&quot;Plots&quot;</span>)
 
 <span class="co"># Add `plotly` objects as `htmlwidgets`</span>
-container &lt;-<span class="st"> </span><span class="kw">add_as_section</span>(container, <span class="st">&quot;Add `plotly`&quot;</span>, <span class="dt">level =</span> <span class="dv">2</span>)
+container &lt;-<span class="st"> </span><span class="kw">add_as_section</span>(container, <span class="st">&quot;Add `plotly` as `plotly htmlwidget`&quot;</span>, 
+    <span class="dt">level =</span> <span class="dv">2</span>)
 container &lt;-<span class="st"> </span><span class="kw">add_as_plotly_widget</span>(container, plotly_obj)
 
 <span class="co"># Add `ggplot` objects as plotly `htmlwidgets`</span>
-container &lt;-<span class="st"> </span><span class="kw">add_as_section</span>(container, <span class="st">&quot;Add `ggplot` as `plotly`&quot;</span>, <span class="dt">level =</span> <span class="dv">2</span>)
+container &lt;-<span class="st"> </span><span class="kw">add_as_section</span>(container, <span class="st">&quot;Add `ggplot` as `plotly htmlwidget`&quot;</span>, 
+    <span class="dt">level =</span> <span class="dv">2</span>)
 container &lt;-<span class="st"> </span><span class="kw">add_as_plotly_widget</span>(container, ggplot_obj)
 
 <span class="co"># Add `ggplot` objects as `ggplot` objects</span>
-container &lt;-<span class="st"> </span><span class="kw">add_as_section</span>(container, <span class="st">&quot;Add `ggplot`&quot;</span>, <span class="dt">level =</span> <span class="dv">2</span>)
+container &lt;-<span class="st"> </span><span class="kw">add_as_section</span>(container, <span class="st">&quot;Add `ggplot` as-is&quot;</span>, <span class="dt">level =</span> <span class="dv">2</span>)
 container &lt;-<span class="st"> </span><span class="kw">add_as_is</span>(container, ggplot_obj)
 
 <span class="co"># If `plotly` objects are aded as-is, they might not be plotted</span>
 container &lt;-<span class="st"> </span><span class="kw">add_as_section</span>(container, <span class="st">&quot;Attention: Not Plotted&quot;</span>, <span class="dt">level =</span> <span class="dv">1</span>)
 container &lt;-<span class="st"> </span><span class="kw">add_as_is</span>(container, plotly_obj)
-container &lt;-<span class="st"> </span><span class="kw">add_as_text</span>(container, <span class="kw">paste</span>(<span class="st">&quot;As you noticed, the last&quot;</span>,
-      <span class="st">&quot;`plotly` object was not plotted as it was added with &quot;</span>,
-      <span class="st">&quot;`add_as_is()` and not with `add_as_plotly_widget()`&quot;</span>))
+container &lt;-<span class="st"> </span><span class="kw">add_as_text</span>(container, <span class="kw">paste</span>(<span class="st">&quot;As you noticed, the last&quot;</span>, <span class="st">&quot;`plotly` object was not plotted as it was added with &quot;</span>, 
+    <span class="st">&quot;`add_as_is()` and not with `add_as_plotly_widget()`&quot;</span>))
+
+<span class="co"># --- Calculations ---</span>
+SUMMARY &lt;-<span class="st"> </span><span class="kw">summary</span>(mtcars[<span class="dv">1</span>:<span class="dv">4</span>])
 
 <span class="co"># --- Add `pander` tables ---</span>
-container &lt;-<span class="st"> </span><span class="kw">add_as_section</span>(container, <span class="st">&quot;Pander and text&quot;</span>, <span class="dt">level =</span> <span class="dv">1</span>)
+container &lt;-<span class="st"> </span><span class="kw">add_as_heading1</span>(container, <span class="st">&quot;Print SUMMARY as pander table and as text&quot;</span>)
 
 <span class="co"># Add objects, printed as `pander` tables</span>
-container &lt;-<span class="st"> </span><span class="kw">add_as_section</span>(container, <span class="st">&quot;As pander&quot;</span>, <span class="dt">level =</span> <span class="dv">2</span>)
-container &lt;-<span class="st"> </span><span class="kw">add_as_pander</span>(container, <span class="kw">summary</span>(mtcars))
+container &lt;-<span class="st"> </span><span class="kw">add_as_heading2</span>(container, <span class="st">&quot;As pander table&quot;</span>)
+container &lt;-<span class="st"> </span><span class="kw">add_as_pander</span>(container, SUMMARY)
 
-<span class="co"># Add as text</span>
-container &lt;-<span class="st"> </span><span class="kw">add_as_section</span>(container, <span class="st">&quot;As text&quot;</span>, <span class="dt">level =</span> <span class="dv">2</span>)
-container &lt;-<span class="st"> </span><span class="kw">add_as_text</span>(container, <span class="kw">summary</span>(mtcars))
+<span class="co"># Add as R output text</span>
+container &lt;-<span class="st"> </span><span class="kw">add_as_heading2</span>(container, <span class="st">&quot;As R output text&quot;</span>)
+
+container &lt;-<span class="st"> </span><span class="kw">add_as_text</span>(container, <span class="st">&quot;Highlighted as R code&quot;</span>)
+container &lt;-<span class="st"> </span><span class="kw">add_as_r_output</span>(container, SUMMARY)
+
+container &lt;-<span class="st"> </span><span class="kw">add_as_text</span>(container, <span class="st">&quot;Not highlighted&quot;</span>)
+container &lt;-<span class="st"> </span><span class="kw">add_as_r_output</span>(container, SUMMARY, <span class="dt">highlight =</span> <span class="ot">FALSE</span>)
+
+container &lt;-<span class="st"> </span><span class="kw">add_as_text</span>(container, <span class="st">&quot;With default `knitr` comments&quot;</span>)
+container &lt;-<span class="st"> </span><span class="kw">add_as_r_output</span>(container, SUMMARY, <span class="dt">comment =</span> <span class="ot">TRUE</span>)
+
+container &lt;-<span class="st"> </span><span class="kw">add_as_text</span>(container, <span class="st">&quot;With custom comments&quot;</span>)
+container &lt;-<span class="st"> </span><span class="kw">add_as_r_output</span>(container, SUMMARY, <span class="dt">comment =</span> <span class="st">&quot;#$#&gt;&quot;</span>)
+
+<span class="co"># Add as text = Add as one paragraph</span>
+container &lt;-<span class="st"> </span><span class="kw">add_as_heading2</span>(container, <span class="st">&quot;As text/paragraph&quot;</span>)
+container &lt;-<span class="st"> </span><span class="kw">add_as_text</span>(container, SUMMARY)
 
 <span class="co"># Add as-is</span>
-container &lt;-<span class="st"> </span><span class="kw">add_as_section</span>(container, <span class="st">&quot;As is&quot;</span>, <span class="dt">level =</span> <span class="dv">2</span>)
-container &lt;-<span class="st"> </span><span class="kw">add_as_is</span>(container, <span class="kw">summary</span>(mtcars))</code></pre></div>
+container &lt;-<span class="st"> </span><span class="kw">add_as_heading2</span>(container, <span class="st">&quot;As is&quot;</span>)
+container &lt;-<span class="st"> </span><span class="kw">add_as_is</span>(container, SUMMARY)</code></pre></div>
 </div>
 </div>
 <div id="explore-the-container" class="section level1">
@@ -230,26 +250,35 @@ container &lt;-<span class="st"> </span><span class="kw">add_as_is</span>(contai
 <span class="co">#&gt; ================================================================================</span>
 <span class="co">#&gt; *** knitr container *** </span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Contains 17 object(s):</span>
+<span class="co">#&gt; Contains 26 object(s):</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;    Added.as      Text                      Size   </span>
+<span class="co">#&gt;    Added.as      Preview                   Size   </span>
 <span class="co">#&gt; 1  Section       # Plots                   0.3 Kb </span>
-<span class="co">#&gt; 2  Section       ## Add `plotly`           0.3 Kb </span>
+<span class="co">#&gt; 2  Section       ## Add `plotly` as `pl... 0.3 Kb </span>
 <span class="co">#&gt; 3  Plotly widget                           17.1 Kb</span>
 <span class="co">#&gt; 4  Section       ## Add `ggplot` as `pl... 0.3 Kb </span>
 <span class="co">#&gt; 5  Plotly widget                           37.6 Kb</span>
-<span class="co">#&gt; 6  Section       ## Add `ggplot`           0.3 Kb </span>
+<span class="co">#&gt; 6  Section       ## Add `ggplot` as-is     0.3 Kb </span>
 <span class="co">#&gt; 7  As is                                   11.1 Kb</span>
-<span class="co">#&gt; 8  Section       # Attention: Not Plott... 0.3 Kb </span>
+<span class="co">#&gt; 8  Section       # Attention: Not Plotted  0.3 Kb </span>
 <span class="co">#&gt; 9  As is                                   22.2 Kb</span>
 <span class="co">#&gt; 10 Text          As you noticed, the la... 0.4 Kb </span>
-<span class="co">#&gt; 11 Section       # Pander and text         0.3 Kb </span>
-<span class="co">#&gt; 12 Section       ## As pander              0.3 Kb </span>
-<span class="co">#&gt; 13 Pander object                           4.2 Kb </span>
-<span class="co">#&gt; 14 Section       ## As text                0.3 Kb </span>
-<span class="co">#&gt; 15 Text          Min.   :10.40   1st Qu... 1.3 Kb </span>
-<span class="co">#&gt; 16 Section       ## As is                  0.3 Kb </span>
-<span class="co">#&gt; 17 As is                                   5.5 Kb </span>
+<span class="co">#&gt; 11 Section       # Print SUMMARY as pan... 0.4 Kb </span>
+<span class="co">#&gt; 12 Section       ## As pander table        0.3 Kb </span>
+<span class="co">#&gt; 13 Pander object                           1.3 Kb </span>
+<span class="co">#&gt; 14 Section       ## As R output text       0.3 Kb </span>
+<span class="co">#&gt; 15 Text          Highlighted as R code     0.3 Kb </span>
+<span class="co">#&gt; 16 Output text   ```r                      1.6 Kb </span>
+<span class="co">#&gt; 17 Text          Not highlighted           0.3 Kb </span>
+<span class="co">#&gt; 18 Output text   ```                       1.6 Kb </span>
+<span class="co">#&gt; 19 Text          With default `knitr` c... 0.3 Kb </span>
+<span class="co">#&gt; 20 Output text   ```r                      1.6 Kb </span>
+<span class="co">#&gt; 21 Text          With custom comments      0.3 Kb </span>
+<span class="co">#&gt; 22 Output text   ```r                      1.6 Kb </span>
+<span class="co">#&gt; 23 Section       ## As text/paragraph      0.3 Kb </span>
+<span class="co">#&gt; 24 Text          Min.   :10.40   1st Qu... 0.7 Kb </span>
+<span class="co">#&gt; 25 Section       ## As is                  0.3 Kb </span>
+<span class="co">#&gt; 26 As is                                   2.7 Kb </span>
 <span class="co">#&gt;    Classes                             </span>
 <span class="co">#&gt; 1  character                           </span>
 <span class="co">#&gt; 2  character                           </span>
@@ -267,32 +296,41 @@ container &lt;-<span class="st"> </span><span class="kw">add_as_is</span>(contai
 <span class="co">#&gt; 14 character                           </span>
 <span class="co">#&gt; 15 character                           </span>
 <span class="co">#&gt; 16 character                           </span>
-<span class="co">#&gt; 17 table                               </span>
+<span class="co">#&gt; 17 character                           </span>
+<span class="co">#&gt; 18 character                           </span>
+<span class="co">#&gt; 19 character                           </span>
+<span class="co">#&gt; 20 character                           </span>
+<span class="co">#&gt; 21 character                           </span>
+<span class="co">#&gt; 22 character                           </span>
+<span class="co">#&gt; 23 character                           </span>
+<span class="co">#&gt; 24 character                           </span>
+<span class="co">#&gt; 25 character                           </span>
+<span class="co">#&gt; 26 table                               </span>
 <span class="co">#&gt; ================================================================================</span>
 
-<span class="kw">is.knitrContainer</span>(container) 
+<span class="kw">is.knitrContainer</span>(container)
 <span class="co">#&gt; [1] TRUE</span>
 <span class="kw">is.knitrContainer</span>(ggplot_obj)
 <span class="co">#&gt; [1] FALSE</span>
 
-<span class="kw">as.knitrContainer</span>(ggplot_obj) 
+<span class="kw">as.knitrContainer</span>(ggplot_obj)
 <span class="co">#&gt; ================================================================================</span>
 <span class="co">#&gt; *** knitr container *** </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Contains 1 object(s):</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;   Added.as Text Size    Classes   </span>
-<span class="co">#&gt; 1 As is         11.1 Kb gg, ggplot</span>
+<span class="co">#&gt;   Added.as Preview Size    Classes   </span>
+<span class="co">#&gt; 1 As is            11.1 Kb gg, ggplot</span>
 <span class="co">#&gt; ================================================================================</span>
 
 <span class="kw">class</span>(container)
 <span class="co">#&gt; [1] &quot;knitrContainer&quot; &quot;list&quot;</span></code></pre></div>
 <p>Merge several containers.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Join</span>(container, container)   %&gt;%<span class="st"> </span><span class="kw">length</span>()
-<span class="co">#&gt; [1] 34</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Join</span>(container, container) %&gt;%<span class="st"> </span><span class="kw">length</span>()
+<span class="co">#&gt; [1] 52</span></code></pre></div>
 <p>Convert (as is) to <code>knitrContainer</code> and merge.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Join</span>(container, ggplot_obj)   %&gt;%<span class="st"> </span><span class="kw">length</span>()
-<span class="co">#&gt; [1] 18</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Join</span>(container, ggplot_obj) %&gt;%<span class="st"> </span><span class="kw">length</span>()
+<span class="co">#&gt; [1] 27</span></code></pre></div>
 <p>As function uses method “as is” to convert to <code>knitrContainer</code>, <code>plotly</code> objects might not be printed from the container in some situations (e.g. from inside <code>for</code> loops using <code>knitr</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Join</span>(ggplot_obj, plotly_obj)
 <span class="co">#&gt; ================================================================================</span>
@@ -300,9 +338,9 @@ container &lt;-<span class="st"> </span><span class="kw">add_as_is</span>(contai
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Contains 2 object(s):</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;   Added.as Text Size    Classes                             </span>
-<span class="co">#&gt; 1 As is         11.1 Kb gg, ggplot                          </span>
-<span class="co">#&gt; 2 As is         22.2 Kb plotly_hash, tbl_df, tbl, data.frame</span>
+<span class="co">#&gt;   Added.as Preview Size    Classes                             </span>
+<span class="co">#&gt; 1 As is            11.1 Kb gg, ggplot                          </span>
+<span class="co">#&gt; 2 As is            22.2 Kb plotly_hash, tbl_df, tbl, data.frame</span>
 <span class="co">#&gt; ================================================================================</span></code></pre></div>
 <p>In these situations it is better to apply function <code>add_as_plotly_widget</code> first.</p>
 </div>
@@ -310,27 +348,27 @@ container &lt;-<span class="st"> </span><span class="kw">add_as_is</span>(contai
 <h1><span class="header-section-number">4</span> Print objects from the container (<code>extract_and_print</code>)</h1>
 <p>In section <strong>2</strong> there we demonstrated how to create a <code>knitr_nontainer</code>. In this section we will demonstrate how to print all the objects from the container.</p>
 <p>For this purpose a special function <code>extract_and_print</code> was created. As we use <code>knitr</code> and <code>R MArkdown</code> we recommend to use separate R code chunk to apply the function. It is <font color="red"> IMPORTANT </font> to make sure that R chunk, in which <code>extract_and_print()</code> is called, has option <code>results</code> set to <code>as is</code> (<code>{r, results = 'asis'}</code>). Otherwise incorrect results are expected.</p>
-<p>The following text, section headings, figures etc. (except section “Session information”) are printed from the container using the following syntax:</p>
+<p>The following text, section headings, figures etc. (except section “ADVANCED: …” and “Session information”) are printed from the container using the following syntax:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">extract_and_print</span>(container)</code></pre></div>
 </div>
 <div id="plots" class="section level1">
 <h1><span class="header-section-number">5</span> Plots</h1>
-<div id="add-plotly" class="section level2">
-<h2><span class="header-section-number">5.1</span> Add <code>plotly</code></h2>
-<div id="htmlwidget-7836" class="plotly html-widget" style="width:100%;height:400px;">
+<div id="add-plotly-as-plotly-htmlwidget" class="section level2">
+<h2><span class="header-section-number">5.1</span> Add <code>plotly</code> as <code>plotly htmlwidget</code></h2>
+<div id="htmlwidget-9986" class="plotly html-widget" style="width:100%;height:400px;">
 
 </div>
-<script type="application/json" data-for="htmlwidget-7836">{"x":{"data":[{"type":"scatter","inherit":false,"x":["1967-07-01","1967-08-01","1967-09-01","1967-10-01","1967-11-01","1967-12-01","1968-01-01","1968-02-01","1968-03-01","1968-04-01","1968-05-01","1968-06-01","1968-07-01","1968-08-01","1968-09-01","1968-10-01","1968-11-01","1968-12-01","1969-01-01","1969-02-01","1969-03-01","1969-04-01","1969-05-01","1969-06-01","1969-07-01","1969-08-01","1969-09-01","1969-10-01","1969-11-01","1969-12-01","1970-01-01","1970-02-01","1970-03-01","1970-04-01","1970-05-01","1970-06-01","1970-07-01","1970-08-01","1970-09-01","1970-10-01","1970-11-01","1970-12-01","1971-01-01","1971-02-01","1971-03-01","1971-04-01","1971-05-01","1971-06-01","1971-07-01","1971-08-01","1971-09-01","1971-10-01","1971-11-01","1971-12-01","1972-01-01","1972-02-01","1972-03-01","1972-04-01","1972-05-01","1972-06-01","1972-07-01","1972-08-01","1972-09-01","1972-10-01","1972-11-01","1972-12-01","1973-01-01","1973-02-01","1973-03-01","1973-04-01","1973-05-01","1973-06-01","1973-07-01","1973-08-01","1973-09-01","1973-10-01","1973-11-01","1973-12-01","1974-01-01","1974-02-01","1974-03-01","1974-04-01","1974-05-01","1974-06-01","1974-07-01","1974-08-01","1974-09-01","1974-10-01","1974-11-01","1974-12-01","1975-01-01","1975-02-01","1975-03-01","1975-04-01","1975-05-01","1975-06-01","1975-07-01","1975-08-01","1975-09-01","1975-10-01","1975-11-01","1975-12-01","1976-01-01","1976-02-01","1976-03-01","1976-04-01","1976-05-01","1976-06-01","1976-07-01","1976-08-01","1976-09-01","1976-10-01","1976-11-01","1976-12-01","1977-01-01","1977-02-01","1977-03-01","1977-04-01","1977-05-01","1977-06-01","1977-07-01","1977-08-01","1977-09-01","1977-10-01","1977-11-01","1977-12-01","1978-01-01","1978-02-01","1978-03-01","1978-04-01","1978-05-01","1978-06-01","1978-07-01","1978-08-01","1978-09-01","1978-10-01","1978-11-01","1978-12-01","1979-01-01","1979-02-01","1979-03-01","1979-04-01","1979-05-01","1979-06-01","1979-07-01","1979-08-01","1979-09-01","1979-10-01","1979-11-01","1979-12-01","1980-01-01","1980-02-01","1980-03-01","1980-04-01","1980-05-01","1980-06-01","1980-07-01","1980-08-01","1980-09-01","1980-10-01","1980-11-01","1980-12-01","1981-01-01","1981-02-01","1981-03-01","1981-04-01","1981-05-01","1981-06-01","1981-07-01","1981-08-01","1981-09-01","1981-10-01","1981-11-01","1981-12-01","1982-01-01","1982-02-01","1982-03-01","1982-04-01","1982-05-01","1982-06-01","1982-07-01","1982-08-01","1982-09-01","1982-10-01","1982-11-01","1982-12-01","1983-01-01","1983-02-01","1983-03-01","1983-04-01","1983-05-01","1983-06-01","1983-07-01","1983-08-01","1983-09-01","1983-10-01","1983-11-01","1983-12-01","1984-01-01","1984-02-01","1984-03-01","1984-04-01","1984-05-01","1984-06-01","1984-07-01","1984-08-01","1984-09-01","1984-10-01","1984-11-01","1984-12-01","1985-01-01","1985-02-01","1985-03-01","1985-04-01","1985-05-01","1985-06-01","1985-07-01","1985-08-01","1985-09-01","1985-10-01","1985-11-01","1985-12-01","1986-01-01","1986-02-01","1986-03-01","1986-04-01","1986-05-01","1986-06-01","1986-07-01","1986-08-01","1986-09-01","1986-10-01","1986-11-01","1986-12-01","1987-01-01","1987-02-01","1987-03-01","1987-04-01","1987-05-01","1987-06-01","1987-07-01","1987-08-01","1987-09-01","1987-10-01","1987-11-01","1987-12-01","1988-01-01","1988-02-01","1988-03-01","1988-04-01","1988-05-01","1988-06-01","1988-07-01","1988-08-01","1988-09-01","1988-10-01","1988-11-01","1988-12-01","1989-01-01","1989-02-01","1989-03-01","1989-04-01","1989-05-01","1989-06-01","1989-07-01","1989-08-01","1989-09-01","1989-10-01","1989-11-01","1989-12-01","1990-01-01","1990-02-01","1990-03-01","1990-04-01","1990-05-01","1990-06-01","1990-07-01","1990-08-01","1990-09-01","1990-10-01","1990-11-01","1990-12-01","1991-01-01","1991-02-01","1991-03-01","1991-04-01","1991-05-01","1991-06-01","1991-07-01","1991-08-01","1991-09-01","1991-10-01","1991-11-01","1991-12-01","1992-01-01","1992-02-01","1992-03-01","1992-04-01","1992-05-01","1992-06-01","1992-07-01","1992-08-01","1992-09-01","1992-10-01","1992-11-01","1992-12-01","1993-01-01","1993-02-01","1993-03-01","1993-04-01","1993-05-01","1993-06-01","1993-07-01","1993-08-01","1993-09-01","1993-10-01","1993-11-01","1993-12-01","1994-01-01","1994-02-01","1994-03-01","1994-04-01","1994-05-01","1994-06-01","1994-07-01","1994-08-01","1994-09-01","1994-10-01","1994-11-01","1994-12-01","1995-01-01","1995-02-01","1995-03-01","1995-04-01","1995-05-01","1995-06-01","1995-07-01","1995-08-01","1995-09-01","1995-10-01","1995-11-01","1995-12-01","1996-01-01","1996-02-01","1996-03-01","1996-04-01","1996-05-01","1996-06-01","1996-07-01","1996-08-01","1996-09-01","1996-10-01","1996-11-01","1996-12-01","1997-01-01","1997-02-01","1997-03-01","1997-04-01","1997-05-01","1997-06-01","1997-07-01","1997-08-01","1997-09-01","1997-10-01","1997-11-01","1997-12-01","1998-01-01","1998-02-01","1998-03-01","1998-04-01","1998-05-01","1998-06-01","1998-07-01","1998-08-01","1998-09-01","1998-10-01","1998-11-01","1998-12-01","1999-01-01","1999-02-01","1999-03-01","1999-04-01","1999-05-01","1999-06-01","1999-07-01","1999-08-01","1999-09-01","1999-10-01","1999-11-01","1999-12-01","2000-01-01","2000-02-01","2000-03-01","2000-04-01","2000-05-01","2000-06-01","2000-07-01","2000-08-01","2000-09-01","2000-10-01","2000-11-01","2000-12-01","2001-01-01","2001-02-01","2001-03-01","2001-04-01","2001-05-01","2001-06-01","2001-07-01","2001-08-01","2001-09-01","2001-10-01","2001-11-01","2001-12-01","2002-01-01","2002-02-01","2002-03-01","2002-04-01","2002-05-01","2002-06-01","2002-07-01","2002-08-01","2002-09-01","2002-10-01","2002-11-01","2002-12-01","2003-01-01","2003-02-01","2003-03-01","2003-04-01","2003-05-01","2003-06-01","2003-07-01","2003-08-01","2003-09-01","2003-10-01","2003-11-01","2003-12-01","2004-01-01","2004-02-01","2004-03-01","2004-04-01","2004-05-01","2004-06-01","2004-07-01","2004-08-01","2004-09-01","2004-10-01","2004-11-01","2004-12-01","2005-01-01","2005-02-01","2005-03-01","2005-04-01","2005-05-01","2005-06-01","2005-07-01","2005-08-01","2005-09-01","2005-10-01","2005-11-01","2005-12-01","2006-01-01","2006-02-01","2006-03-01","2006-04-01","2006-05-01","2006-06-01","2006-07-01","2006-08-01","2006-09-01","2006-10-01","2006-11-01","2006-12-01","2007-01-01","2007-02-01","2007-03-01","2007-04-01","2007-05-01","2007-06-01","2007-07-01","2007-08-01","2007-09-01","2007-10-01","2007-11-01","2007-12-01","2008-01-01","2008-02-01","2008-03-01","2008-04-01","2008-05-01","2008-06-01","2008-07-01","2008-08-01","2008-09-01","2008-10-01","2008-11-01","2008-12-01","2009-01-01","2009-02-01","2009-03-01","2009-04-01","2009-05-01","2009-06-01","2009-07-01","2009-08-01","2009-09-01","2009-10-01","2009-11-01","2009-12-01","2010-01-01","2010-02-01","2010-03-01","2010-04-01","2010-05-01","2010-06-01","2010-07-01","2010-08-01","2010-09-01","2010-10-01","2010-11-01","2010-12-01","2011-01-01","2011-02-01","2011-03-01","2011-04-01","2011-05-01","2011-06-01","2011-07-01","2011-08-01","2011-09-01","2011-10-01","2011-11-01","2011-12-01","2012-01-01","2012-02-01","2012-03-01","2012-04-01","2012-05-01","2012-06-01","2012-07-01","2012-08-01","2012-09-01","2012-10-01","2012-11-01","2012-12-01","2013-01-01","2013-02-01","2013-03-01","2013-04-01","2013-05-01","2013-06-01","2013-07-01","2013-08-01","2013-09-01","2013-10-01","2013-11-01","2013-12-01","2014-01-01","2014-02-01","2014-03-01","2014-04-01","2014-05-01","2014-06-01","2014-07-01","2014-08-01","2014-09-01","2014-10-01","2014-11-01","2014-12-01","2015-01-01","2015-02-01","2015-03-01","2015-04-01"],"y":[4.5,4.7,4.6,4.9,4.7,4.8,5.1,4.5,4.1,4.6,4.4,4.4,4.5,4.2,4.6,4.8,4.4,4.4,4.4,4.9,4,4,4.2,4.4,4.4,4.4,4.7,4.5,4.8,4.6,4.6,4.5,4.6,4.1,4.7,4.9,5.1,5.4,5.2,5.2,5.6,5.9,6.2,6.3,6.4,6.5,6.7,5.7,6.2,6.4,5.8,6.5,6.4,6.2,6.2,6.6,6.6,6.7,6.6,5.4,6.1,6,5.6,5.7,5.7,6.1,5.7,5.2,5.5,5,4.9,5,5.2,4.9,5.4,5.5,5.1,4.7,5,5.1,4.8,5,4.6,5.3,5.7,5,5.3,5.5,5.2,5.7,6.3,7.1,7.2,8.7,9.4,8.8,8.6,9.2,9.2,8.6,9.5,9,9,8.2,8.7,8.2,8.3,7.8,7.7,7.9,7.8,7.7,8.4,8,7.5,7.2,7.2,7.3,7.9,6.2,7.1,7,6.7,6.9,7,6.8,6.5,6.7,6.2,6.1,5.7,6,5.8,5.8,5.6,5.9,5.5,5.6,5.9,5.9,5.9,5.4,5.6,5.6,5.9,4.8,5.5,5.5,5.3,5.7,5.3,5.8,6,5.8,5.7,6.4,7,7.5,7.7,7.5,7.7,7.5,7.4,7.1,7.1,7.4,6.9,6.6,7.1,7.2,6.8,6.8,6.9,6.9,7.1,7.5,7.7,8.1,8.5,9.5,8.5,8.7,9.5,9.7,10,10.2,11.1,9.8,10.4,10.9,12.3,11.3,10.1,9.3,9.3,9.4,9.3,8.7,9.1,8.3,8.3,8.2,9.1,7.5,7.5,7.3,7.6,7.2,7.2,7.3,6.8,7.1,7.1,6.9,6.9,6.6,6.9,7.1,6.9,7.1,7,6.8,6.7,6.9,6.8,6.7,6.8,7,6.9,7.1,7.4,7,7.1,7.1,6.9,6.6,6.6,7.1,6.6,6.5,6.5,6.4,6,6.3,6.2,6,6.2,6.3,6.4,5.9,5.9,5.8,6.1,5.9,5.7,5.6,5.7,5.9,5.6,5.4,5.4,5.4,5.3,5.4,5.6,5,4.9,4.9,4.8,4.9,5.1,5.3,5.1,4.8,5.2,5.2,5.4,5.4,5.6,5.8,5.7,5.9,6,6.2,6.7,6.6,6.4,6.9,7,7.3,6.8,7.2,7.5,7.8,8.1,8.2,8.3,8.5,8.8,8.7,8.6,8.8,8.6,9,9,9.3,8.6,8.5,8.5,8.4,8.1,8.3,8.2,8.2,8.3,8,8.3,8.3,8.6,9.2,9.3,9.1,9.2,9.3,9,8.9,9.2,10,9,8.7,8,8.1,8.3,8.3,9.1,7.9,8.5,8.3,7.9,8.2,8,8.3,8.3,7.8,8.3,8.6,8.6,8.3,8.3,8.4,8.5,8.3,7.7,7.8,7.8,8.1,7.9,8.3,8,8,8.3,7.8,8.2,7.7,7.6,7.5,7.4,7,6.8,6.7,6,6.9,6.7,6.8,6.7,5.8,6.6,6.8,6.9,6.8,6.8,6.2,6.5,6.3,5.8,6.5,6,6.1,6.2,5.8,5.8,6.1,6,6.1,5.8,5.7,6,6.3,5.2,6.1,6.1,6,5.8,6.1,6.6,5.9,6.3,6,6.8,6.9,7.2,7.3,7.7,8.2,8.4,8.3,8.4,8.9,9.5,11,8.9,9,9.5,9.6,9.3,9.6,9.6,9.5,9.7,10.2,9.9,11.5,10.3,10.1,10.2,10.4,10.3,10.4,10.6,10.2,10.2,9.5,9.9,11,8.9,9.2,9.6,9.5,9.7,9.5,9.4,9.2,9.3,9,9.1,9,8.8,9.2,8.4,8.6,8.5,8.7,8.6,9.1,8.7,8.4,8.5,7.3,8,8.4,8,7.9,8.3,7.5,8.3,8.5,9.1,8.6,8.2,7.7,8.7,8.8,8.7,8.4,8.6,8.4,9,8.7,8.7,9.4,7.9,9,9.7,9.7,10.2,10.4,9.8,10.5,10.7,11.7,12.3,13.1,14.2,17.2,16,16.3,17.8,18.9,19.8,20.1,20,19.9,20.4,22.1,22.3,25.2,22.3,21,20.3,21.2,21,21.9,21.6,21.1,21.5,20.9,21.6,22.3,22,22.4,22,20.5,20.9,20.5,21,19.8,19.2,19.1,19.9,20.1,17.5,18.5,18.8,19.7,18.5,17.6,16.2,17.5,17.7,17.1,17,16.6,16.3,16.8,16.5,16.1,17,17,15.9,16.2,15.9,15.6,14.5,13.2,13.5,13.3,13.3,13.5,12.8,12.6,13.4,13.1,12.2,11.7],"showlegend":false}],"layout":{"xaxis":{"title":"date"},"yaxis":{"title":"uempmed"},"margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-9986">{"x":{"data":[{"type":"scatter","inherit":false,"x":["1967-07-01","1967-08-01","1967-09-01","1967-10-01","1967-11-01","1967-12-01","1968-01-01","1968-02-01","1968-03-01","1968-04-01","1968-05-01","1968-06-01","1968-07-01","1968-08-01","1968-09-01","1968-10-01","1968-11-01","1968-12-01","1969-01-01","1969-02-01","1969-03-01","1969-04-01","1969-05-01","1969-06-01","1969-07-01","1969-08-01","1969-09-01","1969-10-01","1969-11-01","1969-12-01","1970-01-01","1970-02-01","1970-03-01","1970-04-01","1970-05-01","1970-06-01","1970-07-01","1970-08-01","1970-09-01","1970-10-01","1970-11-01","1970-12-01","1971-01-01","1971-02-01","1971-03-01","1971-04-01","1971-05-01","1971-06-01","1971-07-01","1971-08-01","1971-09-01","1971-10-01","1971-11-01","1971-12-01","1972-01-01","1972-02-01","1972-03-01","1972-04-01","1972-05-01","1972-06-01","1972-07-01","1972-08-01","1972-09-01","1972-10-01","1972-11-01","1972-12-01","1973-01-01","1973-02-01","1973-03-01","1973-04-01","1973-05-01","1973-06-01","1973-07-01","1973-08-01","1973-09-01","1973-10-01","1973-11-01","1973-12-01","1974-01-01","1974-02-01","1974-03-01","1974-04-01","1974-05-01","1974-06-01","1974-07-01","1974-08-01","1974-09-01","1974-10-01","1974-11-01","1974-12-01","1975-01-01","1975-02-01","1975-03-01","1975-04-01","1975-05-01","1975-06-01","1975-07-01","1975-08-01","1975-09-01","1975-10-01","1975-11-01","1975-12-01","1976-01-01","1976-02-01","1976-03-01","1976-04-01","1976-05-01","1976-06-01","1976-07-01","1976-08-01","1976-09-01","1976-10-01","1976-11-01","1976-12-01","1977-01-01","1977-02-01","1977-03-01","1977-04-01","1977-05-01","1977-06-01","1977-07-01","1977-08-01","1977-09-01","1977-10-01","1977-11-01","1977-12-01","1978-01-01","1978-02-01","1978-03-01","1978-04-01","1978-05-01","1978-06-01","1978-07-01","1978-08-01","1978-09-01","1978-10-01","1978-11-01","1978-12-01","1979-01-01","1979-02-01","1979-03-01","1979-04-01","1979-05-01","1979-06-01","1979-07-01","1979-08-01","1979-09-01","1979-10-01","1979-11-01","1979-12-01","1980-01-01","1980-02-01","1980-03-01","1980-04-01","1980-05-01","1980-06-01","1980-07-01","1980-08-01","1980-09-01","1980-10-01","1980-11-01","1980-12-01","1981-01-01","1981-02-01","1981-03-01","1981-04-01","1981-05-01","1981-06-01","1981-07-01","1981-08-01","1981-09-01","1981-10-01","1981-11-01","1981-12-01","1982-01-01","1982-02-01","1982-03-01","1982-04-01","1982-05-01","1982-06-01","1982-07-01","1982-08-01","1982-09-01","1982-10-01","1982-11-01","1982-12-01","1983-01-01","1983-02-01","1983-03-01","1983-04-01","1983-05-01","1983-06-01","1983-07-01","1983-08-01","1983-09-01","1983-10-01","1983-11-01","1983-12-01","1984-01-01","1984-02-01","1984-03-01","1984-04-01","1984-05-01","1984-06-01","1984-07-01","1984-08-01","1984-09-01","1984-10-01","1984-11-01","1984-12-01","1985-01-01","1985-02-01","1985-03-01","1985-04-01","1985-05-01","1985-06-01","1985-07-01","1985-08-01","1985-09-01","1985-10-01","1985-11-01","1985-12-01","1986-01-01","1986-02-01","1986-03-01","1986-04-01","1986-05-01","1986-06-01","1986-07-01","1986-08-01","1986-09-01","1986-10-01","1986-11-01","1986-12-01","1987-01-01","1987-02-01","1987-03-01","1987-04-01","1987-05-01","1987-06-01","1987-07-01","1987-08-01","1987-09-01","1987-10-01","1987-11-01","1987-12-01","1988-01-01","1988-02-01","1988-03-01","1988-04-01","1988-05-01","1988-06-01","1988-07-01","1988-08-01","1988-09-01","1988-10-01","1988-11-01","1988-12-01","1989-01-01","1989-02-01","1989-03-01","1989-04-01","1989-05-01","1989-06-01","1989-07-01","1989-08-01","1989-09-01","1989-10-01","1989-11-01","1989-12-01","1990-01-01","1990-02-01","1990-03-01","1990-04-01","1990-05-01","1990-06-01","1990-07-01","1990-08-01","1990-09-01","1990-10-01","1990-11-01","1990-12-01","1991-01-01","1991-02-01","1991-03-01","1991-04-01","1991-05-01","1991-06-01","1991-07-01","1991-08-01","1991-09-01","1991-10-01","1991-11-01","1991-12-01","1992-01-01","1992-02-01","1992-03-01","1992-04-01","1992-05-01","1992-06-01","1992-07-01","1992-08-01","1992-09-01","1992-10-01","1992-11-01","1992-12-01","1993-01-01","1993-02-01","1993-03-01","1993-04-01","1993-05-01","1993-06-01","1993-07-01","1993-08-01","1993-09-01","1993-10-01","1993-11-01","1993-12-01","1994-01-01","1994-02-01","1994-03-01","1994-04-01","1994-05-01","1994-06-01","1994-07-01","1994-08-01","1994-09-01","1994-10-01","1994-11-01","1994-12-01","1995-01-01","1995-02-01","1995-03-01","1995-04-01","1995-05-01","1995-06-01","1995-07-01","1995-08-01","1995-09-01","1995-10-01","1995-11-01","1995-12-01","1996-01-01","1996-02-01","1996-03-01","1996-04-01","1996-05-01","1996-06-01","1996-07-01","1996-08-01","1996-09-01","1996-10-01","1996-11-01","1996-12-01","1997-01-01","1997-02-01","1997-03-01","1997-04-01","1997-05-01","1997-06-01","1997-07-01","1997-08-01","1997-09-01","1997-10-01","1997-11-01","1997-12-01","1998-01-01","1998-02-01","1998-03-01","1998-04-01","1998-05-01","1998-06-01","1998-07-01","1998-08-01","1998-09-01","1998-10-01","1998-11-01","1998-12-01","1999-01-01","1999-02-01","1999-03-01","1999-04-01","1999-05-01","1999-06-01","1999-07-01","1999-08-01","1999-09-01","1999-10-01","1999-11-01","1999-12-01","2000-01-01","2000-02-01","2000-03-01","2000-04-01","2000-05-01","2000-06-01","2000-07-01","2000-08-01","2000-09-01","2000-10-01","2000-11-01","2000-12-01","2001-01-01","2001-02-01","2001-03-01","2001-04-01","2001-05-01","2001-06-01","2001-07-01","2001-08-01","2001-09-01","2001-10-01","2001-11-01","2001-12-01","2002-01-01","2002-02-01","2002-03-01","2002-04-01","2002-05-01","2002-06-01","2002-07-01","2002-08-01","2002-09-01","2002-10-01","2002-11-01","2002-12-01","2003-01-01","2003-02-01","2003-03-01","2003-04-01","2003-05-01","2003-06-01","2003-07-01","2003-08-01","2003-09-01","2003-10-01","2003-11-01","2003-12-01","2004-01-01","2004-02-01","2004-03-01","2004-04-01","2004-05-01","2004-06-01","2004-07-01","2004-08-01","2004-09-01","2004-10-01","2004-11-01","2004-12-01","2005-01-01","2005-02-01","2005-03-01","2005-04-01","2005-05-01","2005-06-01","2005-07-01","2005-08-01","2005-09-01","2005-10-01","2005-11-01","2005-12-01","2006-01-01","2006-02-01","2006-03-01","2006-04-01","2006-05-01","2006-06-01","2006-07-01","2006-08-01","2006-09-01","2006-10-01","2006-11-01","2006-12-01","2007-01-01","2007-02-01","2007-03-01","2007-04-01","2007-05-01","2007-06-01","2007-07-01","2007-08-01","2007-09-01","2007-10-01","2007-11-01","2007-12-01","2008-01-01","2008-02-01","2008-03-01","2008-04-01","2008-05-01","2008-06-01","2008-07-01","2008-08-01","2008-09-01","2008-10-01","2008-11-01","2008-12-01","2009-01-01","2009-02-01","2009-03-01","2009-04-01","2009-05-01","2009-06-01","2009-07-01","2009-08-01","2009-09-01","2009-10-01","2009-11-01","2009-12-01","2010-01-01","2010-02-01","2010-03-01","2010-04-01","2010-05-01","2010-06-01","2010-07-01","2010-08-01","2010-09-01","2010-10-01","2010-11-01","2010-12-01","2011-01-01","2011-02-01","2011-03-01","2011-04-01","2011-05-01","2011-06-01","2011-07-01","2011-08-01","2011-09-01","2011-10-01","2011-11-01","2011-12-01","2012-01-01","2012-02-01","2012-03-01","2012-04-01","2012-05-01","2012-06-01","2012-07-01","2012-08-01","2012-09-01","2012-10-01","2012-11-01","2012-12-01","2013-01-01","2013-02-01","2013-03-01","2013-04-01","2013-05-01","2013-06-01","2013-07-01","2013-08-01","2013-09-01","2013-10-01","2013-11-01","2013-12-01","2014-01-01","2014-02-01","2014-03-01","2014-04-01","2014-05-01","2014-06-01","2014-07-01","2014-08-01","2014-09-01","2014-10-01","2014-11-01","2014-12-01","2015-01-01","2015-02-01","2015-03-01","2015-04-01"],"y":[4.5,4.7,4.6,4.9,4.7,4.8,5.1,4.5,4.1,4.6,4.4,4.4,4.5,4.2,4.6,4.8,4.4,4.4,4.4,4.9,4,4,4.2,4.4,4.4,4.4,4.7,4.5,4.8,4.6,4.6,4.5,4.6,4.1,4.7,4.9,5.1,5.4,5.2,5.2,5.6,5.9,6.2,6.3,6.4,6.5,6.7,5.7,6.2,6.4,5.8,6.5,6.4,6.2,6.2,6.6,6.6,6.7,6.6,5.4,6.1,6,5.6,5.7,5.7,6.1,5.7,5.2,5.5,5,4.9,5,5.2,4.9,5.4,5.5,5.1,4.7,5,5.1,4.8,5,4.6,5.3,5.7,5,5.3,5.5,5.2,5.7,6.3,7.1,7.2,8.7,9.4,8.8,8.6,9.2,9.2,8.6,9.5,9,9,8.2,8.7,8.2,8.3,7.8,7.7,7.9,7.8,7.7,8.4,8,7.5,7.2,7.2,7.3,7.9,6.2,7.1,7,6.7,6.9,7,6.8,6.5,6.7,6.2,6.1,5.7,6,5.8,5.8,5.6,5.9,5.5,5.6,5.9,5.9,5.9,5.4,5.6,5.6,5.9,4.8,5.5,5.5,5.3,5.7,5.3,5.8,6,5.8,5.7,6.4,7,7.5,7.7,7.5,7.7,7.5,7.4,7.1,7.1,7.4,6.9,6.6,7.1,7.2,6.8,6.8,6.9,6.9,7.1,7.5,7.7,8.1,8.5,9.5,8.5,8.7,9.5,9.7,10,10.2,11.1,9.8,10.4,10.9,12.3,11.3,10.1,9.3,9.3,9.4,9.3,8.7,9.1,8.3,8.3,8.2,9.1,7.5,7.5,7.3,7.6,7.2,7.2,7.3,6.8,7.1,7.1,6.9,6.9,6.6,6.9,7.1,6.9,7.1,7,6.8,6.7,6.9,6.8,6.7,6.8,7,6.9,7.1,7.4,7,7.1,7.1,6.9,6.6,6.6,7.1,6.6,6.5,6.5,6.4,6,6.3,6.2,6,6.2,6.3,6.4,5.9,5.9,5.8,6.1,5.9,5.7,5.6,5.7,5.9,5.6,5.4,5.4,5.4,5.3,5.4,5.6,5,4.9,4.9,4.8,4.9,5.1,5.3,5.1,4.8,5.2,5.2,5.4,5.4,5.6,5.8,5.7,5.9,6,6.2,6.7,6.6,6.4,6.9,7,7.3,6.8,7.2,7.5,7.8,8.1,8.2,8.3,8.5,8.8,8.7,8.6,8.8,8.6,9,9,9.3,8.6,8.5,8.5,8.4,8.1,8.3,8.2,8.2,8.3,8,8.3,8.3,8.6,9.2,9.3,9.1,9.2,9.3,9,8.9,9.2,10,9,8.7,8,8.1,8.3,8.3,9.1,7.9,8.5,8.3,7.9,8.2,8,8.3,8.3,7.8,8.3,8.6,8.6,8.3,8.3,8.4,8.5,8.3,7.7,7.8,7.8,8.1,7.9,8.3,8,8,8.3,7.8,8.2,7.7,7.6,7.5,7.4,7,6.8,6.7,6,6.9,6.7,6.8,6.7,5.8,6.6,6.8,6.9,6.8,6.8,6.2,6.5,6.3,5.8,6.5,6,6.1,6.2,5.8,5.8,6.1,6,6.1,5.8,5.7,6,6.3,5.2,6.1,6.1,6,5.8,6.1,6.6,5.9,6.3,6,6.8,6.9,7.2,7.3,7.7,8.2,8.4,8.3,8.4,8.9,9.5,11,8.9,9,9.5,9.6,9.3,9.6,9.6,9.5,9.7,10.2,9.9,11.5,10.3,10.1,10.2,10.4,10.3,10.4,10.6,10.2,10.2,9.5,9.9,11,8.9,9.2,9.6,9.5,9.7,9.5,9.4,9.2,9.3,9,9.1,9,8.8,9.2,8.4,8.6,8.5,8.7,8.6,9.1,8.7,8.4,8.5,7.3,8,8.4,8,7.9,8.3,7.5,8.3,8.5,9.1,8.6,8.2,7.7,8.7,8.8,8.7,8.4,8.6,8.4,9,8.7,8.7,9.4,7.9,9,9.7,9.7,10.2,10.4,9.8,10.5,10.7,11.7,12.3,13.1,14.2,17.2,16,16.3,17.8,18.9,19.8,20.1,20,19.9,20.4,22.1,22.3,25.2,22.3,21,20.3,21.2,21,21.9,21.6,21.1,21.5,20.9,21.6,22.3,22,22.4,22,20.5,20.9,20.5,21,19.8,19.2,19.1,19.9,20.1,17.5,18.5,18.8,19.7,18.5,17.6,16.2,17.5,17.7,17.1,17,16.6,16.3,16.8,16.5,16.1,17,17,15.9,16.2,15.9,15.6,14.5,13.2,13.5,13.3,13.3,13.5,12.8,12.6,13.4,13.1,12.2,11.7],"showlegend":false}],"layout":{"xaxis":{"title":"date"},"yaxis":{"title":"uempmed"},"margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="add-ggplot-as-plotly" class="section level2">
-<h2><span class="header-section-number">5.2</span> Add <code>ggplot</code> as <code>plotly</code></h2>
-<div id="htmlwidget-5270" class="plotly html-widget" style="width:100%;height:400px;">
+<div id="add-ggplot-as-plotly-htmlwidget" class="section level2">
+<h2><span class="header-section-number">5.2</span> Add <code>ggplot</code> as <code>plotly htmlwidget</code></h2>
+<div id="htmlwidget-8915" class="plotly html-widget" style="width:100%;height:400px;">
 
 </div>
-<script type="application/json" data-for="htmlwidget-5270">{"x":{"data":[{"x":[21,21,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,16.4,17.3,15.2,10.4,10.4,14.7,32.4,30.4,33.9,21.5,15.5,15.2,13.3,19.2,27.3,26,30.4,15.8,19.7,15,21.4],"y":[2.62,2.875,2.32,3.215,3.44,3.46,3.57,3.19,3.15,3.44,3.44,4.07,3.73,3.78,5.25,5.424,5.345,2.2,1.615,1.835,2.465,3.52,3.435,3.84,3.845,1.935,2.14,1.513,3.17,2.77,3.57,2.78],"text":["cyl: 6<br>mpg: 21<br>wt: 2.62","cyl: 6<br>mpg: 21<br>wt: 2.88","cyl: 4<br>mpg: 22.8<br>wt: 2.32","cyl: 6<br>mpg: 21.4<br>wt: 3.21","cyl: 8<br>mpg: 18.7<br>wt: 3.44","cyl: 6<br>mpg: 18.1<br>wt: 3.46","cyl: 8<br>mpg: 14.3<br>wt: 3.57","cyl: 4<br>mpg: 24.4<br>wt: 3.19","cyl: 4<br>mpg: 22.8<br>wt: 3.15","cyl: 6<br>mpg: 19.2<br>wt: 3.44","cyl: 6<br>mpg: 17.8<br>wt: 3.44","cyl: 8<br>mpg: 16.4<br>wt: 4.07","cyl: 8<br>mpg: 17.3<br>wt: 3.73","cyl: 8<br>mpg: 15.2<br>wt: 3.78","cyl: 8<br>mpg: 10.4<br>wt: 5.25","cyl: 8<br>mpg: 10.4<br>wt: 5.42","cyl: 8<br>mpg: 14.7<br>wt: 5.34","cyl: 4<br>mpg: 32.4<br>wt: 2.2","cyl: 4<br>mpg: 30.4<br>wt: 1.62","cyl: 4<br>mpg: 33.9<br>wt: 1.84","cyl: 4<br>mpg: 21.5<br>wt: 2.46","cyl: 8<br>mpg: 15.5<br>wt: 3.52","cyl: 8<br>mpg: 15.2<br>wt: 3.44","cyl: 8<br>mpg: 13.3<br>wt: 3.84","cyl: 8<br>mpg: 19.2<br>wt: 3.85","cyl: 4<br>mpg: 27.3<br>wt: 1.94","cyl: 4<br>mpg: 26<br>wt: 2.14","cyl: 4<br>mpg: 30.4<br>wt: 1.51","cyl: 8<br>mpg: 15.8<br>wt: 3.17","cyl: 6<br>mpg: 19.7<br>wt: 2.77","cyl: 8<br>mpg: 15<br>wt: 3.57","cyl: 4<br>mpg: 21.4<br>wt: 2.78"],"key":null,"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":["rgba(51,106,152,1)","rgba(51,106,152,1)","rgba(19,43,67,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(51,106,152,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(86,177,247,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(19,43,67,1)"],"opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":["rgba(51,106,152,1)","rgba(51,106,152,1)","rgba(19,43,67,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(51,106,152,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(86,177,247,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(19,43,67,1)"]}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","name":""},{"x":[9.225,35.075],"y":[1.31745,5.61955],"name":"99_d9dc1d8e218a3a6bb9dbd6fc7032b72e","type":"scatter","mode":"markers","opacity":0,"hoverinfo":"none","showlegend":false,"marker":{"color":[0,1],"colorscale":[[0,"#132B43"],[0.05,"#16314B"],[0.1,"#193753"],[0.15,"#1C3D5B"],[0.2,"#1F4364"],[0.25,"#22496C"],[0.3,"#265075"],[0.35,"#29567D"],[0.4,"#2C5D86"],[0.45,"#2F638F"],[0.5,"#336A98"],[0.55,"#3671A1"],[0.6,"#3A78AA"],[0.65,"#3D7FB4"],[0.7,"#4186BD"],[0.75,"#448DC6"],[0.8,"#4894D0"],[0.85,"#4B9BDA"],[0.9,"#4FA2E3"],[0.95,"#52AAED"],[1,"#56B1F7"]],"colorbar":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"thickness":23.04,"title":"cyl","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"tickmode":"array","ticktext":["4","5","6","7","8"],"tickvals":[0,0.25,0.5,0.75,1],"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"ticklen":2,"len":0.5}}}],"layout":{"margin":{"b":37.2602739726027,"l":31.4155251141553,"t":23.3059360730594,"r":7.30593607305936},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"type":"linear","autorange":false,"tickmode":"array","range":[9.225,35.075],"ticktext":["10","15","20","25","30","35"],"tickvals":[10,15,20,25,30,35],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"domain":[0,1],"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"mpg","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"type":"linear","autorange":false,"tickmode":"array","range":[1.31745,5.61955],"ticktext":["2","3","4","5"],"tickvals":[2,3,4,5],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"domain":[0,1],"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"wt","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":1},"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-8915">{"x":{"data":[{"x":[21,21,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,16.4,17.3,15.2,10.4,10.4,14.7,32.4,30.4,33.9,21.5,15.5,15.2,13.3,19.2,27.3,26,30.4,15.8,19.7,15,21.4],"y":[2.62,2.875,2.32,3.215,3.44,3.46,3.57,3.19,3.15,3.44,3.44,4.07,3.73,3.78,5.25,5.424,5.345,2.2,1.615,1.835,2.465,3.52,3.435,3.84,3.845,1.935,2.14,1.513,3.17,2.77,3.57,2.78],"text":["cyl: 6<br>mpg: 21<br>wt: 2.62","cyl: 6<br>mpg: 21<br>wt: 2.88","cyl: 4<br>mpg: 22.8<br>wt: 2.32","cyl: 6<br>mpg: 21.4<br>wt: 3.21","cyl: 8<br>mpg: 18.7<br>wt: 3.44","cyl: 6<br>mpg: 18.1<br>wt: 3.46","cyl: 8<br>mpg: 14.3<br>wt: 3.57","cyl: 4<br>mpg: 24.4<br>wt: 3.19","cyl: 4<br>mpg: 22.8<br>wt: 3.15","cyl: 6<br>mpg: 19.2<br>wt: 3.44","cyl: 6<br>mpg: 17.8<br>wt: 3.44","cyl: 8<br>mpg: 16.4<br>wt: 4.07","cyl: 8<br>mpg: 17.3<br>wt: 3.73","cyl: 8<br>mpg: 15.2<br>wt: 3.78","cyl: 8<br>mpg: 10.4<br>wt: 5.25","cyl: 8<br>mpg: 10.4<br>wt: 5.42","cyl: 8<br>mpg: 14.7<br>wt: 5.34","cyl: 4<br>mpg: 32.4<br>wt: 2.2","cyl: 4<br>mpg: 30.4<br>wt: 1.62","cyl: 4<br>mpg: 33.9<br>wt: 1.84","cyl: 4<br>mpg: 21.5<br>wt: 2.46","cyl: 8<br>mpg: 15.5<br>wt: 3.52","cyl: 8<br>mpg: 15.2<br>wt: 3.44","cyl: 8<br>mpg: 13.3<br>wt: 3.84","cyl: 8<br>mpg: 19.2<br>wt: 3.85","cyl: 4<br>mpg: 27.3<br>wt: 1.94","cyl: 4<br>mpg: 26<br>wt: 2.14","cyl: 4<br>mpg: 30.4<br>wt: 1.51","cyl: 8<br>mpg: 15.8<br>wt: 3.17","cyl: 6<br>mpg: 19.7<br>wt: 2.77","cyl: 8<br>mpg: 15<br>wt: 3.57","cyl: 4<br>mpg: 21.4<br>wt: 2.78"],"key":null,"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":["rgba(51,106,152,1)","rgba(51,106,152,1)","rgba(19,43,67,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(51,106,152,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(86,177,247,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(19,43,67,1)"],"opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":["rgba(51,106,152,1)","rgba(51,106,152,1)","rgba(19,43,67,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(51,106,152,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(86,177,247,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(19,43,67,1)","rgba(86,177,247,1)","rgba(51,106,152,1)","rgba(86,177,247,1)","rgba(19,43,67,1)"]}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","name":""},{"x":[9.225,35.075],"y":[1.31745,5.61955],"name":"99_d9dc1d8e218a3a6bb9dbd6fc7032b72e","type":"scatter","mode":"markers","opacity":0,"hoverinfo":"none","showlegend":false,"marker":{"color":[0,1],"colorscale":[[0,"#132B43"],[0.05,"#16314B"],[0.1,"#193753"],[0.15,"#1C3D5B"],[0.2,"#1F4364"],[0.25,"#22496C"],[0.3,"#265075"],[0.35,"#29567D"],[0.4,"#2C5D86"],[0.45,"#2F638F"],[0.5,"#336A98"],[0.55,"#3671A1"],[0.6,"#3A78AA"],[0.65,"#3D7FB4"],[0.7,"#4186BD"],[0.75,"#448DC6"],[0.8,"#4894D0"],[0.85,"#4B9BDA"],[0.9,"#4FA2E3"],[0.95,"#52AAED"],[1,"#56B1F7"]],"colorbar":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"thickness":23.04,"title":"cyl","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"tickmode":"array","ticktext":["4","5","6","7","8"],"tickvals":[0,0.25,0.5,0.75,1],"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"ticklen":2,"len":0.5}}}],"layout":{"margin":{"b":37.2602739726027,"l":31.4155251141553,"t":23.3059360730594,"r":7.30593607305936},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"type":"linear","autorange":false,"tickmode":"array","range":[9.225,35.075],"ticktext":["10","15","20","25","30","35"],"tickvals":[10,15,20,25,30,35],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"domain":[0,1],"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"mpg","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"type":"linear","autorange":false,"tickmode":"array","range":[1.31745,5.61955],"ticktext":["2","3","4","5"],"tickvals":[2,3,4,5],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"domain":[0,1],"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"wt","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":1},"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="add-ggplot" class="section level2">
-<h2><span class="header-section-number">5.3</span> Add <code>ggplot</code></h2>
+<div id="add-ggplot-as-is" class="section level2">
+<h2><span class="header-section-number">5.3</span> Add <code>ggplot</code> as-is</h2>
 <p><img src="data:image/png;base64,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" style="display: block; margin: auto;" /></p>
 </div>
 </div>
@@ -338,14 +376,12 @@ container &lt;-<span class="st"> </span><span class="kw">add_as_is</span>(contai
 <h1><span class="header-section-number">6</span> Attention: Not Plotted</h1>
 <p>As you noticed, the last <code>plotly</code> object was not plotted as it was added with <code>add_as_is()</code> and not with <code>add_as_plotly_widget()</code></p>
 </div>
-<div id="pander-and-text" class="section level1">
-<h1><span class="header-section-number">7</span> Pander and text</h1>
-<div id="as-pander" class="section level2">
-<h2><span class="header-section-number">7.1</span> As pander</h2>
-<table style="width:97%;">
-<caption>Table continues below</caption>
+<div id="print-summary-as-pander-table-and-as-text" class="section level1">
+<h1><span class="header-section-number">7</span> Print SUMMARY as pander table and as text</h1>
+<div id="as-pander-table" class="section level2">
+<h2><span class="header-section-number">7.1</span> As pander table</h2>
+<table style="width:78%;">
 <colgroup>
-<col width="19%"></col>
 <col width="19%"></col>
 <col width="19%"></col>
 <col width="19%"></col>
@@ -357,7 +393,6 @@ container &lt;-<span class="st"> </span><span class="kw">add_as_is</span>(contai
 <th align="center">cyl</th>
 <th align="center">disp</th>
 <th align="center">hp</th>
-<th align="center">drat</th>
 </tr>
 </thead>
 <tbody>
@@ -366,170 +401,111 @@ container &lt;-<span class="st"> </span><span class="kw">add_as_is</span>(contai
 <td align="center">Min. :4.000</td>
 <td align="center">Min. : 71.1</td>
 <td align="center">Min. : 52.0</td>
-<td align="center">Min. :2.760</td>
 </tr>
 <tr class="even">
 <td align="center">1st Qu.:15.43</td>
 <td align="center">1st Qu.:4.000</td>
 <td align="center">1st Qu.:120.8</td>
 <td align="center">1st Qu.: 96.5</td>
-<td align="center">1st Qu.:3.080</td>
 </tr>
 <tr class="odd">
 <td align="center">Median :19.20</td>
 <td align="center">Median :6.000</td>
 <td align="center">Median :196.3</td>
 <td align="center">Median :123.0</td>
-<td align="center">Median :3.695</td>
 </tr>
 <tr class="even">
 <td align="center">Mean :20.09</td>
 <td align="center">Mean :6.188</td>
 <td align="center">Mean :230.7</td>
 <td align="center">Mean :146.7</td>
-<td align="center">Mean :3.597</td>
 </tr>
 <tr class="odd">
 <td align="center">3rd Qu.:22.80</td>
 <td align="center">3rd Qu.:8.000</td>
 <td align="center">3rd Qu.:326.0</td>
 <td align="center">3rd Qu.:180.0</td>
-<td align="center">3rd Qu.:3.920</td>
 </tr>
 <tr class="even">
 <td align="center">Max. :33.90</td>
 <td align="center">Max. :8.000</td>
 <td align="center">Max. :472.0</td>
 <td align="center">Max. :335.0</td>
-<td align="center">Max. :4.930</td>
-</tr>
-</tbody>
-</table>
-<table style="width:100%;">
-<caption>Table continues below</caption>
-<colgroup>
-<col width="19%"></col>
-<col width="19%"></col>
-<col width="20%"></col>
-<col width="20%"></col>
-<col width="20%"></col>
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">wt</th>
-<th align="center">qsec</th>
-<th align="center">vs</th>
-<th align="center">am</th>
-<th align="center">gear</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Min. :1.513</td>
-<td align="center">Min. :14.50</td>
-<td align="center">Min. :0.0000</td>
-<td align="center">Min. :0.0000</td>
-<td align="center">Min. :3.000</td>
-</tr>
-<tr class="even">
-<td align="center">1st Qu.:2.581</td>
-<td align="center">1st Qu.:16.89</td>
-<td align="center">1st Qu.:0.0000</td>
-<td align="center">1st Qu.:0.0000</td>
-<td align="center">1st Qu.:3.000</td>
-</tr>
-<tr class="odd">
-<td align="center">Median :3.325</td>
-<td align="center">Median :17.71</td>
-<td align="center">Median :0.0000</td>
-<td align="center">Median :0.0000</td>
-<td align="center">Median :4.000</td>
-</tr>
-<tr class="even">
-<td align="center">Mean :3.217</td>
-<td align="center">Mean :17.85</td>
-<td align="center">Mean :0.4375</td>
-<td align="center">Mean :0.4062</td>
-<td align="center">Mean :3.688</td>
-</tr>
-<tr class="odd">
-<td align="center">3rd Qu.:3.610</td>
-<td align="center">3rd Qu.:18.90</td>
-<td align="center">3rd Qu.:1.0000</td>
-<td align="center">3rd Qu.:1.0000</td>
-<td align="center">3rd Qu.:4.000</td>
-</tr>
-<tr class="even">
-<td align="center">Max. :5.424</td>
-<td align="center">Max. :22.90</td>
-<td align="center">Max. :1.0000</td>
-<td align="center">Max. :1.0000</td>
-<td align="center">Max. :5.000</td>
-</tr>
-</tbody>
-</table>
-<table style="width:18%;">
-<colgroup>
-<col width="18%"></col>
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">carb</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Min. :1.000</td>
-</tr>
-<tr class="even">
-<td align="center">1st Qu.:2.000</td>
-</tr>
-<tr class="odd">
-<td align="center">Median :2.000</td>
-</tr>
-<tr class="even">
-<td align="center">Mean :2.812</td>
-</tr>
-<tr class="odd">
-<td align="center">3rd Qu.:4.000</td>
-</tr>
-<tr class="even">
-<td align="center">Max. :8.000</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="as-text" class="section level2">
-<h2><span class="header-section-number">7.2</span> As text</h2>
-<p>Min. :10.40 1st Qu.:15.43 Median :19.20 Mean :20.09 3rd Qu.:22.80 Max. :33.90 Min. :4.000 1st Qu.:4.000 Median :6.000 Mean :6.188 3rd Qu.:8.000 Max. :8.000 Min. : 71.1 1st Qu.:120.8 Median :196.3 Mean :230.7 3rd Qu.:326.0 Max. :472.0 Min. : 52.0 1st Qu.: 96.5 Median :123.0 Mean :146.7 3rd Qu.:180.0 Max. :335.0 Min. :2.760 1st Qu.:3.080 Median :3.695 Mean :3.597 3rd Qu.:3.920 Max. :4.930 Min. :1.513 1st Qu.:2.581 Median :3.325 Mean :3.217 3rd Qu.:3.610 Max. :5.424 Min. :14.50 1st Qu.:16.89 Median :17.71 Mean :17.85 3rd Qu.:18.90 Max. :22.90 Min. :0.0000 1st Qu.:0.0000 Median :0.0000 Mean :0.4375 3rd Qu.:1.0000 Max. :1.0000 Min. :0.0000 1st Qu.:0.0000 Median :0.0000 Mean :0.4062 3rd Qu.:1.0000 Max. :1.0000 Min. :3.000 1st Qu.:3.000 Median :4.000 Mean :3.688 3rd Qu.:4.000 Max. :5.000 Min. :1.000 1st Qu.:2.000 Median :2.000 Mean :2.812 3rd Qu.:4.000 Max. :8.000</p>
+<div id="as-r-output-text" class="section level2">
+<h2><span class="header-section-number">7.2</span> As R output text</h2>
+<p>Highlighted as R code</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">       mpg             cyl             disp             hp       
+  Min.   :<span class="fl">10.40</span>   Min.   :<span class="fl">4.000</span>   Min.   :<span class="st"> </span><span class="fl">71.1</span>   Min.   :<span class="st"> </span><span class="fl">52.0</span>  
+  1st Qu.:<span class="fl">15.43</span>   1st Qu.:<span class="fl">4.000</span>   1st Qu.:<span class="fl">120.8</span>   1st Qu.:<span class="st"> </span><span class="fl">96.5</span>  
+  Median :<span class="fl">19.20</span>   Median :<span class="fl">6.000</span>   Median :<span class="fl">196.3</span>   Median :<span class="fl">123.0</span>  
+  Mean   :<span class="fl">20.09</span>   Mean   :<span class="fl">6.188</span>   Mean   :<span class="fl">230.7</span>   Mean   :<span class="fl">146.7</span>  
+  3rd Qu.:<span class="fl">22.80</span>   3rd Qu.:<span class="fl">8.000</span>   3rd Qu.:<span class="fl">326.0</span>   3rd Qu.:<span class="fl">180.0</span>  
+  Max.   :<span class="fl">33.90</span>   Max.   :<span class="fl">8.000</span>   Max.   :<span class="fl">472.0</span>   Max.   :<span class="fl">335.0</span>  </code></pre></div>
+<p>Not highlighted</p>
+<pre><code>       mpg             cyl             disp             hp       
+  Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  
+  1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  
+  Median :19.20   Median :6.000   Median :196.3   Median :123.0  
+  Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  
+  3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  
+  Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  </code></pre>
+<p>With default <code>knitr</code> comments</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&gt;       mpg             cyl             disp             hp       </span>
+<span class="co">#&gt;  Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  </span>
+<span class="co">#&gt;  1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  </span>
+<span class="co">#&gt;  Median :19.20   Median :6.000   Median :196.3   Median :123.0  </span>
+<span class="co">#&gt;  Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  </span>
+<span class="co">#&gt;  3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  </span>
+<span class="co">#&gt;  Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  </span></code></pre></div>
+<p>With custom comments</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#$#&gt;       mpg             cyl             disp             hp       </span>
+<span class="co">#$#&gt;  Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  </span>
+<span class="co">#$#&gt;  1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  </span>
+<span class="co">#$#&gt;  Median :19.20   Median :6.000   Median :196.3   Median :123.0  </span>
+<span class="co">#$#&gt;  Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  </span>
+<span class="co">#$#&gt;  3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  </span>
+<span class="co">#$#&gt;  Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  </span></code></pre></div>
+</div>
+<div id="as-textparagraph" class="section level2">
+<h2><span class="header-section-number">7.3</span> As text/paragraph</h2>
+<p>Min. :10.40 1st Qu.:15.43 Median :19.20 Mean :20.09 3rd Qu.:22.80 Max. :33.90 Min. :4.000 1st Qu.:4.000 Median :6.000 Mean :6.188 3rd Qu.:8.000 Max. :8.000 Min. : 71.1 1st Qu.:120.8 Median :196.3 Mean :230.7 3rd Qu.:326.0 Max. :472.0 Min. : 52.0 1st Qu.: 96.5 Median :123.0 Mean :146.7 3rd Qu.:180.0 Max. :335.0</p>
 </div>
 <div id="as-is" class="section level2">
-<h2><span class="header-section-number">7.3</span> As is</h2>
+<h2><span class="header-section-number">7.4</span> As is</h2>
 <pre><code>  mpg             cyl             disp             hp       </code></pre>
 <p>Min. :10.40 Min. :4.000 Min. : 71.1 Min. : 52.0<br />
 1st Qu.:15.43 1st Qu.:4.000 1st Qu.:120.8 1st Qu.: 96.5<br />
 Median :19.20 Median :6.000 Median :196.3 Median :123.0<br />
 Mean :20.09 Mean :6.188 Mean :230.7 Mean :146.7<br />
 3rd Qu.:22.80 3rd Qu.:8.000 3rd Qu.:326.0 3rd Qu.:180.0<br />
-Max. :33.90 Max. :8.000 Max. :472.0 Max. :335.0<br />
-drat wt qsec vs<br />
-Min. :2.760 Min. :1.513 Min. :14.50 Min. :0.0000<br />
-1st Qu.:3.080 1st Qu.:2.581 1st Qu.:16.89 1st Qu.:0.0000<br />
-Median :3.695 Median :3.325 Median :17.71 Median :0.0000<br />
-Mean :3.597 Mean :3.217 Mean :17.85 Mean :0.4375<br />
-3rd Qu.:3.920 3rd Qu.:3.610 3rd Qu.:18.90 3rd Qu.:1.0000<br />
-Max. :4.930 Max. :5.424 Max. :22.90 Max. :1.0000<br />
-am gear carb<br />
-Min. :0.0000 Min. :3.000 Min. :1.000<br />
-1st Qu.:0.0000 1st Qu.:3.000 1st Qu.:2.000<br />
-Median :0.0000 Median :4.000 Median :2.000<br />
-Mean :0.4062 Mean :3.688 Mean :2.812<br />
-3rd Qu.:1.0000 3rd Qu.:4.000 3rd Qu.:4.000<br />
-Max. :1.0000 Max. :5.000 Max. :8.000</p>
+Max. :33.90 Max. :8.000 Max. :472.0 Max. :335.0</p>
 </div>
+</div>
+<div id="advanced-as-data-and-as-code-to-evaluate" class="section level1">
+<h1><span class="header-section-number">8</span> ADVANCED: as data and as code to evaluate</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">container2 &lt;-<span class="st"> </span><span class="kw">knitrContainer</span>()
+<span class="co"># Add as data and add as code to evaluate</span>
+
+<span class="co"># Add as data</span>
+container2 %&lt;&gt;%<span class="st"> </span><span class="kw">add_as_text</span>(<span class="st">&quot;Add `mtcars` as data (it will not be printed) and rename it to 'cars_data'.&quot;</span>)
+container2 %&lt;&gt;%<span class="st"> </span><span class="kw">add_as_data</span>(mtcars, <span class="dt">give.name =</span> <span class="st">&quot;cars_data&quot;</span>)
+
+<span class="co"># Add as code to evaluate</span>
+container2 %&lt;&gt;%<span class="st"> </span><span class="kw">add_as_text</span>(<span class="kw">c</span>(<span class="st">&quot;Use `add_as_code_to_eval` to add unquoted code to manipulate the dataset &quot;</span>, 
+    <span class="st">&quot;'cars_data', e.g. print its variable names or plot it.&quot;</span>))
+container2 %&lt;&gt;%<span class="st"> </span><span class="kw">add_as_code_to_eval</span>(<span class="kw">print</span>(<span class="kw">names</span>(cars_data[<span class="dv">1</span>:<span class="dv">3</span>])))
+container2 %&lt;&gt;%<span class="st"> </span><span class="kw">add_as_code_to_eval</span>(<span class="kw">plot</span>(cars_data[<span class="dv">1</span>:<span class="dv">3</span>]))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">extract_and_print</span>(container2)</code></pre></div>
+<p>Add <code>mtcars</code> as data (it will not be printed) and rename it to ‘cars_data’.</p>
+<p>Use <code>add_as_code_to_eval</code> to add unquoted code to manipulate the dataset ‘cars_data’, e.g. print its variable names or plot it.</p>
+<p>[1] “mpg” “cyl” “disp” <img src="data:image/png;base64,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" style="display: block; margin: auto;" /></p>
 </div>
 <div id="session-information" class="section level1">
-<h1><span class="header-section-number">8</span> Session information</h1>
+<h1><span class="header-section-number">9</span> Session information</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">session_info</span>()
 <span class="co">#&gt; Session info --------------------------------------------------------------</span>
 <span class="co">#&gt;  setting  value                       </span>
@@ -539,51 +515,51 @@ Max. :1.0000 Max. :5.000 Max. :8.000</p>
 <span class="co">#&gt;  language (EN)                        </span>
 <span class="co">#&gt;  collate  C                           </span>
 <span class="co">#&gt;  tz       Europe/Helsinki             </span>
-<span class="co">#&gt;  date     2016-06-01</span>
+<span class="co">#&gt;  date     2016-06-15</span>
 <span class="co">#&gt; Packages ------------------------------------------------------------------</span>
-<span class="co">#&gt;  package        * version date       source                            </span>
-<span class="co">#&gt;  DBI              0.4-1   2016-05-08 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  R6               2.1.2   2016-01-26 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  Rcpp             0.12.5  2016-05-14 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  assertthat       0.1     2013-12-06 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  base64enc        0.1-3   2015-07-28 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  brew             1.0-6   2011-04-13 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  colorspace       1.2-6   2015-03-11 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  crayon           1.3.1   2015-07-13 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  devtools         1.11.1  2016-04-21 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  digest           0.6.9   2016-01-08 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  dplyr            0.4.3   2015-09-01 CRAN (R 3.2.4)                    </span>
-<span class="co">#&gt;  evaluate         0.9     2016-04-29 CRAN (R 3.2.5)                    </span>
-<span class="co">#&gt;  formatR          1.4     2016-05-09 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  ggplot2        * 2.1.0   2016-03-01 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  gridBase         0.4-7   2014-02-24 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  gridExtra        2.2.1   2016-02-29 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  gtable           0.2.0   2016-02-26 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  htmltools        0.3.5   2016-03-21 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  htmlwidgets      0.6     2016-02-25 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  httr             1.1.0   2016-01-28 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  jsonlite         0.9.20  2016-05-10 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  knitr            1.13.1  2016-05-22 Github (yihui/knitr@ce40cbf)      </span>
-<span class="co">#&gt;  knitrContainer * 0.0.5   &lt;NA&gt;       local                             </span>
-<span class="co">#&gt;  labeling         0.3     2014-08-23 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  magrittr       * 1.5     2014-11-22 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  memoise          1.0.0   2016-01-29 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  munsell          0.4.3   2016-02-13 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  pander           0.6.0   2015-11-23 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  plotly         * 3.6.0   2016-05-22 Github (ropensci/plotly@6d7ddad)  </span>
-<span class="co">#&gt;  plyr             1.8.3   2015-06-12 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  rmarkdown        0.9.6.9 2016-05-22 Github (rstudio/rmarkdown@0bb110d)</span>
-<span class="co">#&gt;  roxygen2         5.0.1   2015-11-11 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  scales           0.4.0   2016-02-26 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  sfsmisc          1.1-0   2016-02-23 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  simsalapar       1.0-9   2016-02-12 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  stringi          1.1.1   2016-05-27 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  stringr          1.0.0   2015-04-30 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  testthat         1.0.2   2016-04-23 CRAN (R 3.2.5)                    </span>
-<span class="co">#&gt;  tidyr            0.4.1   2016-02-05 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  viridis          0.3.4   2016-03-12 CRAN (R 3.3.0)                    </span>
-<span class="co">#&gt;  withr            1.0.1   2016-02-04 CRAN (R 3.2.3)                    </span>
-<span class="co">#&gt;  yaml             2.1.13  2014-06-12 CRAN (R 3.2.3)</span></code></pre></div>
+<span class="co">#&gt;  package        * version  date       source                            </span>
+<span class="co">#&gt;  DBI              0.4-1    2016-05-08 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  R6               2.1.2    2016-01-26 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  Rcpp             0.12.5   2016-05-14 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  assertthat       0.1      2013-12-06 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  base64enc        0.1-3    2015-07-28 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  brew             1.0-6    2011-04-13 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  colorspace       1.2-6    2015-03-11 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  crayon           1.3.1    2015-07-13 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  devtools         1.11.1   2016-04-21 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  digest           0.6.9    2016-01-08 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  dplyr            0.4.3    2015-09-01 CRAN (R 3.2.4)                    </span>
+<span class="co">#&gt;  evaluate         0.9      2016-04-29 CRAN (R 3.2.5)                    </span>
+<span class="co">#&gt;  formatR          1.4      2016-05-09 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  ggplot2        * 2.1.0    2016-03-01 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  gridBase         0.4-7    2014-02-24 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  gridExtra        2.2.1    2016-02-29 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  gtable           0.2.0    2016-02-26 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  htmltools        0.3.5    2016-03-21 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  htmlwidgets      0.6      2016-02-25 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  httr             1.1.0    2016-01-28 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  jsonlite         0.9.21   2016-06-04 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  knitr            1.13.1   2016-05-22 Github (yihui/knitr@ce40cbf)      </span>
+<span class="co">#&gt;  knitrContainer * 0.0.8    &lt;NA&gt;       local                             </span>
+<span class="co">#&gt;  labeling         0.3      2014-08-23 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  magrittr       * 1.5      2014-11-22 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  memoise          1.0.0    2016-01-29 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  munsell          0.4.3    2016-02-13 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  pander           0.6.0    2015-11-23 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  plotly         * 3.6.4    2016-06-06 Github (ropensci/plotly@ae6b073)  </span>
+<span class="co">#&gt;  plyr             1.8.3    2015-06-12 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  rmarkdown        0.9.6.14 2016-06-06 Github (rstudio/rmarkdown@3456ed7)</span>
+<span class="co">#&gt;  roxygen2         5.0.1    2015-11-11 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  scales           0.4.0    2016-02-26 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  sfsmisc          1.1-0    2016-02-23 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  simsalapar       1.0-9    2016-02-12 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  stringi          1.1.1    2016-05-27 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  stringr          1.0.0    2015-04-30 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  testthat         1.0.2    2016-04-23 CRAN (R 3.2.5)                    </span>
+<span class="co">#&gt;  tidyr            0.4.1    2016-02-05 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  viridis          0.3.4    2016-03-12 CRAN (R 3.3.0)                    </span>
+<span class="co">#&gt;  withr            1.0.1    2016-02-04 CRAN (R 3.2.3)                    </span>
+<span class="co">#&gt;  yaml             2.1.13   2014-06-12 CRAN (R 3.2.3)</span></code></pre></div>
 </div>
 
 

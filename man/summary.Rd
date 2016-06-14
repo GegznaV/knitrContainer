@@ -5,13 +5,13 @@
 \alias{summary.knitrContainer}
 \title{Print and summary methods for \code{knitrContainer}}
 \usage{
-\method{summary}{knitrContainer}(object, n = 100, len = 30, units = "Kb",
+\method{summary}{knitrContainer}(object, n = 100, len = 40, units = "Kb",
   ...)
 }
 \arguments{
 \item{object}{\code{knitrContainer} object.}
 
-\item{n}{The number of rows (objects) to display. Default \code{n = 30}.}
+\item{n}{The number of rows (objects) to display. Default \code{n = 40}.}
 
 \item{len}{length of text (number of characters) to be shown in summary.
 Default is 100.}

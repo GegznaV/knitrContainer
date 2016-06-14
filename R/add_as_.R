@@ -18,11 +18,12 @@
 #'
 #' @details
 #'
-#' Following functions converts and formats object \code{obj} sch that it could
-#' be appropriatly printed with function \code{\link{print_objects}}().
+#' Following functions convert and format an object \code{obj} such that it could
+#' be appropriatly printed (or evaluated) by applying function
+#' \code{\link{extract_and_print}}().
 #'
 #' \code{add_as_is()} includes object \code{obj} in the \code{container} without
-#' transformation (\bold{"as is"}). Function \code{print_objects} will print it
+#' transformation (\bold{"as is"}). Function \code{extract_and_print} will print it
 #' using regular \code{print} function. Note that in R Markdaown \code{Rmd}
 #' file \code{knitr} chunk option \code{results='asis'} may distort the
 #' "beautiful" formatting of the printed object. This function is appropriate
@@ -31,21 +32,21 @@
 #'
 #' \code{add_as_text()} converts \code{obj} to \code{\link[base]{character}},
 #'  formats as \bold{text} and includes it in the \code{container}. Function
-#'  \code{print_objects} will print it as text.
+#'  \code{extract_and_print} will print it as text.
 #'
 #' \code{\link{add_as_section}()} converts \code{obj} to \code{\link[base]{character}},
 #'  formats it as a \bold{heading of section} and includes it in the \code{container}.
-#'  Function \code{print_objects} will print it as text.
+#'  Function \code{extract_and_print} will print it as text.
 #'
 #' \code{add_as_plotly_widget()} converts \pkg{plotly} and \pkg{ggplot2} objects to
 #' plotly htmlwidget (details in \code{\link[plotly]{as.widget}}) and includes
-#' it in the \code{container}. Function \code{print_objects} will print it as
+#' it in the \code{container}. Function \code{extract_and_print} will print it as
 #' plotly htmlwidget and attach
 #' \code{html} dependencies.
 #'
 #' \code{add_as_pander()} formats supported types of \code{obj} with An R Pandoc
 #'  Writer's function \code{\link[pander]{pander}} and includes it in the
-#'  \code{container}. Function \code{print_objects} will print the object as text.
+#' \code{container}. Function \code{extract_and_print} will print the object as text.
 #'
 #'
 #'
@@ -72,31 +73,8 @@ add_as_is <- function(container = NULL, obj){
     return(container)
 }
 
-#' @rdname add_as_
-#' @export
-add_as_text <- function(container = NULL, obj){
-    if (missing(obj)) stop("`obj` is missing.")
-
-    container <- as.knitrContainer(container)
-
-    # Extract added_as TYPE before it is lost
-    TYPE <- added_as(obj) %if.NULL% "Text"
-
-    # Transform obj to appropriate form
-    obj <- capture.output(cat(as.character(obj)))
-
-    # Add added_as TYPE
-    obj <- added_as(obj, TYPE)
-
-    # Add to container
-    container <- add_as_is(container, obj)
-
-    # Return the updated container
-    return(container)
-}
 
 #  ------------------------------------------------------------------------
-
 #' @rdname add_as_
 #' @export
 add_as_plotly_widget <- function(container = NULL, obj){
@@ -110,7 +88,7 @@ add_as_plotly_widget <- function(container = NULL, obj){
     container <- add_as_is(container,obj)
     return(container)
 }
-
+#  ------------------------------------------------------------------------
 #' @rdname add_as_
 #' @export
 #' @param ... Options to be passed to \code{\link[pander]{pander}}.
@@ -132,3 +110,226 @@ add_as_pander <- function(container = NULL, obj, ...){
     obj <- added_as(obj, "Pander object")
     add_as_is(container,obj)
 }
+#  ------------------------------------------------------------------------
+
+#  ------------------------------------------------------------------------
+#' @rdname add_as_
+#' @export
+#' @param give.name A string, that gives a name of a data set passed as
+#' \code{obj}.\cr
+#'  **Default value** is the name passed as input \code{obj}.
+#'  If the imput is is not a name of an object, then sequence of functions
+#'  is applied to make a valind name from first 60 symbols of the input:
+#' \code{match.call()$obj \%>\% c \%>\% as.character \%>\% make.names \%>\% substr(1,60)}.
+#'
+#' @details
+#' \code{add_as_data()} adds object (data frame, list, vector, etc.) to the
+#' container.
+#' When function \code{extract_and_print} the object is not printed, but just
+#'  extracted and assigned in the environment \code{env} (by default to the
+#'  parent frame) to the object which name is entered as value of parameter
+#'  \code{give.name}.
+add_as_data <- function(container = NULL, obj,
+                        give.name = match.call()$obj %>% c %>% as.character %>%
+                               make.names %>% substr(1,60)){
+    if (missing(obj)) stop("`obj` is missing.")
+
+    container <- as.knitrContainer(container)
+
+    obj <- added_as(obj, "Data")
+    attributes(obj)$name <- as.name(give.name)
+
+    container <- add_as_is(container,obj)
+    return(container)
+}
+
+#  ------------------------------------------------------------------------
+# #' @rdname add_as_
+# #' @export
+# #'
+# #' @details
+# #' \code{add_as_expression()} takes unquoted expression and converts it to string.
+# #' The expression is going to be evaluated when function
+# #' \code{extract_and_print} is applied.\cr
+# #'
+# add_as_expression <- function(container = NULL, obj){
+#     if (missing(obj)) stop("`obj` is missing.")
+#
+#     container <- as.knitrContainer(container)
+#
+#     # obj <- substitute(obj)  # problem as it is printed only once
+#
+#     obj <- substitute(obj) %>% c %>%  as.character
+#
+#     obj <- added_as(obj, "Code to evaluate")
+#
+#     container <- add_as_is(container,obj)
+#     return(container)
+# }
+#
+#  ------------------------------------------------------------------------
+#' @rdname add_as_
+#' @export
+#'
+#' @details
+#' \code{add_as_code_to_evaluate()} takes \emph{unquoted} expression and
+#' converts it to a string.
+#' The expression is going to be evaluated when function
+#' \code{extract_and_print} is applied.\cr
+#'
+add_as_code_to_eval <- function(container = NULL, obj){
+    if (missing(obj)) stop("`obj` is missing.")
+
+    container <- as.knitrContainer(container)
+
+    # obj <- substitute(obj)  # problem as it is printed only once
+
+    obj <- substitute(obj) %>% c %>%  as.character
+
+    obj <- added_as(obj, "Code to eval.")
+
+    container <- add_as_is(container,obj)
+    return(container)
+}
+#  !!! as_output -------------------------------------------------------------
+#
+#  Not exported yet
+as_output <- function(obj, comment = FALSE, highlight = "r"){
+
+    if (highlight==FALSE) highlight = NULL
+
+    # Chose comment
+    if (isTRUE(comment)){
+        comment <- knitr::opts_chunk$get("comment")
+    } else if (comment == FALSE) {
+        comment <- NULL
+    }
+
+    # Format output text
+    rez <- c(paste0("```", highlight),
+             paste(comment,  capture.output(print(obj))),
+             "```")
+    # Return result
+    return(rez)
+}
+
+
+#' @rdname add_as_
+#' @export
+#' @param comment Either logical or string.
+#' \code{TRUE} - default \code{knitr} chunk comment symbols are used;
+#' \code{FALSE} - no comment is used;
+#' if character - a string to be added before each string and used as a comment symbols.
+#' @param highlight Either \code{NULL}, \code{FALSE} or a string with name of
+#'                  programming language for which rules of
+#'                  code highlighting will be applied. Default is "r".
+#'
+#' @details
+#' \code{add_as_r_output()} saves object as strings and prints as R output text. \cr
+add_as_r_output <- function(container = NULL, obj, comment = FALSE, highlight = "r"){
+    if (missing(obj)) stop("`obj` is missing.")
+
+    container <- as.knitrContainer(container)
+
+    # Transform obj to appropriate form
+    obj <- as_output(obj, comment, highlight)
+
+    # Add added_as TYPE
+    obj <- added_as(obj, "Output text")
+
+    # Add to container
+    container <- add_as_is(container, obj)
+
+    # Return the updated container
+    return(container)
+}
+
+
+# Following functions are NOT described well ----------------------------------
+
+#' @rdname add_as_
+#' @export
+add_as_text <- function(container = NULL, obj){
+    if (missing(obj)) stop("`obj` is missing.")
+
+    container <- as.knitrContainer(container)
+
+    # Extract added_as TYPE before it is lost
+    # This line is needed by `add_as_section()` and its wrappers
+    TYPE <- added_as(obj) %if.NULL% "Text"
+
+    # Transform obj to appropriate form
+    obj <- capture.output(cat(as.character(obj)))
+
+    # Add added_as TYPE
+    obj <- added_as(obj, TYPE)
+
+    # Add to container
+    container <- add_as_is(container, obj)
+
+    # Return the updated container
+    return(container)
+}
+
+#' @rdname add_as_
+#' @export
+#' @details
+#' \code{add_as_paragraph} is the same as \code{add_as_text} - converts input to
+#' chatacter vector and save it as one paragraph.\cr
+add_as_paragraph <- function(container = NULL, obj){
+    if (missing(obj)) stop("`obj` is missing.")
+    container <- add_as_text(container, obj)
+    return(container)
+}
+#  ------------------------------------------------------------------------
+
+#' @rdname add_as_
+#' @export
+#' @details
+#' \code{add_as_strings} converts input to vectors of chatacter and saves every
+#' vector as sepatate strings (i.e. separate paragraphs).\cr
+add_as_strings <- function(container = NULL, obj){
+    if (missing(obj)) stop("`obj` is missing.")
+
+    container <- as.knitrContainer(container)
+
+    # Transform obj to appropriate form
+    obj <- capture.output(cat(as.character(obj), sep="\n"))
+
+    # Add added_as TYPE
+    obj <- added_as(obj, "Strings")
+
+    # Add to container
+    container <- add_as_is(container, obj)
+
+    # Return the updated container
+    return(container)
+}
+
+#  ------------------------------------------------------------------------
+
+
+#  #' @rdname add_as_
+#  #' @export
+#  #' @details
+#  #'
+#  #' \code{add_as_printed_text()} prints object, captures the output and saves it
+#  #' to container as strings.  \cr
+#  add_as_printed_text <- function(container = NULL, obj){
+#      if (missing(obj)) stop("`obj` is missing.")
+#
+#      container <- as.knitrContainer(container)
+#
+#      # Transform obj to appropriate form
+#      obj <- capture.output(print(obj))
+#      # obj <- capture.output(print(obj, ...))
+#
+#      # Add added_as TYPE
+#      obj <- added_as(obj, "Text")
+#
+#      # Add to container
+#      container <- add_as_is(container, obj)
+#
+#      # Return the updated container
+#      return(container)
+#  }

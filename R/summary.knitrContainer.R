@@ -6,7 +6,7 @@
 #' @description Print summary of \code{knitrContainer} object.
 #'
 #' @param object \code{knitrContainer} object.
-#' @param n The number of rows (objects) to display. Default \code{n = 30}.
+#' @param n The number of rows (objects) to display. Default \code{n = 40}.
 #' @param len length of text (number of characters) to be shown in summary.
 #' Default is 100.
 #' @inheritParams utils::object.size
@@ -21,7 +21,7 @@
 #' @author Vilmantas Gegzna
 #' @family \code{knitrContainer} functions
 
-summary.knitrContainer <- function(object, n = 100, len = 30, units = "Kb", ...){
+summary.knitrContainer <- function(object, n = 100, len = 40, units = "Kb", ...){
     container <- object
 
     if (length(container)==0) {
@@ -35,15 +35,31 @@ summary.knitrContainer <- function(object, n = 100, len = 30, units = "Kb", ...)
 
         REZ <- data.frame(
             "Added as" = sapply(container, function(x){added_as(x) %if.NULL% " "}),
-            "Text"     = sapply(container, function(x){
-                if (added_as(x)  %in% c("Section","Text")){
-                    x <- gsub("[\r\n]", "", x)
-                    nCh <- nchar(x)
-                    if (nCh > len) paste0(substr(x , 1, len-3), "...")
-                    else substr(x , 1, len)
-                } else {
-                    " "
-                }}),
+            "Preview"  = sapply(container, function(x){
+
+                # Select text to preview
+                PREVIEW <- if (added_as(x)  %in%
+                               c("Section",   "Text", "Output text",
+                                 "Paragraph", "Strings", "Code to eval."))
+                    {
+                        gsub("[\r\n]", " ", x)[1]
+                    } else if (added_as(x) == "Data"){
+                        attributes(x)$name
+                    } else {
+                        " "
+                    }
+
+                # Strip whitespace
+                PREVIEW %<>% trimws
+
+                # Print the preview text
+                nCh <- nchar(PREVIEW)
+                if (nCh > len) {
+                        paste0(substr(PREVIEW , 1, len-3), "...")
+                    } else {
+                        paste0(substr(PREVIEW , 1, len))
+                    }
+                }),
             "Size"     = sapply(container, function(x){format(object.size(x), units = "Kb")}),
             "Classes"  = sapply(container, function(x){paste(class(x), collapse=", ")}),
         stringsAsFactors = FALSE)

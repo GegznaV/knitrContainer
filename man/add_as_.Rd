@@ -2,19 +2,35 @@
 % Please edit documentation in R/add_as_.R
 \name{add_as_}
 \alias{add_as_}
+\alias{add_as_code_to_eval}
+\alias{add_as_data}
 \alias{add_as_is}
 \alias{add_as_pander}
+\alias{add_as_paragraph}
 \alias{add_as_plotly_widget}
+\alias{add_as_r_output}
+\alias{add_as_strings}
 \alias{add_as_text}
 \title{Add object to \code{knitrContainer}}
 \usage{
 add_as_is(container = NULL, obj)
 
-add_as_text(container = NULL, obj)
-
 add_as_plotly_widget(container = NULL, obj)
 
 add_as_pander(container = NULL, obj, ...)
+
+add_as_data(container = NULL, obj, give.name = match.call()$obj \%>\% c
+  \%>\% as.character \%>\% make.names \%>\% substr(1, 60))
+
+add_as_code_to_eval(container = NULL, obj)
+
+add_as_r_output(container = NULL, obj, comment = FALSE, highlight = "r")
+
+add_as_text(container = NULL, obj)
+
+add_as_paragraph(container = NULL, obj)
+
+add_as_strings(container = NULL, obj)
 }
 \arguments{
 \item{container}{\code{knitr_container} object.}
@@ -22,6 +38,22 @@ add_as_pander(container = NULL, obj, ...)
 \item{obj}{An object to be added to the \code{container}.}
 
 \item{...}{Options to be passed to \code{\link[pander]{pander}}.}
+
+\item{give.name}{A string, that gives a name of a data set passed as
+\code{obj}.\cr
+ **Default value** is the name passed as input \code{obj}.
+ If the imput is is not a name of an object, then sequence of functions
+ is applied to make a valind name from first 60 symbols of the input:
+\code{match.call()$obj \%>\% c \%>\% as.character \%>\% make.names \%>\% substr(1,60)}.}
+
+\item{comment}{Either logical or string.
+\code{TRUE} - default \code{knitr} chunk comment symbols are used;
+\code{FALSE} - no comment is used;
+if character - a string to be added before each string and used as a comment symbols.}
+
+\item{highlight}{Either \code{NULL}, \code{FALSE} or a string with name of
+programming language for which rules of
+code highlighting will be applied. Default is "r".}
 }
 \description{
 Functions to transform and add objects to \code{knitrContainer}.
@@ -31,11 +63,12 @@ included in \code{knitrContainer}.
 \code{\link{add_as_section}()} subfamily functions have separate description page.
 }
 \details{
-Following functions converts and formats object \code{obj} sch that it could
-be appropriatly printed with function \code{\link{print_objects}}().
+Following functions convert and format an object \code{obj} such that it could
+be appropriatly printed (or evaluated) by applying function
+\code{\link{extract_and_print}}().
 
 \code{add_as_is()} includes object \code{obj} in the \code{container} without
-transformation (\bold{"as is"}). Function \code{print_objects} will print it
+transformation (\bold{"as is"}). Function \code{extract_and_print} will print it
 using regular \code{print} function. Note that in R Markdaown \code{Rmd}
 file \code{knitr} chunk option \code{results='asis'} may distort the
 "beautiful" formatting of the printed object. This function is appropriate
@@ -44,21 +77,41 @@ plots and not \code{plotly} plots.
 
 \code{add_as_text()} converts \code{obj} to \code{\link[base]{character}},
  formats as \bold{text} and includes it in the \code{container}. Function
- \code{print_objects} will print it as text.
+ \code{extract_and_print} will print it as text.
 
 \code{\link{add_as_section}()} converts \code{obj} to \code{\link[base]{character}},
  formats it as a \bold{heading of section} and includes it in the \code{container}.
- Function \code{print_objects} will print it as text.
+ Function \code{extract_and_print} will print it as text.
 
 \code{add_as_plotly_widget()} converts \pkg{plotly} and \pkg{ggplot2} objects to
 plotly htmlwidget (details in \code{\link[plotly]{as.widget}}) and includes
-it in the \code{container}. Function \code{print_objects} will print it as
+it in the \code{container}. Function \code{extract_and_print} will print it as
 plotly htmlwidget and attach
 \code{html} dependencies.
 
 \code{add_as_pander()} formats supported types of \code{obj} with An R Pandoc
  Writer's function \code{\link[pander]{pander}} and includes it in the
- \code{container}. Function \code{print_objects} will print the object as text.
+\code{container}. Function \code{extract_and_print} will print the object as text.
+
+\code{add_as_data()} adds object (data frame, list, vector, etc.) to the
+container.
+When function \code{extract_and_print} the object is not printed, but just
+ extracted and assigned in the environment \code{env} (by default to the
+ parent frame) to the object which name is entered as value of parameter
+ \code{give.name}.
+
+\code{add_as_code_to_evaluate()} takes \emph{unquoted} expression and
+converts it to a string.
+The expression is going to be evaluated when function
+\code{extract_and_print} is applied.\cr
+
+\code{add_as_r_output()} saves object as strings and prints as R output text. \cr
+
+\code{add_as_paragraph} is the same as \code{add_as_text} - converts input to
+chatacter vector and save it as one paragraph.\cr
+
+\code{add_as_strings} converts input to vectors of chatacter and saves every
+vector as sepatate strings (i.e. separate paragraphs).\cr
 }
 \examples{
 # Find examples in link `knitrContainer-class`

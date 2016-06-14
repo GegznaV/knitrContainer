@@ -69,7 +69,7 @@ container \%<>\% add_as_section(obj = "Heading 5", level = 5)
 container \%<>\% add_as_section(obj = "Heading 6", level = 6)
 
 # Extract and print the contents of the container
-print_objects(container)
+extract_and_print(container)
 
 
 # Operator `\%<>\%`

@@ -5,18 +5,22 @@
 \alias{print_objects}
 \title{[!] Print objects from \code{knitrContainer}}
 \usage{
-extract_and_print(container, ...)
+extract_and_print(container, env = parent.frame(), ...)
 
 print_objects(container, ...)
 }
 \arguments{
 \item{container}{\code{knitr_container} object.}
 
+\item{env}{Environment in which evaluation of expressions an assignments
+(objects added with \code{\link{add_as_code_to_eval}} and \code{\link{add_as_data}})
+take place.}
+
 \item{...}{not used.}
 }
 \description{
-Function is designed to be used in a \code{knitr} file which generates
- \code{HTML} output.\cr
+Function is designed to be used in a \code{knitr}/\code{rmarkdown} file
+ which generates \code{HTML} output.\cr
  The function takes every element (i.e., object) of a
  \code{knitrContainer}, prints it appropriately:
  either as text (using \code{\link[base]{cat}}),
@@ -26,6 +30,7 @@ Function is designed to be used in a \code{knitr} file which generates
 }
 \details{
 Functions \code{extract_and_print()} and \code{print_objects()} are aliases.
+function \code{print_objects()} is deprecated.
 }
 \examples{
 
