@@ -32,7 +32,7 @@ Join <- function(..., list = NULL) {
 
     # Merge and return the result
 
-    list %<>% Reduce(c,.) %>% as.knitrContainer
+    list %<>% Reduce(f = c) %>% as.knitrContainer
 
     return(list)
 }

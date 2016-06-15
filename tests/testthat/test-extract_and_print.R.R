@@ -1,6 +1,45 @@
-context("function extract_and_print()")
+context("Function extract_and_print()")
+
+#  ------------------------------------------------------------------------
+
+test_that("print_objects() throws warning as it is deprecated", {
+
+    cont <- add_as_is(obj = "A")
+    expect_warning(print_objects(cont))
+})
+
+#  ------------------------------------------------------------------------
+test_that("`code_to_eval.` that is not contained as character vector is not printed by extract_and_print()", {
+    obj <- 2
+    attributes(obj)$added_as <- "Code to eval."
+    obj <- as.knitrContainer(obj)
+    expect_warning(extract_and_print(obj))
+})
+#  ------------------------------------------------------------------------
+
+test_that("extract_and_print() prints html widgets.", {
 
 
+    # HTML tags were not collected
+    AS1 <- add_as_is(obj = plotly::plot_ly())
+    out1 <- capture.output(extract_and_print(AS1))
+
+    # HTML tags were collected
+    AS4 <- add_as_plotly_widget(obj = plotly::plot_ly())
+    out4 <- capture.output(extract_and_print(AS4))
+
+    # Test length
+    expect_length(out1, 4) # out1 = [1] "  " ""   ""   "  "
+    expect_length(out4, 5)
+
+    # Test some contents
+    expect_match(out4[2], "htmlwidget")
+    expect_match(out4[2], "plotly html-widget")
+    expect_match(out4[3], "htmlwidget")
+
+})
+
+#  ------------------------------------------------------------------------
 
 test_that("extract_and_print() throws error where expected", {
  # No arguments
@@ -11,6 +50,7 @@ test_that("extract_and_print() throws error where expected", {
   expect_warning(extract_and_print(knitrContainer()))
 })
 
+#  ------------------------------------------------------------------------
 
 test_that("extract_and_print() and add_as_data() works correnctly", {
 
@@ -36,6 +76,7 @@ test_that("extract_and_print() and add_as_data() works correnctly", {
 
 })
 
+#  ------------------------------------------------------------------------
 
 test_that("extract_and_print() and add_as_code_to_eval() works correnctly", {
 
@@ -61,3 +102,8 @@ test_that("extract_and_print() and add_as_code_to_eval() works correnctly", {
     expect_identical(OBJ, mtcars)
 
 })
+
+
+#  ------------------------------------------------------------------------
+
+

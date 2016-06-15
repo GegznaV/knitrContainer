@@ -62,9 +62,9 @@ extract_and_print <- function(container, env = parent.frame(), ...) {
                #     eval(x, envir = env)
                } else {
                    warning(sprintf(paste(
-                       "Object nr. %d is not a: %s.",
+                       "Object nr. %d is not a string (its class is: %s).",
                        "Thus it was not evaluated."),
-                                   j, class(x)))
+                       j, paste(class(x), collapse = " ,")))
                }
 
                next()

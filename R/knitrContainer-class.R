@@ -20,14 +20,17 @@
 #'  \code{as.knitrContainer}.
 #'
 #' @author  Vilmantas Gegzna
-#' @seealso Examples in vignette `v3_knitrContainer`.
+#' @seealso Examples in vignette .
 #' @family \code{knitrContainer} functions
 #'
 #' @keywords classes
 #' @docType class
 #'
 #' @examples
+#' # For more examples type:
+#' vignette("v1_examples", package = "knitrContainer")
 #'
+#' # Examples:
 #' library(knitrContainer)
 #'
 #' library(plotly)

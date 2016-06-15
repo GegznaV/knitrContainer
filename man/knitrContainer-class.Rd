@@ -20,7 +20,10 @@
  \code{as.knitrContainer}.
 }
 \examples{
+# For more examples type:
+vignette("v1_examples", package = "knitrContainer")
 
+# Examples:
 library(knitrContainer)
 
 library(plotly)
@@ -77,7 +80,7 @@ Join(ggplot_obj)
 Vilmantas Gegzna
 }
 \seealso{
-Examples in vignette `v3_knitrContainer`.
+Examples in vignette .
 
 Other X.code.knitrContainer..functions: \code{\link{Join}},
   \code{\link{add_as_section}}, \code{\link{add_as_}},

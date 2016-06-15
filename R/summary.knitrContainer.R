@@ -81,26 +81,23 @@ summary.knitrContainer <- function(object, n = 100, len = 40, units = "Kb", ...)
 
 
 #  ------------------------------------------------------------------------
+#  Infix operator
 `%if.NULL%` <- function(a, b) {if (!is.null(a)) a else b}
+
 #  ------------------------------------------------------------------------
-bru <- function(symbol = "=",
-                n = 60,
-                after  = (if (print) 1 else 0),
-                before = 0,
-                print  = TRUE)
+# Horizintal rule
+bru <- function(symbol = "=", n = 60)
 {
     # Create sequences of symbols
-    nlA <- paste0(rep('\n', after),  collapse = "")
-    nlB <- paste0(rep('\n', before), collapse = "")
     lineC <- paste0(rep(symbol,n),   collapse = "")
 
     # Adjust the length
     lineC <- substr(lineC, 1, n)
 
     # Join all symbols
-    lineC <- paste0(nlB, lineC, nlA)
+    lineC <- paste0(lineC, '\n')
 
-    # Either print or return the result
-    if (print)  cat(lineC) else return(lineC)
+    # Print/cat
+     cat(lineC)
 }
 #  ------------------------------------------------------------------------

@@ -3,8 +3,9 @@
 #' @title Collect and Print \pkg{pander}, \pkg{plotly} and Other Objects in a \pkg{knitr}/\pkg{rmarkdown} Report
 #'
 #' @description
-#' The purpose of \code{knitrContainer} is to collect objects and print
-#' them in a \code{knitr}/\code{rmarkdown} report.\cr
+#' The purpose of \code{knitrContainer} is to collect objects (\bold{especially}
+#' ones generated in a loop) and print them in a \code{knitr}/\code{rmarkdown}
+#' report.\cr
 #'
 #'  WHY? Some objects such as \code{pander} tables and \code{plotly} plots,
 #'  are not printed from inside a loop and are not displayed in `knitr` reports.

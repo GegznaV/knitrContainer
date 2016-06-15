@@ -1,18 +1,18 @@
 Package: knitrContainer
 Type: Package
 Title: Collect and Print `pander`, `plotly` and Other Objects in a `knitr`/ R Markdown Report
-Description: The purpose of `knitrContainer` is to collect objects to a list-type
-             container and print them in a `knitr`/ R Markdown report.
+Description: The purpose of `knitrContainer` is to collect objects (especially
+             those which are genereted in loops) to a list-type container and
+             print them in a `knitr`/ R Markdown report.
              WHY? Some objects such as `pander` tables and `plotly` plots, are not
              printed from inside a loop and are not displayed in `knitr` reports.
              `knitrContainer` solves this problem by providing convenience
              functions to get these objects printed and included in `HTML` files.
              WHAT OBJECTS? An object used by `knitrContainer` can be any object,
-             that is includible in R list an that is printable, such as text/strings,
-             objects printable with `pander`, as well as `ggplot2` and `plotly`
-             plots, etc.
-Version: 0.0.8
-Date: 2016-06-09
+             that is includible in R list, such as text/strings, objects printable
+             with `pander`, as well as `ggplot2` and `plotly` plots, etc.
+Version: 0.0.9
+Date: 2016-06-15
 Encoding: UTF-8
 Authors@R: person("Vilmantas", "Gegzna", email = "GegznaV@gmail.com", role = c("aut", "cre"))
 Maintainer: Vilmantas Gegzna <GegznaV@gmail.com>
@@ -32,10 +32,8 @@ Imports:
     devtools,
     htmltools,
     pander,
-    scales,
-    simsalapar,
-    utils
+    utils,
+    knitr
 Suggests:
-    knitr,
     rmarkdown,
     testthat

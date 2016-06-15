@@ -46,10 +46,11 @@ add_as_strings(container = NULL, obj)
  is applied to make a valind name from first 60 symbols of the input:
 \code{match.call()$obj \%>\% c \%>\% as.character \%>\% make.names \%>\% substr(1,60)}.}
 
-\item{comment}{Either logical or string.
-\code{TRUE} - default \code{knitr} chunk comment symbols are used;
-\code{FALSE} - no comment is used;
-if character - a string to be added before each string and used as a comment symbols.}
+\item{comment}{Either logical or a string:\cr
+ If \code{TRUE} - default \code{knitr} chunk of code comment symbols are
+ used (usually \code{##}). \cr
+If \code{FALSE} (default) - no comment is used. \cr
+If a string, the entered symbols are used as comment symbols.}
 
 \item{highlight}{Either \code{NULL}, \code{FALSE} or a string with name of
 programming language for which rules of
@@ -60,7 +61,8 @@ Functions to transform and add objects to \code{knitrContainer}.
 Objects, that can be included in R \code{\link[base]{list}}, can also be
 included in \code{knitrContainer}.
 
-\code{\link{add_as_section}()} subfamily functions have separate description page.
+\code{\link{add_as_section}()} subfamily functions have separate description
+page.
 }
 \details{
 Following functions convert and format an object \code{obj} such that it could
@@ -68,8 +70,8 @@ be appropriatly printed (or evaluated) by applying function
 \code{\link{extract_and_print}}().
 
 \code{add_as_is()} includes object \code{obj} in the \code{container} without
-transformation (\bold{"as is"}). Function \code{extract_and_print} will print it
-using regular \code{print} function. Note that in R Markdaown \code{Rmd}
+transformation (\bold{"as is"}). Function \code{extract_and_print} will print
+it using regular \code{print} function. Note that in R Markdaown \code{Rmd}
 file \code{knitr} chunk option \code{results='asis'} may distort the
 "beautiful" formatting of the printed object. This function is appropriate
 to ingludde \pkg{ggplot2} plots, if they have to be displayed as \code{gg}
@@ -79,19 +81,21 @@ plots and not \code{plotly} plots.
  formats as \bold{text} and includes it in the \code{container}. Function
  \code{extract_and_print} will print it as text.
 
-\code{\link{add_as_section}()} converts \code{obj} to \code{\link[base]{character}},
- formats it as a \bold{heading of section} and includes it in the \code{container}.
+\code{\link{add_as_section}()} converts \code{obj} to
+\code{\link[base]{character}},
+ formats it as a \bold{heading of section} and includes it in the
+ \code{container}.
  Function \code{extract_and_print} will print it as text.
 
-\code{add_as_plotly_widget()} converts \pkg{plotly} and \pkg{ggplot2} objects to
-plotly htmlwidget (details in \code{\link[plotly]{as.widget}}) and includes
-it in the \code{container}. Function \code{extract_and_print} will print it as
-plotly htmlwidget and attach
-\code{html} dependencies.
+\code{add_as_plotly_widget()} converts \pkg{plotly} and \pkg{ggplot2} objects
+ to plotly htmlwidget (details in \code{\link[plotly]{as.widget}}) and
+ includes it in the \code{container}. Function \code{extract_and_print} will
+ print it as plotly htmlwidget and attach \code{html} dependencies.
 
 \code{add_as_pander()} formats supported types of \code{obj} with An R Pandoc
  Writer's function \code{\link[pander]{pander}} and includes it in the
-\code{container}. Function \code{extract_and_print} will print the object as text.
+\code{container}. Function \code{extract_and_print} will print the object
+as text.
 
 \code{add_as_data()} adds object (data frame, list, vector, etc.) to the
 container.
@@ -105,10 +109,11 @@ converts it to a string.
 The expression is going to be evaluated when function
 \code{extract_and_print} is applied.\cr
 
-\code{add_as_r_output()} saves object as strings and prints as R output text. \cr
+\code{add_as_r_output()} saves object as strings and prints as R output
+text. \cr
 
 \code{add_as_paragraph} is the same as \code{add_as_text} - converts input to
-chatacter vector and save it as one paragraph.\cr
+chatacter vector and saves it as one paragraph.\cr
 
 \code{add_as_strings} converts input to vectors of chatacter and saves every
 vector as sepatate strings (i.e. separate paragraphs).\cr

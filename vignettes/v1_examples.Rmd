@@ -37,16 +37,16 @@ reports.
 
 Some objects such as  `pander` tables and `plotly` plots, are not printed from
 inside loop in a `knitr` report file in a regular way.`knitrContainer` solves
-this problem by providing fuctions to get these objects printed and included 
+this problem by providing functions to get these objects printed and included 
 in `HTML` files.
  
 ### What king of objects can be collectd and printed with `knitrContainer`?
 
  An object used by `knitrContainer` can be any object, that is
- includable in R list an that is printable, such as :
+ includible in R list an that is printable, such as:
  
- 1. objects printable with [`pander`](http://rapporter.github.io/pander/);
- 2. text;
+ 1. text;
+ 2. objects printable with [`pander`](http://rapporter.github.io/pander/);
  3. [`ggplot2`](http://ggplot2.org/), [`plotly`](https://plot.ly/r/) 
  plots;
  4. etc.
@@ -261,8 +261,8 @@ using the following syntax:
 extract_and_print(container)
 ```
 
-ADVANCED: as data and as code to evaluate
-=========================================
+ADVANCED: `add_as_data` and `add_as_code_to_eval`
+==================================================
 
 
 ```{r}
