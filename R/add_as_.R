@@ -154,23 +154,61 @@ add_as_data <- function(container = NULL, obj,
 #' @export
 #'
 #' @details
-#' \code{add_as_code_to_evaluate()} takes \emph{unquoted} expression and
+#' \code{add_as_code()} takes \emph{unquoted} expression and
 #' converts it to a string.
 #' The expression is going to be evaluated when function
 #' \code{extract_and_print} is applied.\cr
 #'
-add_as_code_to_eval <- function(container = NULL, obj){
+add_as_code <- function(container = NULL, obj){
+    if (missing(obj)) stop("`obj` is missing.")
+
+    container <- as.knitrContainer(container)
+    # obj <- substitute(obj)  # problem as it is printed only once
+    obj <- substitute(obj) %>% c %>%  as.character
+    obj <- added_as(obj, "Code to eval.")
+    container <- add_as_is(container,obj)
+    return(container)
+}
+
+#  ------------------------------------------------------------------------
+#' @rdname add_as_
+#' @export
+#' @inheritParams format_as_output
+#' @details
+#' \code{add_as_r_output()} saves object as strings and prints as R output
+#' text. \cr
+add_as_printed <- function(container = NULL, obj, comment = FALSE,
+                            highlight = FALSE){
     if (missing(obj)) stop("`obj` is missing.")
 
     container <- as.knitrContainer(container)
 
-    # obj <- substitute(obj)  # problem as it is printed only once
+    # Transform obj to appropriate form
+    obj <- format_as_output(obj, comment, highlight)
 
-    obj <- substitute(obj) %>% c %>%  as.character
+    # Add added_as TYPE
+    obj <- added_as(obj, "Printed")
 
-    obj <- added_as(obj, "Code to eval.")
+    # Add to container
+    container <- add_as_is(container, obj)
 
-    container <- add_as_is(container,obj)
+    # Return the updated container
+    return(container)
+}
+
+#' @rdname add_as_
+#' @export
+#' @inheritParams format_as_output
+#' @details
+#' \code{add_as_r_output()} saves object as strings and prints as R output
+#' text. \cr
+add_as_printed_r <- function(container = NULL, obj, comment = FALSE,
+                           highlight = "r"){
+    if (missing(obj)) stop("`obj` is missing.")
+
+    container <- add_as_printed(container, obj, comment, highlight)
+
+    # Return the updated container
     return(container)
 }
 
@@ -183,46 +221,11 @@ add_as_code_to_eval <- function(container = NULL, obj){
 add_as_r_output <- function(container = NULL, obj, comment = FALSE,
                             highlight = "r"){
     if (missing(obj)) stop("`obj` is missing.")
-
-    container <- as.knitrContainer(container)
-
-    # Transform obj to appropriate form
-    obj <- format_as_output(obj, comment, highlight)
-
-    # Add added_as TYPE
-    obj <- added_as(obj, "Printed")
-
-    # Add to container
-    container <- add_as_is(container, obj)
-
+    container <- add_as_printed(container, obj, comment, highlight)
     # Return the updated container
     return(container)
 }
 
-#' @rdname add_as_
-#' @export
-#' @inheritParams format_as_output
-#' @details
-#' \code{add_as_r_output()} saves object as strings and prints as R output
-#' text. \cr
-add_as_printed <- function(container = NULL, obj, comment = FALSE,
-                            highlight = "r"){
-    if (missing(obj)) stop("`obj` is missing.")
-
-    container <- as.knitrContainer(container)
-
-    # Transform obj to appropriate form
-    obj <- format_as_output(obj, comment, highlight)
-
-    # Add added_as TYPE
-    obj <- added_as(obj, "Printed")
-
-    # Add to container
-    container <- add_as_is(container, obj)
-
-    # Return the updated container
-    return(container)
-}
 
 # Following functions are NOT described well ----------------------------------
 

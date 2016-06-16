@@ -20,7 +20,7 @@
 #'
 #' @template container
 #' @param env Environment in which evaluation of expressions an assignments
-#' (objects added with \code{\link{add_as_code_to_eval}} and \code{\link{add_as_data}})
+#' (objects added with \code{\link{add_as_code}} and \code{\link{add_as_data}})
 #' take place.
 #' @param ... not used.
 #' @export

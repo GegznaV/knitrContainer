@@ -2,13 +2,14 @@
 % Please edit documentation in R/add_as_.R
 \name{add_as_}
 \alias{add_as_}
-\alias{add_as_code_to_eval}
+\alias{add_as_code}
 \alias{add_as_data}
 \alias{add_as_is}
 \alias{add_as_pander}
 \alias{add_as_paragraph}
 \alias{add_as_plotly_widget}
 \alias{add_as_printed}
+\alias{add_as_printed_r}
 \alias{add_as_r_output}
 \alias{add_as_strings}
 \alias{add_as_text}
@@ -23,11 +24,13 @@ add_as_pander(container = NULL, obj, ...)
 add_as_data(container = NULL, obj, give.name = match.call()$obj \%>\% c
   \%>\% as.character \%>\% make.names \%>\% substr(1, 60))
 
-add_as_code_to_eval(container = NULL, obj)
+add_as_code(container = NULL, obj)
+
+add_as_printed(container = NULL, obj, comment = FALSE, highlight = FALSE)
+
+add_as_printed_r(container = NULL, obj, comment = FALSE, highlight = "r")
 
 add_as_r_output(container = NULL, obj, comment = FALSE, highlight = "r")
-
-add_as_printed(container = NULL, obj, comment = FALSE, highlight = "r")
 
 add_as_text(container = NULL, obj)
 
@@ -107,10 +110,13 @@ When function \code{extract_and_print} the object is not printed, but just
  parent frame) to the object which name is entered as value of parameter
  \code{give.name}.
 
-\code{add_as_code_to_evaluate()} takes \emph{unquoted} expression and
+\code{add_as_code()} takes \emph{unquoted} expression and
 converts it to a string.
 The expression is going to be evaluated when function
 \code{extract_and_print} is applied.\cr
+
+\code{add_as_r_output()} saves object as strings and prints as R output
+text. \cr
 
 \code{add_as_r_output()} saves object as strings and prints as R output
 text. \cr

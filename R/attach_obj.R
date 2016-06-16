@@ -26,7 +26,7 @@
 attach_obj <- function(x = list(), obj){
     force(x)
     if (is.null(obj)) {
-        warning("Variale `obj` is NULL! It was not attached to the list.")
+        warning("Variable `obj` is NULL! It was not attached to the list.")
         return(x)
     }
     x[[length(x) + 1]] <- obj

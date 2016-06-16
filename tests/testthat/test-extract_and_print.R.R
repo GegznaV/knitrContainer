@@ -77,24 +77,24 @@ test_that("extract_and_print() and add_as_data() works correnctly", {
 
 #  ------------------------------------------------------------------------
 
-test_that("extract_and_print() and add_as_code_to_eval() works correnctly", {
+test_that("extract_and_print() and add_as_code() works correnctly", {
 
 
     # Expr 1
-    cont1 <- add_as_code_to_eval(obj = print(1+3))
+    cont1 <- add_as_code(obj = print(1+3))
     #Empty line is aded, thus select just the 1st element
     expect_equal(capture.output(extract_and_print(cont1))[1],
                  capture.output(print(4)))
 
     # Expr 2
-    cont2 <- add_as_code_to_eval(obj = print(mtcars))
+    cont2 <- add_as_code(obj = print(mtcars))
     expect_identical(capture.output(extract_and_print(cont2))[1:10],
                      capture.output(print(mtcars))[1:10])
 
     # Expre 3
     expect_false("OBJ" %in% ls())
 
-    cont3 <- add_as_code_to_eval(obj = OBJ <- mtcars)
+    cont3 <- add_as_code(obj = OBJ <- mtcars)
     extract_and_print(cont3)
 
     expect_true("OBJ" %in% ls())
