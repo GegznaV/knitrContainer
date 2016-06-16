@@ -1,5 +1,8 @@
 context("Other unit tests")
 
+#  ------------------------------------------------------------------------
+
+
 test_that("as.knitrContainer() output is correct.", {
     expect_length(as.knitrContainer(), 0)
 
@@ -15,6 +18,9 @@ test_that("as.knitrContainer() output is correct.", {
 
 })
 
+#  ------------------------------------------------------------------------
+
+
 
 test_that("output of is.knitrContainer() is correct.", {
     expect_false(is.knitrContainer("knitrContainer"))
@@ -24,6 +30,9 @@ test_that("output of is.knitrContainer() is correct.", {
     expect_error(is.knitrContainer())
 
 })
+
+#  ------------------------------------------------------------------------
+
 
 test_that("output of Join() is correct.", {
     container <- knitrContainer()
@@ -40,6 +49,9 @@ test_that("output of Join() is correct.", {
 
 })
 
+#  ------------------------------------------------------------------------
+
+
 test_that("output of knitrContainer() is correct.", {
     expect_is(knitrContainer(), "list")
     expect_is(knitrContainer(), "knitrContainer")
@@ -47,52 +59,9 @@ test_that("output of knitrContainer() is correct.", {
 })
 
 
-test_that("Behaviour of `in as_is_*` family is corret when `obj` is missing.", {
-    expect_error(add_as_is())
-    expect_error(add_as_text())
-    expect_error(add_as_plotly_widget())
-    expect_error(add_as_pander())
-    expect_error(add_as_section())
-
-    # expect_error(add_as_subsection())
-    # expect_error(add_as_heading1())
-    # expect_error(add_as_heading2())
-    # expect_error(add_as_heading3())
-    # expect_error(add_as_heading4())
-
-})
+#  ------------------------------------------------------------------------
 
 
 
 
-test_that("Text output of extract_and_print() is correct.", {
-    cont <- add_as_text(obj = "TEST")
-    cont <- add_as_is(cont, obj = "TEST")
-    OUTPUT  <- capture.output(extract_and_print(cont))
-    expect_match(OUTPUT[2], "TEST")
-})
 
-# test_that("ggplot as-is output of extract_and_print() is correct.", {
-#
-#    file = "test-add_as_plotly_widget"
-#    writeLines(c(
-#            "```{r setup, include=FALSE}",
-#            "knitr::opts_chunk$set(echo = TRUE)",
-#            "library(plotly)",
-#            "library(ggplot2)",
-#            "library(magrittr)",
-#            "library(knitrContainer)",
-#            "```",
-#            "",
-#            "```{r, results='asis', echo = FALSE}",
-#            "container <- knitrContainer()",
-#            "for (i in 1:2) container  %<>%",
-#            "    add_as_plotly_widget(obj = ggplotly(qplot(1:5,1:5)))",
-#            "extract_and_print(container)",
-#            "```"),
-#         file)
-#    knit2html(file, quiet = TRUE)
-#    readLines(con = paste0(file, ".html"))
-#
-#    file.remove(dir(pattern = file))
-# })

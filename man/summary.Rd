@@ -5,16 +5,18 @@
 \alias{summary.knitrContainer}
 \title{Print and summary methods for \code{knitrContainer}}
 \usage{
-\method{summary}{knitrContainer}(object, n = 100, len = 40, units = "Kb",
-  ...)
+\method{summary}{knitrContainer}(object, n = 100, preview = 40,
+  units = "Kb", ...)
 }
 \arguments{
 \item{object}{\code{knitrContainer} object.}
 
-\item{n}{The number of rows (objects) to display. Default \code{n = 40}.}
+\item{n}{Either the number of rows (objects) to display or numbers of
+the first and the last row \code{c(from, to)} to display.
+Default \code{n = 100}.}
 
-\item{len}{length of text (number of characters) to be shown in summary.
-Default is 100.}
+\item{preview}{number of characters to be previewed in summary.
+Default is 40.}
 
 \item{units}{the units to be used in printing the size.  Allowed
     values are

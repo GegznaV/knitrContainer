@@ -17,8 +17,7 @@ test_that("`code_to_eval.` that is not contained as character vector is not prin
 })
 #  ------------------------------------------------------------------------
 
-test_that("extract_and_print() prints html widgets.", {
-
+test_that("extract_and_print() prints htmlwidgets.", {
 
     # HTML tags were not collected
     AS1 <- add_as_is(obj = plotly::plot_ly())
@@ -106,4 +105,34 @@ test_that("extract_and_print() and add_as_code_to_eval() works correnctly", {
 
 #  ------------------------------------------------------------------------
 
+test_that("Text output of extract_and_print() is correct.", {
+    cont <- add_as_text(obj = "TEST")
+    cont <- add_as_is(cont, obj = "TEST")
+    OUTPUT  <- capture.output(extract_and_print(cont))
+    expect_match(OUTPUT[2], "TEST")
+})
 
+# test_that("ggplot as-is output of extract_and_print() is correct.", {
+#
+#    file = "test-add_as_plotly_widget"
+#    writeLines(c(
+#            "```{r setup, include=FALSE}",
+#            "knitr::opts_chunk$set(echo = TRUE)",
+#            "library(plotly)",
+#            "library(ggplot2)",
+#            "library(magrittr)",
+#            "library(knitrContainer)",
+#            "```",
+#            "",
+#            "```{r, results='asis', echo = FALSE}",
+#            "container <- knitrContainer()",
+#            "for (i in 1:2) container  %<>%",
+#            "    add_as_plotly_widget(obj = ggplotly(qplot(1:5,1:5)))",
+#            "extract_and_print(container)",
+#            "```"),
+#         file)
+#    knit2html(file, quiet = TRUE)
+#    readLines(con = paste0(file, ".html"))
+#
+#    file.remove(dir(pattern = file))
+# })

@@ -68,10 +68,13 @@ add_as_is <- function(container = NULL, obj){
     if (missing(obj)) stop("`obj` is missing.")
 
     container <- as.knitrContainer(container)
+
     # Add added_as TYPE
     obj <- added_as(obj, "As is")
+
     # Add to container
-    container[[length(container) + 1]] <- obj
+    container <- attach_obj(container, obj)
+
     # Return the updated container
     return(container)
 }
@@ -187,7 +190,7 @@ add_as_r_output <- function(container = NULL, obj, comment = FALSE,
     obj <- format_as_output(obj, comment, highlight)
 
     # Add added_as TYPE
-    obj <- added_as(obj, "Output text")
+    obj <- added_as(obj, "Printed")
 
     # Add to container
     container <- add_as_is(container, obj)
@@ -196,6 +199,30 @@ add_as_r_output <- function(container = NULL, obj, comment = FALSE,
     return(container)
 }
 
+#' @rdname add_as_
+#' @export
+#' @inheritParams format_as_output
+#' @details
+#' \code{add_as_r_output()} saves object as strings and prints as R output
+#' text. \cr
+add_as_printed <- function(container = NULL, obj, comment = FALSE,
+                            highlight = "r"){
+    if (missing(obj)) stop("`obj` is missing.")
+
+    container <- as.knitrContainer(container)
+
+    # Transform obj to appropriate form
+    obj <- format_as_output(obj, comment, highlight)
+
+    # Add added_as TYPE
+    obj <- added_as(obj, "Printed")
+
+    # Add to container
+    container <- add_as_is(container, obj)
+
+    # Return the updated container
+    return(container)
+}
 
 # Following functions are NOT described well ----------------------------------
 

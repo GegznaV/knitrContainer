@@ -6,7 +6,7 @@
 #'
 #' @param x \code{knitrContainer} object.
 #' @param n The number of rows (objects) to display. Default \code{n = 30}.
-#' @param len length of text (number of characters) to be shown in summary.
+#' @param preview length of text (number of characters) to be previewed in summary.
 #' Default is 25.
 #' @inheritParams utils::object.size
 #'
@@ -20,7 +20,7 @@
 #' @author Vilmantas Gegzna
 #' @family \code{knitrContainer} functions
 #'
-print.knitrContainer <- function(x, n = 30, len = 25, units = "Kb", ...){
-    summary(x, n = n, len = len, units = units)
+print.knitrContainer <- function(x, n = 30, preview = 25, units = "Kb", ...){
+    summary(x, n = n, preview = preview, units = units)
 }
 

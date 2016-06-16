@@ -47,7 +47,8 @@ test_that("attribute `added_as` is added correctly.", {
     expect_match(added_as(add_as_heading4(obj   = "text")[[1]]),   "Section")
 
     # As Output ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    expect_match(added_as(add_as_r_output(obj   = "text")[[1]]), "Output")
+    expect_match(added_as(add_as_r_output(obj   = "text")[[1]]), "Printed")
+    expect_match(added_as(add_as_printed(obj    = "text")[[1]]), "Printed")
 
     # As Code to evaluate  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     expect_match(added_as(add_as_code_to_eval(obj = print("text"))[[1]]), "eval")
