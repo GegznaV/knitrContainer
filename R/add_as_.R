@@ -154,26 +154,69 @@ add_as_data <- function(container = NULL, obj,
 #' @export
 #'
 #' @details
-#' \code{add_as_code()} takes \emph{unquoted} expression and
+#' \code{add_as_command()} takes \emph{unquoted} expression and
 #' converts it to a string.
 #' The expression is going to be evaluated when function
 #' \code{extract_and_print} is applied.\cr
-#'
-add_as_code <- function(container = NULL, obj){
+add_as_command <- function(container = NULL, obj){
     if (missing(obj)) stop("`obj` is missing.")
 
     container <- as.knitrContainer(container)
     # obj <- substitute(obj)  # problem as it is printed only once
     obj <- substitute(obj) %>% c %>%  as.character
-    obj <- added_as(obj, "Code to eval.")
+    obj <- added_as(obj, "Command")
     container <- add_as_is(container,obj)
     return(container)
+}
+
+#' @rdname add_as_
+#' @export
+#'
+#' @details
+#' \code{add_as_cmd()} is the same as \code{add_as_command()}.
+#'
+add_as_cmd <- function(container = NULL, obj){
+    if (missing(obj)) stop("`obj` is missing.")
+
+    container <- as.knitrContainer(container)
+    obj <- substitute(obj) %>% c %>%  as.character
+    obj <- added_as(obj, "Command")
+    container <- add_as_is(container,obj)
+    return(container)
+}
+
+#' @rdname add_as_
+#' @export
+#'
+#' @details
+#' \code{add_as_cmd_str()} is the same as \code{add_as_command()}, just object
+#' must be entered entered as a string.
+#'
+add_as_cmd_str <- function(container = NULL, obj){
+    if (missing(obj)) stop("`obj` is missing.")
+    if (!is.character(obj)) stop("`obj` is not a string.")
+
+    container <- as.knitrContainer(container)
+    obj <- added_as(obj, "Command")
+    container <- add_as_is(container,obj)
+    return(container)
+}
+
+# .Deprecated !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#' @rdname add_as_
+#' @export
+add_as_code <- function(container = NULL, obj){
+    .Deprecated("add_as_command")
+
+    if (missing(obj)) stop("`obj` is missing.")
+
+    add_as_command(container, obj)
 }
 
 #  ------------------------------------------------------------------------
 #' @rdname add_as_
 #' @export
-#' @inheritParams format_as_output
+#' @inheritParams format_as_code
 #' @details
 #' \code{add_as_r_output()} saves object as strings and prints as R output
 #' text. \cr
@@ -184,7 +227,7 @@ add_as_printed <- function(container = NULL, obj, comment = FALSE,
     container <- as.knitrContainer(container)
 
     # Transform obj to appropriate form
-    obj <- format_as_output(obj, comment, highlight)
+    obj <- format_as_code(obj, comment, highlight)
 
     # Add added_as TYPE
     obj <- added_as(obj, "Printed")
@@ -198,7 +241,7 @@ add_as_printed <- function(container = NULL, obj, comment = FALSE,
 
 #' @rdname add_as_
 #' @export
-#' @inheritParams format_as_output
+#' @inheritParams format_as_code
 #' @details
 #' \code{add_as_r_output()} saves object as strings and prints as R output
 #' text. \cr
@@ -214,7 +257,7 @@ add_as_printed_r <- function(container = NULL, obj, comment = FALSE,
 
 #' @rdname add_as_
 #' @export
-#' @inheritParams format_as_output
+#' @inheritParams format_as_code
 #' @details
 #' \code{add_as_r_output()} saves object as strings and prints as R output
 #' text. \cr

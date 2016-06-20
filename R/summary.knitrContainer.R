@@ -61,7 +61,7 @@ summary.knitrContainer <- function(object, n = 100, preview = 40, units = "Kb", 
                 # Select text to preview
                 PREVIEW_text <- if (added_as(x)  %in% # text type "added_as" formats:
                                c("Section",   "Text", "Printed",
-                                 "Paragraph", "Strings", "Code to eval."))
+                                 "Paragraph", "Strings", "Command"))
                     {
                         paste(gsub("[\r\n]", " ", x), collapse = " ")
                     } else if (added_as(x) == "Data"){

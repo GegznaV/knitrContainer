@@ -52,8 +52,9 @@ test_that("attribute `added_as` is added correctly.", {
     expect_match(added_as(add_as_printed_r(obj  = "text")[[1]]), "Printed")
 
     # As Code to evaluate  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    expect_match(added_as(add_as_code(obj = print("text"))[[1]]), "Code")
-    expect_match(added_as(add_as_code(        obj = print("text"))[[1]]), "Code")
+    expect_match(added_as(add_as_command(obj =  print("text"))[[1]]),  "Command")
+    expect_match(added_as(add_as_cmd    (obj =  print("text"))[[1]]),  "Command")
+    expect_match(added_as(add_as_cmd_str(obj = 'print("text")')[[1]]), "Command")
 
     # As Data ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     expect_match(added_as(add_as_data(obj = "text")[[1]]),  "Data")

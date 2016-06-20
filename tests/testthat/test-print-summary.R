@@ -1,8 +1,8 @@
-context("Functions print() and summary()")
+context("Functions `print()` and `summary()`")
 
 #  ------------------------------------------------------------------------
 
-test_that("summary of empty knitrContainer() is correct.", {
+test_that("summary of empty knitrContainer is correct.", {
 
     # Output of emply container
     summary_EMPTY <- capture.output(summary(knitrContainer()))
@@ -75,7 +75,7 @@ test_that("Column `Preview` of summary.knitrContainer() is correct.", {
     cont <- knitrContainer()
     cont <- add_as_text(cont, "Text")
     cont <- add_as_data(cont, cars)
-    cont <- add_as_code(cont, summary(cars))
+    cont <- add_as_command(cont, summary(cars))
     cont <- add_as_is(cont, cars)
     cont <- add_as_printed(cont, cars)
     cont <- add_as_printed_r(cont, cars)
@@ -84,7 +84,7 @@ test_that("Column `Preview` of summary.knitrContainer() is correct.", {
     summary_4 <- capture.output(summary(cont))
     expect_match(summary_4[7], "1 Text.*Text")
     expect_match(summary_4[8], "2 Data.*cars")
-    expect_match(summary_4[9], "3 Code.*summary\\(cars\\)")
+    expect_match(summary_4[9], "3 Command.*summary\\(cars\\)")
     expect_match(summary_4[10],"4 As is")
     expect_match(summary_4[11],"```")
     expect_match(summary_4[12],"```r")

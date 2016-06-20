@@ -28,7 +28,7 @@
 #'
 #' @examples
 #'
-#' format_as_output(summary(cars))
+#' format_as_code(summary(cars))
 #'  #> [1] "```r"
 #'  #> [2] "      speed           dist       "
 #'  #> [3] "  Min.   : 4.0   Min.   :  2.00  "
@@ -41,7 +41,7 @@
 #'
 #'  # Set parameter `comment = TRUE`
 #'
-#'  format_as_output(summary(cars), comment = TRUE)
+#'  format_as_code(summary(cars), comment = TRUE)
 #'  #> [1] "```r"
 #'  #> [2] "##      speed           dist       "
 #'  #> [3] "##  Min.   : 4.0   Min.   :  2.00  "
@@ -65,13 +65,13 @@
 #'  #> Max.   :25.0   Max.   :120.00
 #'
 #'
-#' format_as_output("a")
+#' format_as_code("a")
 #'  #> [1] "```r"
 #'  #> [2] " [1] \"a\""
 #'  #> [3] "```"
 #'
 
-format_as_output <- function(obj, comment = FALSE, highlight = "r", ...){
+format_as_code <- function(obj, comment = FALSE, highlight = "r", ...){
 
     if (highlight==FALSE) highlight = NULL
 

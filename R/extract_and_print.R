@@ -20,7 +20,7 @@
 #'
 #' @template container
 #' @param env Environment in which evaluation of expressions an assignments
-#' (objects added with \code{\link{add_as_code}} and \code{\link{add_as_data}})
+#' (objects added with \code{\link{add_as_command}} and \code{\link{add_as_data}})
 #' take place.
 #' @param ... not used.
 #' @export
@@ -52,9 +52,8 @@ extract_and_print <- function(container, env = parent.frame(), ...) {
 
 
         switch(added_as(x),
-           # If x is a code-to-evaluate, evaluate it
-           # "Code to evaluate" = {
-           "Code to eval." = {
+           # If x is a command (code-to-evaluate), evaluate it
+           "Command" = {
 
                if (is.character(x)) {
                    eval(parse(text = x), envir = env)

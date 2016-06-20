@@ -2,7 +2,10 @@
 % Please edit documentation in R/add_as_.R
 \name{add_as_}
 \alias{add_as_}
+\alias{add_as_cmd}
+\alias{add_as_cmd_str}
 \alias{add_as_code}
+\alias{add_as_command}
 \alias{add_as_data}
 \alias{add_as_is}
 \alias{add_as_pander}
@@ -23,6 +26,12 @@ add_as_pander(container = NULL, obj, ...)
 
 add_as_data(container = NULL, obj, give.name = match.call()$obj \%>\% c
   \%>\% as.character \%>\% make.names \%>\% substr(1, 60))
+
+add_as_command(container = NULL, obj)
+
+add_as_cmd(container = NULL, obj)
+
+add_as_cmd_str(container = NULL, obj)
 
 add_as_code(container = NULL, obj)
 
@@ -110,10 +119,15 @@ When function \code{extract_and_print} the object is not printed, but just
  parent frame) to the object which name is entered as value of parameter
  \code{give.name}.
 
-\code{add_as_code()} takes \emph{unquoted} expression and
+\code{add_as_command()} takes \emph{unquoted} expression and
 converts it to a string.
 The expression is going to be evaluated when function
 \code{extract_and_print} is applied.\cr
+
+\code{add_as_cmd()} is the same as \code{add_as_command()}.
+
+\code{add_as_cmd_str()} is the same as \code{add_as_command()}, just object
+must be entered entered as a string.
 
 \code{add_as_r_output()} saves object as strings and prints as R output
 text. \cr
