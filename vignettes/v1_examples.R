@@ -15,7 +15,7 @@ optDEF <- knitr::opts_chunk$get()
 ## ---- eval = FALSE-------------------------------------------------------
 #  container <- knitrContainer()
 #  container <- add_as_text(container, "Text to be added.")
-#  extract_and_print(container)
+#  print_all(container)
 
 ## ---- eval = FALSE-------------------------------------------------------
 #  container %<>% add_as_text("Text added using `%<>%` operator.")
@@ -119,7 +119,7 @@ Join(container, ggplot_obj)   %>% length()
 Join(ggplot_obj, plotly_obj)
 
 ## ---- results = 'asis'---------------------------------------------------
-extract_and_print(container)
+print_all(container)
 
 ## ------------------------------------------------------------------------
 container2 <- knitrContainer()
@@ -138,7 +138,7 @@ container2 %<>% add_as_command(print(names(cars_data[1:3])))
 container2 %<>% add_as_command(plot(cars_data[1:3]))
 
 ## ---- results = 'asis'---------------------------------------------------
-extract_and_print(container2)
+print_all(container2)
 
 ## ----session info--------------------------------------------------------
 devtools::session_info()

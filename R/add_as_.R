@@ -21,10 +21,10 @@
 #'
 #' Following functions convert and format an object \code{obj} such that it could
 #' be appropriatly printed (or evaluated) by applying function
-#' \code{\link{extract_and_print}}().
+#' \code{\link{print_all}}().
 #'
 #' \code{add_as_is()} includes object \code{obj} in the \code{container} without
-#' transformation (\bold{"as is"}). Function \code{extract_and_print} will print
+#' transformation (\bold{"as is"}). Function \code{print_all} will print
 #' it using regular \code{print} function. Note that in R Markdaown \code{Rmd}
 #' file \code{knitr} chunk option \code{results='asis'} may distort the
 #' "beautiful" formatting of the printed object. This function is appropriate
@@ -33,22 +33,22 @@
 #'
 #' \code{add_as_text()} converts \code{obj} to \code{\link[base]{character}},
 #'  formats as \bold{text} and includes it in the \code{container}. Function
-#'  \code{extract_and_print} will print it as text (`as-is`).
+#'  \code{print_all} will print it as text (`as-is`).
 #'
 #' \code{\link{add_as_section}()} converts \code{obj} to
 #' \code{\link[base]{character}},
 #'  formats it as a \bold{heading of section} and includes it in the
 #'  \code{container}.
-#'  Function \code{extract_and_print} will print it as text.
+#'  Function \code{print_all} will print it as text.
 #'
 #' \code{add_as_plotly_widget()} converts \pkg{plotly} and \pkg{ggplot2} objects
 #'  to plotly htmlwidget (details in \code{\link[plotly]{as.widget}}) and
-#'  includes it in the \code{container}. Function \code{extract_and_print} will
+#'  includes it in the \code{container}. Function \code{print_all} will
 #'  print it as plotly htmlwidget and attach \code{html} dependencies.
 #'
 #' \code{add_as_pander()} formats supported types of \code{obj} with An R Pandoc
 #'  Writer's function \code{\link[pander]{pander}} and includes it in the
-#' \code{container}. Function \code{extract_and_print} will print the object
+#' \code{container}. Function \code{print_all} will print the object
 #' as text.
 #'
 #'
@@ -195,7 +195,7 @@ add_as_strings <- function(container = NULL, obj){
 #' @details
 #' \code{add_as_data()} adds object (data frame, list, vector, etc.) to the
 #' container.
-#' When function \code{extract_and_print} the object is not printed, but just
+#' When function \code{print_all} the object is not printed, but just
 #'  extracted and assigned in the environment \code{env} (by default to the
 #'  parent frame) to the object which name is entered as value of parameter
 #'  \code{give.name}.
@@ -221,7 +221,7 @@ add_as_data <- function(container = NULL, obj,
 #' \code{add_as_command()} takes \emph{unquoted} expression and
 #' converts it to a string.
 #' The expression is going to be evaluated when function
-#' \code{extract_and_print} is applied.\cr
+#' \code{print_all} is applied.\cr
 add_as_command <- function(container = NULL, obj){
     if (missing(obj)) stop("`obj` is missing.")
 
@@ -285,7 +285,7 @@ add_as_code <- function(container = NULL, obj, comment = FALSE,
     obj <- format_as_code(obj, comment, highlight)
 
     # Add added_as TYPE
-    obj <- added_as(obj, "Printed")  # <----------------------- Pakeisti i "formatted"
+    obj <- added_as(obj, "Formatted")  # <----------------------- Pakeisti i "formatted"
 
     # Add to container
     container <- add_as_is(container, obj)

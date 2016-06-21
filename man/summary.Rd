@@ -43,7 +43,7 @@ Vilmantas Gegzna
 Other X.code.knitrContainer..functions: \code{\link{Join}},
   \code{\link{add_as_section}}, \code{\link{add_as_}},
   \code{\link{as.knitrContainer}},
-  \code{\link{extract_and_print}},
-  \code{\link{knitrContainer-class}}, \code{\link{print}}
+  \code{\link{knitrContainer-class}},
+  \code{\link{print_all}}, \code{\link{print}}
 }
 

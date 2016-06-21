@@ -50,7 +50,7 @@
 #' container %<>% add_as_section(obj = "Heading 6", level = 6)
 #'
 #' # Extract and print the contents of the container
-#' extract_and_print(container)
+#' print_all(container)
 #'
 #'
 #' # Operator `%<>%`

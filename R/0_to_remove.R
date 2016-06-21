@@ -83,7 +83,7 @@
 # #' @details
 # #' \code{add_as_expression()} takes unquoted expression and converts it to string.
 # #' The expression is going to be evaluated when function
-# #' \code{extract_and_print} is applied.\cr
+# #' \code{print_all} is applied.\cr
 # #'
 # add_as_expression <- function(container = NULL, obj){
 #     if (missing(obj)) stop("`obj` is missing.")

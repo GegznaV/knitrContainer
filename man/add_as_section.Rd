@@ -69,7 +69,7 @@ container \%<>\% add_as_section(obj = "Heading 5", level = 5)
 container \%<>\% add_as_section(obj = "Heading 6", level = 6)
 
 # Extract and print the contents of the container
-extract_and_print(container)
+print_all(container)
 
 
 # Operator `\%<>\%`
@@ -87,8 +87,8 @@ Vilmantas Gegzna
 \seealso{
 Other X.code.knitrContainer..functions: \code{\link{Join}},
   \code{\link{add_as_}}, \code{\link{as.knitrContainer}},
-  \code{\link{extract_and_print}},
-  \code{\link{knitrContainer-class}}, \code{\link{print}},
+  \code{\link{knitrContainer-class}},
+  \code{\link{print_all}}, \code{\link{print}},
   \code{\link{summary}}
 }
 

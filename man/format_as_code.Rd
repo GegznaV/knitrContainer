@@ -2,7 +2,7 @@
 % Please edit documentation in R/format_as_code.R
 \name{format_as_code}
 \alias{format_as_code}
-\title{Printed object, capture output and format it as R output for markdown file}
+\title{Format object to be printed as a code in a Markdown file}
 \usage{
 format_as_code(obj, comment = FALSE, highlight = "r", ...)
 }
@@ -25,7 +25,8 @@ code highlighting will be applied. Default is "r".}
 A vector of strings.
 }
 \description{
-Printed object, capture output and format it as R output for markdown file
+Function prints object, captures the output and formats it so that
+it will be printed as a piece of code in a Markdown file.
 }
 \details{
 Function prints the object \code{obj}

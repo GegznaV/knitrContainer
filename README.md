@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/knitrContainer)](https://cran.r-project.org/package=knitrContainer)
-[![GitHub version](https://img.shields.io/badge/GitHub-v0.0.13-brightgreen.svg)](https://github.com/GegznaV/knitrContainer) [![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer) [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master)
+[![GitHub version](https://img.shields.io/badge/GitHub-v0.0.14-brightgreen.svg)](https://github.com/GegznaV/knitrContainer) [![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer) [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master)
 
 Development version of R package **knitrContainer**
 ===================================================
@@ -44,7 +44,7 @@ Only 4 actions (in short: *"CASP"*) should be done for basic use of `knitrContai
 1.  **Create** a container (e.g. use function `knitrContainer()`);
 2.  **Add** objects to the container (use `add_as_*` family functions, e.g. `add_as_is()`);
 3.  **Set** option `results` to `results='asis'` in a chunk of R code in [`knitr`](http://yihui.name/knitr/) report file;
-4.  **Print** the collected objects appropriately by applying function `extract_and_print()` in the chunk which has option `results='asis'`.
+4.  **Print** the collected objects appropriately by applying function `print_all()` in the chunk which has option `results='asis'`.
 
 ### Example 1
 
@@ -58,7 +58,7 @@ container <- knitrContainer()
 # Collect
 container <- add_as_text(container, "Text to be added.")
 # Print
-extract_and_print(container)
+print_all(container)
 ```
 
 ### Example 2
@@ -100,5 +100,5 @@ Meaning of symbols in function descriptions:
 ------------------------------------------------------------------------
 
 <p align="right">
-File updated on <b>2016-06-20</b> with version of package <b>0.0.13</b>
+File updated on <b>2016-06-21</b> with version of package <b>0.0.14</b>
 </p>

@@ -1,11 +1,6 @@
 ---
 output: github_document
 ---
-```{r}
-
-```
-
-
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
  
@@ -73,7 +68,7 @@ Only 4 actions (in short: _"CASP"_) should be done for basic use of `knitrContai
 2. **Add** objects to the container (use `add_as_*` family functions, e.g. `add_as_is()`);
 3. **Set** option `results` to `results='asis'` in a chunk of R code in [`knitr`](http://yihui.name/knitr/) report file;
 4. **Print** the collected objects appropriately by applying
-function `extract_and_print()` in the chunk which has option `results='asis'`.
+function `print_all()` in the chunk which has option `results='asis'`.
   
 
 
@@ -89,7 +84,7 @@ container <- knitrContainer()
 # Collect
 container <- add_as_text(container, "Text to be added.")
 # Print
-extract_and_print(container)
+print_all(container)
 ```
 
 ### Example 2

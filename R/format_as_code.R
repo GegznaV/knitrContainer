@@ -1,5 +1,7 @@
+#' Format object to be printed as a code in a Markdown file
 #'
-#' Printed object, capture output and format it as R output for markdown file
+#' Function prints object, captures the output and formats it so that
+#' it will be printed as a piece of code in a Markdown file.
 #'
 #' @param obj An object to be printed and returned as strings.
 #'

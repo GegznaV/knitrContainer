@@ -69,7 +69,7 @@
 #'
 #' summary(container)
 #' print(container)
-#' extract_and_print(container)
+#' print_all(container)
 #'
 #' is.knitrContainer(container)
 #' is.knitrContainer(ggplot_obj)

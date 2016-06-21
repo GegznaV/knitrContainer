@@ -62,7 +62,7 @@ container <- add_as_is(container, plotly_obj)
 
 summary(container)
 print(container)
-extract_and_print(container)
+print_all(container)
 
 is.knitrContainer(container)
 is.knitrContainer(ggplot_obj)
@@ -84,9 +84,8 @@ Examples in vignette .
 
 Other X.code.knitrContainer..functions: \code{\link{Join}},
   \code{\link{add_as_section}}, \code{\link{add_as_}},
-  \code{\link{as.knitrContainer}},
-  \code{\link{extract_and_print}}, \code{\link{print}},
-  \code{\link{summary}}
+  \code{\link{as.knitrContainer}}, \code{\link{print_all}},
+  \code{\link{print}}, \code{\link{summary}}
 }
 \keyword{classes}
 

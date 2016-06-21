@@ -1,4 +1,4 @@
-# extract_and_print ----------------------------------------------------------------
+# print_all ----------------------------------------------------------------
 # @param results Value for \code{knitr} chunk parameter \code{results}.
 #  Default option is to set \code{results} to \code{asis}.
 
@@ -15,8 +15,7 @@
 #'  \code{\link[htmlwidgets]{htmlwidgets}} to show them correctly.
 #'
 #' @details
-#' Functions \code{extract_and_print()} and \code{print_objects()} are aliases.
-#' function \code{print_objects()} is deprecated.
+#' Functions \code{print_objects()} and \code{extract_and_print()} are deprecated.
 #'
 #' @template container
 #' @param env Environment in which evaluation of expressions an assignments
@@ -32,7 +31,7 @@
 #' @author Vilmantas Gegzna
 #' @family \code{knitrContainer} functions
 #'
-extract_and_print <- function(container, env = parent.frame(), ...) {
+print_all <- function(container, env = parent.frame(), ...){
     # STOP if:
 
     # -- if container inherits incorrectly
@@ -49,7 +48,6 @@ extract_and_print <- function(container, env = parent.frame(), ...) {
     # Extract and print all of the content
     for(j in 1:length(container)){
         x <- container[[j]]
-
 
         switch(added_as(x),
            # If x is a command (code-to-evaluate), evaluate it
@@ -120,11 +118,11 @@ extract_and_print <- function(container, env = parent.frame(), ...) {
     # since they do not get included with renderTags(...)$html
 
     # Find the htmlwidgets
-    widget_obj <- Filter(function(x){inherits(x,'htmlwidget')},container)
+    widget_objs <- Filter(function(x){inherits(x,'htmlwidget')},container)
 
     # Extract dependencies
     list_dependencies <- function(hw){htmltools::renderTags(hw)$dependencies}
-    deps <- lapply(widget_obj, list_dependencies)
+    deps <- lapply(widget_objs, list_dependencies)
 
     # Attach dependencies
     htmltools::attachDependencies(
@@ -134,10 +132,18 @@ extract_and_print <- function(container, env = parent.frame(), ...) {
 
 #  ------------------------------------------------------------------------
 #' @export
-#' @rdname extract_and_print
-print_objects <- function(container, ...){
-    .Deprecated("extract_and_print")
-    extract_and_print(container, ...)
+#' @rdname print_all
+extract_and_print <- function(container, env = parent.frame(), ...) {
+    .Deprecated("print_all")
+    print_all(container, env = env, ...)
+}
+
+#  ------------------------------------------------------------------------
+#' @export
+#' @rdname print_all
+print_objects <- function(container, env = parent.frame(), ...){
+    .Deprecated("print_all")
+    print_all(container, env = env, ...)
 }
 #  ------------------------------------------------------------------------
 # %>% knitr::asis_output(.)
