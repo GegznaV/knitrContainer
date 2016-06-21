@@ -1,12 +1,5 @@
 context("Deprecated_functions")
 
-## TODO: Rename context
-## TODO: Add more tests
-
-test_that("function add_as_code() marked as deprecated", {
-  expect_warning(add_as_code(obj = print("x")))
-})
-
 
 #  ------------------------------------------------------------------------
 

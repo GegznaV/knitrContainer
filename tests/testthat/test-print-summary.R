@@ -77,8 +77,11 @@ test_that("Column `Preview` of summary.knitrContainer() is correct.", {
     cont <- add_as_data(cont, cars)
     cont <- add_as_command(cont, summary(cars))
     cont <- add_as_is(cont, cars)
-    cont <- add_as_printed(cont, cars)
-    cont <- add_as_printed_r(cont, cars)
+    cont <- add_as_code(cont, cars)
+    cont <- add_as_code_r(cont, cars)
+    cont <- add_as_code_js(cont, cars)
+    cont <- add_as_output(cont, cars)
+
 
     # Values in `Preview`
     summary_4 <- capture.output(summary(cont))
@@ -88,6 +91,8 @@ test_that("Column `Preview` of summary.knitrContainer() is correct.", {
     expect_match(summary_4[10],"4 As is")
     expect_match(summary_4[11],"```")
     expect_match(summary_4[12],"```r")
+    expect_match(summary_4[13],"```js")
+    expect_match(summary_4[14],"``` ##")
 
 })
 

@@ -5,15 +5,15 @@
 \alias{add_as_cmd}
 \alias{add_as_cmd_str}
 \alias{add_as_code}
+\alias{add_as_code_js}
+\alias{add_as_code_r}
 \alias{add_as_command}
 \alias{add_as_data}
 \alias{add_as_is}
+\alias{add_as_output}
 \alias{add_as_pander}
 \alias{add_as_paragraph}
 \alias{add_as_plotly_widget}
-\alias{add_as_printed}
-\alias{add_as_printed_r}
-\alias{add_as_r_output}
 \alias{add_as_strings}
 \alias{add_as_text}
 \title{Add object to \code{knitrContainer}}
@@ -24,6 +24,12 @@ add_as_plotly_widget(container = NULL, obj)
 
 add_as_pander(container = NULL, obj, ...)
 
+add_as_text(container = NULL, obj)
+
+add_as_paragraph(container = NULL, obj)
+
+add_as_strings(container = NULL, obj)
+
 add_as_data(container = NULL, obj, give.name = match.call()$obj \%>\% c
   \%>\% as.character \%>\% make.names \%>\% substr(1, 60))
 
@@ -33,19 +39,13 @@ add_as_cmd(container = NULL, obj)
 
 add_as_cmd_str(container = NULL, obj)
 
-add_as_code(container = NULL, obj)
+add_as_code(container = NULL, obj, comment = FALSE, highlight = FALSE)
 
-add_as_printed(container = NULL, obj, comment = FALSE, highlight = FALSE)
+add_as_code_r(container = NULL, obj, comment = FALSE, highlight = "r")
 
-add_as_printed_r(container = NULL, obj, comment = FALSE, highlight = "r")
+add_as_code_js(container = NULL, obj, comment = FALSE, highlight = "js")
 
-add_as_r_output(container = NULL, obj, comment = FALSE, highlight = "r")
-
-add_as_text(container = NULL, obj)
-
-add_as_paragraph(container = NULL, obj)
-
-add_as_strings(container = NULL, obj)
+add_as_output(container = NULL, obj, comment = TRUE, highlight = FALSE)
 }
 \arguments{
 \item{container}{\code{knitr_container} object.}
@@ -94,7 +94,7 @@ plots and not \code{plotly} plots.
 
 \code{add_as_text()} converts \code{obj} to \code{\link[base]{character}},
  formats as \bold{text} and includes it in the \code{container}. Function
- \code{extract_and_print} will print it as text.
+ \code{extract_and_print} will print it as text (`as-is`).
 
 \code{\link{add_as_section}()} converts \code{obj} to
 \code{\link[base]{character}},
@@ -111,6 +111,12 @@ plots and not \code{plotly} plots.
  Writer's function \code{\link[pander]{pander}} and includes it in the
 \code{container}. Function \code{extract_and_print} will print the object
 as text.
+
+\code{add_as_paragraph} is the same as \code{add_as_text} - converts input to
+chatacter vector and saves it as one paragraph.\cr
+
+\code{add_as_strings} converts input to vectors of chatacter and saves every
+vector as sepatate strings (i.e. separate paragraphs).\cr
 
 \code{add_as_data()} adds object (data frame, list, vector, etc.) to the
 container.
@@ -129,20 +135,17 @@ The expression is going to be evaluated when function
 \code{add_as_cmd_str()} is the same as \code{add_as_command()}, just object
 must be entered entered as a string.
 
-\code{add_as_r_output()} saves object as strings and prints as R output
-text. \cr
+\code{add_as_code()} saves object as text and prints it formatted as code
+(i.e., as formatted text). \cr
 
-\code{add_as_r_output()} saves object as strings and prints as R output
-text. \cr
+\code{add_as_code_r()} saves object as text and prints it formatted as
+R code text. \cr
 
-\code{add_as_r_output()} saves object as strings and prints as R output
-text. \cr
+\code{add_as_code_js()} saves object as text and prints it formatted as
+Java Script code. \cr
 
-\code{add_as_paragraph} is the same as \code{add_as_text} - converts input to
-chatacter vector and saves it as one paragraph.\cr
-
-\code{add_as_strings} converts input to vectors of chatacter and saves every
-vector as sepatate strings (i.e. separate paragraphs).\cr
+\code{add_as_output()} saves object as text and prints it formatted as
+output text. \cr
 }
 \examples{
 # Find examples in link `knitrContainer-class`

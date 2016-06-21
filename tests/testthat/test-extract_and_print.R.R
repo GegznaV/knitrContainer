@@ -95,6 +95,9 @@ test_that("extract_and_print(), add_as_command() works correnctly", {
 
 })
 
+#  ------------------------------------------------------------------------
+
+
 test_that("extract_and_print(), add_as_cmd() works correnctly", {
 
 
@@ -154,7 +157,7 @@ test_that("extract_and_print(), add_as_cmd_str() works correnctly", {
 
 #  ------------------------------------------------------------------------
 
-test_that("Text output of extract_and_print() is correct.", {
+test_that("text added with `add_as_text()` and `add_as_is()` is printed with `extract_and_print()`", {
     cont <- add_as_text(obj = "TEST")
     cont <- add_as_is(cont, obj = "TEST")
     OUTPUT  <- capture.output(extract_and_print(cont))

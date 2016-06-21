@@ -177,19 +177,19 @@ container <- add_as_heading2(container, "As pander table")
 container <- add_as_pander(container, SUMMARY)
 
 # Add as R output text
-container <- add_as_heading2(container, "As R output text")
-
-container <- add_as_text(container, "Highlighted as R code")
-container <- add_as_r_output(container, SUMMARY)
+container <- add_as_heading2(container, "As Code/ Output Text")
 
 container <- add_as_text(container, "Not highlighted")
-container <- add_as_r_output(container, SUMMARY, highlight = FALSE)
+container <- add_as_code(container, SUMMARY)
 
-container <- add_as_text(container, "With default `knitr` comments")
-container <- add_as_r_output(container, SUMMARY, comment = TRUE)
+container <- add_as_text(container, "Highlighted as R code")
+container <- add_as_code_r(container, SUMMARY)
 
-container <- add_as_text(container, "With custom comments")
-container <- add_as_r_output(container, SUMMARY, comment = "#$#>")
+container <- add_as_text(container, "Output with default `knitr` comments")
+container <- add_as_output(container, SUMMARY)
+
+container <- add_as_text(container, "Output with custom comments")
+container <- add_as_output(container, SUMMARY, comment = "#$#>")
 
 # Add as text = Add as one paragraph
 container <- add_as_heading2(container, "As text/paragraph")

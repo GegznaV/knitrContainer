@@ -35,7 +35,7 @@ test_that("attribute `added_as` is added correctly.", {
 
     expect_error(add_as_plotly_widget(obj = "text"))
 
-    # As pander ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # As Pander ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     expect_match(added_as(add_as_pander(obj  = "text")[[1]]),  "Pander")
 
     # As section ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,10 +46,11 @@ test_that("attribute `added_as` is added correctly.", {
     expect_match(added_as(add_as_heading3(obj   = "text")[[1]]),   "Section")
     expect_match(added_as(add_as_heading4(obj   = "text")[[1]]),   "Section")
 
-    # As Output ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    expect_match(added_as(add_as_r_output(obj   = "text")[[1]]), "Printed")
-    expect_match(added_as(add_as_printed(obj    = "text")[[1]]), "Printed")
-    expect_match(added_as(add_as_printed_r(obj  = "text")[[1]]), "Printed")
+    # As Code/Output ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    expect_match(added_as(add_as_code(   obj   = "text")[[1]]), "Printed")
+    expect_match(added_as(add_as_code_r( obj   = "text")[[1]]), "Printed")
+    expect_match(added_as(add_as_code_js(obj   = "text")[[1]]), "Printed")
+    expect_match(added_as(add_as_output( obj   = "text")[[1]]), "Printed")
 
     # As Code to evaluate  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     expect_match(added_as(add_as_command(obj =  print("text"))[[1]]),  "Command")
