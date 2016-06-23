@@ -51,7 +51,6 @@ test_that("print_all() and add_as_data() works correnctly", {
     print_all(cont1)
     expect_true("mtcars" %in% ls())
 
-
     # Capture and correct the name
     cont2 <- add_as_data(obj = mtcars$cyl)
     print_all(cont2)

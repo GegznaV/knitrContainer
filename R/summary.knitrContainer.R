@@ -65,7 +65,7 @@ summary.knitrContainer <- function(object, n = 100, preview = 40, units = "Kb", 
                     {
                         paste(gsub("[\r\n]", " ", x), collapse = " ")
                     } else if (added_as(x) == "Data"){
-                        attributes(x)$name
+                        attributes(x)$NameOfDataset
                     } else {
                         " "
                     }

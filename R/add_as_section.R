@@ -1,4 +1,4 @@
-#' @title Add object as a heading/section name to \code{knitrContainer}
+#' @title Add text as a heading/section name to \code{knitrContainer}
 #'
 #' @description
 #' \code{add_as_section()} converts \code{obj} to \code{\link[base]{character}},
@@ -6,7 +6,7 @@
 #'  \code{container}. Function \code{print_objects} will print the object as text.
 #'
 #' @template container
-#' @template obj
+#' @param obj A string (a piece of text).
 #' @param level The level of heading/section to be added. Default is 1
 #'        (top level section).
 #'

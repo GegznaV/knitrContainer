@@ -30,6 +30,14 @@ add_as_paragraph(container = NULL, obj)
 
 add_as_strings(container = NULL, obj)
 
+add_as_code(container = NULL, obj, comment = FALSE, highlight = FALSE)
+
+add_as_code_r(container = NULL, obj, comment = FALSE, highlight = "r")
+
+add_as_code_js(container = NULL, obj, comment = FALSE, highlight = "js")
+
+add_as_output(container = NULL, obj, comment = TRUE, highlight = FALSE)
+
 add_as_data(container = NULL, obj, give.name = match.call()$obj \%>\% c
   \%>\% as.character \%>\% make.names \%>\% substr(1, 60))
 
@@ -38,14 +46,6 @@ add_as_command(container = NULL, obj)
 add_as_cmd(container = NULL, obj)
 
 add_as_cmd_str(container = NULL, obj)
-
-add_as_code(container = NULL, obj, comment = FALSE, highlight = FALSE)
-
-add_as_code_r(container = NULL, obj, comment = FALSE, highlight = "r")
-
-add_as_code_js(container = NULL, obj, comment = FALSE, highlight = "js")
-
-add_as_output(container = NULL, obj, comment = TRUE, highlight = FALSE)
 }
 \arguments{
 \item{container}{\code{knitr_container} object.}
@@ -53,13 +53,6 @@ add_as_output(container = NULL, obj, comment = TRUE, highlight = FALSE)
 \item{obj}{An object to be added to the \code{container}.}
 
 \item{...}{Options to be passed to \code{\link[pander]{pander}}.}
-
-\item{give.name}{A string, that gives a name of a data set passed as
-\code{obj}.\cr
- **Default value** is the name passed as input \code{obj}.
- If the imput is is not a name of an object, then sequence of functions
- is applied to make a valind name from first 60 symbols of the input:
-\code{match.call()$obj \%>\% c \%>\% as.character \%>\% make.names \%>\% substr(1,60)}.}
 
 \item{comment}{Either logical or a string:\cr
  If \code{TRUE} - default \code{knitr} chunk of code comment symbols are
@@ -70,6 +63,13 @@ If a string, the entered symbols are used as comment symbols.}
 \item{highlight}{Either \code{NULL}, \code{FALSE} or a string with name of
 programming language for which rules of
 code highlighting will be applied. Default is "r".}
+
+\item{give.name}{A string, that gives a name of a data set passed as
+\code{obj}.\cr
+ **Default value** is the name passed as input \code{obj}.
+ If the imput is is not a name of an object, then sequence of functions
+ is applied to make a valind name from first 60 symbols of the input:
+\code{match.call()$obj \%>\% c \%>\% as.character \%>\% make.names \%>\% substr(1,60)}.}
 }
 \description{
 Functions to transform and add objects to \code{knitrContainer}.
@@ -118,6 +118,18 @@ chatacter vector and saves it as one paragraph.\cr
 \code{add_as_strings} converts input to vectors of chatacter and saves every
 vector as sepatate strings (i.e. separate paragraphs).\cr
 
+\code{add_as_code()} saves object as text and prints it formatted as code
+(i.e., as formatted text). \cr
+
+\code{add_as_code_r()} saves object as text and prints it formatted as
+R code text. \cr
+
+\code{add_as_code_js()} saves object as text and prints it formatted as
+Java Script code. \cr
+
+\code{add_as_output()} saves object as text and prints it formatted as
+output text. \cr
+
 \code{add_as_data()} adds object (data frame, list, vector, etc.) to the
 container.
 When function \code{print_all} the object is not printed, but just
@@ -134,18 +146,6 @@ The expression is going to be evaluated when function
 
 \code{add_as_cmd_str()} is the same as \code{add_as_command()}, just object
 must be entered entered as a string.
-
-\code{add_as_code()} saves object as text and prints it formatted as code
-(i.e., as formatted text). \cr
-
-\code{add_as_code_r()} saves object as text and prints it formatted as
-R code text. \cr
-
-\code{add_as_code_js()} saves object as text and prints it formatted as
-Java Script code. \cr
-
-\code{add_as_output()} saves object as text and prints it formatted as
-output text. \cr
 }
 \examples{
 # Find examples in link `knitrContainer-class`

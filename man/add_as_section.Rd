@@ -7,7 +7,7 @@
 \alias{add_as_heading4}
 \alias{add_as_section}
 \alias{add_as_subsection}
-\title{Add object as a heading/section name to \code{knitrContainer}}
+\title{Add text as a heading/section name to \code{knitrContainer}}
 \usage{
 add_as_section(container = NULL, obj, level = 1)
 
@@ -24,7 +24,7 @@ add_as_heading4(container = NULL, obj = "")
 \arguments{
 \item{container}{\code{knitr_container} object.}
 
-\item{obj}{An object to be added to the \code{container}.}
+\item{obj}{A string (a piece of text).}
 
 \item{level}{The level of heading/section to be added. Default is 1
 (top level section).}

@@ -181,92 +181,6 @@ add_as_strings <- function(container = NULL, obj){
     return(container)
 }
 
-
-#  add_as_data ----------------------------------------------------------------
-#' @rdname add_as_
-#' @export
-#' @param give.name A string, that gives a name of a data set passed as
-#' \code{obj}.\cr
-#'  **Default value** is the name passed as input \code{obj}.
-#'  If the imput is is not a name of an object, then sequence of functions
-#'  is applied to make a valind name from first 60 symbols of the input:
-#' \code{match.call()$obj \%>\% c \%>\% as.character \%>\% make.names \%>\% substr(1,60)}.
-#'
-#' @details
-#' \code{add_as_data()} adds object (data frame, list, vector, etc.) to the
-#' container.
-#' When function \code{print_all} the object is not printed, but just
-#'  extracted and assigned in the environment \code{env} (by default to the
-#'  parent frame) to the object which name is entered as value of parameter
-#'  \code{give.name}.
-add_as_data <- function(container = NULL, obj,
-                        give.name = match.call()$obj %>% c %>% as.character %>%
-                            make.names %>% substr(1,60)){
-    if (missing(obj)) stop("`obj` is missing.")
-
-    container <- as.knitrContainer(container)
-
-    obj <- added_as(obj, "Data")
-    attributes(obj)$name <- as.name(give.name)
-
-    container <- add_as_is(container,obj)
-    return(container)
-}
-
-#  add_as_command ---------------------------------------------------------
-#' @rdname add_as_
-#' @export
-#'
-#' @details
-#' \code{add_as_command()} takes \emph{unquoted} expression and
-#' converts it to a string.
-#' The expression is going to be evaluated when function
-#' \code{print_all} is applied.\cr
-add_as_command <- function(container = NULL, obj){
-    if (missing(obj)) stop("`obj` is missing.")
-
-    container <- as.knitrContainer(container)
-    # obj <- substitute(obj)  # problem as it is printed only once
-    obj <- substitute(obj) %>% c %>%  as.character
-    obj <- added_as(obj, "Command")
-    container <- add_as_is(container,obj)
-    return(container)
-}
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#' @rdname add_as_
-#' @export
-#'
-#' @details
-#' \code{add_as_cmd()} is the same as \code{add_as_command()}.
-#'
-add_as_cmd <- function(container = NULL, obj){
-    if (missing(obj)) stop("`obj` is missing.")
-
-    container <- as.knitrContainer(container)
-    obj <- substitute(obj) %>% c %>%  as.character
-    obj <- added_as(obj, "Command")
-    container <- add_as_is(container,obj)
-    return(container)
-}
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#' @rdname add_as_
-#' @export
-#'
-#' @details
-#' \code{add_as_cmd_str()} is the same as \code{add_as_command()}, just object
-#' must be entered entered as a string.
-#'
-add_as_cmd_str <- function(container = NULL, obj){
-    if (missing(obj)) stop("`obj` is missing.")
-    if (!is.character(obj)) stop("`obj` is not a string.")
-
-    container <- as.knitrContainer(container)
-    obj <- added_as(obj, "Command")
-    container <- add_as_is(container,obj)
-    return(container)
-}
-
-
 #  add_as_code ---------------------------------------------------------------
 #' @rdname add_as_
 #' @export
@@ -348,3 +262,86 @@ add_as_output <- function(container = NULL, obj, comment = TRUE,
 #  ------------------------------------------------------------------------
 
 
+#  add_as_data ----------------------------------------------------------------
+#' @rdname add_as_
+#' @export
+#' @param give.name A string, that gives a name of a data set passed as
+#' \code{obj}.\cr
+#'  **Default value** is the name passed as input \code{obj}.
+#'  If the imput is is not a name of an object, then sequence of functions
+#'  is applied to make a valind name from first 60 symbols of the input:
+#' \code{match.call()$obj \%>\% c \%>\% as.character \%>\% make.names \%>\% substr(1,60)}.
+#'
+#' @details
+#' \code{add_as_data()} adds object (data frame, list, vector, etc.) to the
+#' container.
+#' When function \code{print_all} the object is not printed, but just
+#'  extracted and assigned in the environment \code{env} (by default to the
+#'  parent frame) to the object which name is entered as value of parameter
+#'  \code{give.name}.
+add_as_data <- function(container = NULL, obj,
+                        give.name = match.call()$obj %>% c %>% as.character %>%
+                            make.names %>% substr(1,60)){
+    if (missing(obj)) stop("`obj` is missing.")
+
+    container <- as.knitrContainer(container)
+
+    obj <- added_as(obj, "Data")
+    attributes(obj)$NameOfDataset <- as.name(give.name)
+
+    container <- add_as_is(container,obj)
+    return(container)
+}
+
+#  add_as_command ---------------------------------------------------------
+#' @rdname add_as_
+#' @export
+#'
+#' @details
+#' \code{add_as_command()} takes \emph{unquoted} expression and
+#' converts it to a string.
+#' The expression is going to be evaluated when function
+#' \code{print_all} is applied.\cr
+add_as_command <- function(container = NULL, obj){
+    if (missing(obj)) stop("`obj` is missing.")
+
+    container <- as.knitrContainer(container)
+    # obj <- substitute(obj)  # problem as it is printed only once
+    obj <- substitute(obj) %>% c %>%  as.character
+    obj <- added_as(obj, "Command")
+    container <- add_as_is(container,obj)
+    return(container)
+}
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#' @rdname add_as_
+#' @export
+#'
+#' @details
+#' \code{add_as_cmd()} is the same as \code{add_as_command()}.
+#'
+add_as_cmd <- function(container = NULL, obj){
+    if (missing(obj)) stop("`obj` is missing.")
+
+    container <- as.knitrContainer(container)
+    obj <- substitute(obj) %>% c %>%  as.character
+    obj <- added_as(obj, "Command")
+    container <- add_as_is(container,obj)
+    return(container)
+}
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#' @rdname add_as_
+#' @export
+#'
+#' @details
+#' \code{add_as_cmd_str()} is the same as \code{add_as_command()}, just object
+#' must be entered entered as a string.
+#'
+add_as_cmd_str <- function(container = NULL, obj){
+    if (missing(obj)) stop("`obj` is missing.")
+    if (!is.character(obj)) stop("`obj` is not a string.")
+
+    container <- as.knitrContainer(container)
+    obj <- added_as(obj, "Command")
+    container <- add_as_is(container,obj)
+    return(container)
+}

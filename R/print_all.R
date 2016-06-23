@@ -52,11 +52,8 @@ print_all <- function(container, env = parent.frame(), ...){
         switch(added_as(x),
            # If x is a command (code-to-evaluate), evaluate it
            "Command" = {
-
                if (is.character(x)) {
                    eval(parse(text = x), envir = env)
-               # } else if (is.call(x)) {
-               #     eval(x, envir = env)
                } else {
                    warning(sprintf(paste(
                        "Object nr. %d is not a string (its class is: %s).",
@@ -69,11 +66,11 @@ print_all <- function(container, env = parent.frame(), ...){
            #  ------------------------------------------------------------------------
            # If x is added as data
            "Data" = {
-               NAME <- as.character(attributes(x)$name)
+               NAME <- as.character(attributes(x)$NameOfDataset)
 
                 # Strip off unnecessary attributes
-                attributes(x)$added_as <- NULL
-                attributes(x)$name     <- NULL
+                attributes(x)$added_as      <- NULL
+                attributes(x)$NameOfDataset <- NULL
 
                 # Evaluate/assign
                 assign(NAME, value = x, envir = env)
