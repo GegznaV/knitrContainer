@@ -12,7 +12,7 @@ format_as_code(obj, comment = FALSE, highlight = "r", ...)
 \item{comment}{Either logical or a string:\cr
  If \code{TRUE} - default \code{knitr} chunk of code comment symbols are
  used (usually \code{##}). \cr
-If \code{FALSE} (default) - no comment is used. \cr
+If \code{FALSE} (default) or  \code{NA} - no comment is used. \cr
 If a string, the entered symbols are used as comment symbols.}
 
 \item{highlight}{Either \code{NULL}, \code{FALSE} or a string with name of

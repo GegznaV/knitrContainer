@@ -1,0 +1,8 @@
+Collect and Print Multiple Objects in an R Markdown Report 
+
+Collect and Print `pander`, `plotly` and Other Objects in a `knitr`/ R Markdown Report
+
+--------------------------------------------------------------------
+
+add_as_verbatim
+

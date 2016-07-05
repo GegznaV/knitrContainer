@@ -1,6 +1,6 @@
 #' @name knitrContainer-package
 #' @docType package
-#' @title Collect and Print \pkg{pander}, \pkg{plotly} and Other Objects in a \pkg{knitr}/\pkg{rmarkdown} Report
+#' @title Collect and Print Multiple Objects in a \code{Knitr} R Markdown Report
 #'
 #' @description
 #' The purpose of \code{knitrContainer} is to collect objects (\bold{especially}

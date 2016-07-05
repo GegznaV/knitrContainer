@@ -3,7 +3,7 @@
 \docType{package}
 \name{knitrContainer-package}
 \alias{knitrContainer-package}
-\title{Collect and Print \pkg{pander}, \pkg{plotly} and Other Objects in a \pkg{knitr}/\pkg{rmarkdown} Report}
+\title{Collect and Print Multiple Objects in a \code{Knitr} R Markdown Report}
 \description{
 The purpose of \code{knitrContainer} is to collect objects (\bold{especially}
 ones generated in a loop) and print them in a \code{knitr}/\code{rmarkdown}

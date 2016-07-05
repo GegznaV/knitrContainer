@@ -8,7 +8,7 @@
 #' @param comment Either logical or a string:\cr
 #'  If \code{TRUE} - default \code{knitr} chunk of code comment symbols are
 #'  used (usually \code{##}). \cr
-#' If \code{FALSE} (default) - no comment is used. \cr
+#' If \code{FALSE} (default) or  \code{NA} - no comment is used. \cr
 #' If a string, the entered symbols are used as comment symbols.
 #'
 #' @param highlight Either \code{NULL}, \code{FALSE} or a string with name of
@@ -75,16 +75,24 @@
 
 format_as_code <- function(obj, comment = FALSE, highlight = "r", ...){
 
-    if (highlight==FALSE) highlight = NULL
+    if (highlight==FALSE | is.na(highlight)) {
+        highlight <- NULL
+    }
 
     # Chose comment
     if (isTRUE(comment)){
         comment <- knitr::opts_chunk$get("comment")
-    } else if (comment == FALSE) {
+        # If comment is NA or is FALSE
+        if (comment == FALSE | is.na(comment)) {
+            comment <- NULL
+        }
+    } else if (comment == FALSE | is.na(comment)) {
         comment <- NULL
     } else {
         comment <- as.character(comment)
     }
+
+
 
     # Format output text
     rez <- c(paste0("```", highlight),

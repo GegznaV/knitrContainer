@@ -21,6 +21,7 @@ knitr::opts_chunk$set(
   
 Development version of R package **knitrContainer** 
 ===================================================
+Collect and Print Multiple Objects in a `Knitr` R Markdown Report
 
 About `knitrContainer`
 ----------------------
