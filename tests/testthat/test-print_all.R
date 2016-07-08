@@ -69,35 +69,35 @@ test_that("print_all() and add_as_data() works correnctly", {
 
 #  ------------------------------------------------------------------------
 
-test_that("print_all(), add_as_command() works correnctly", {
-
-
-    # Expr 1
-    cont1 <- add_as_command(obj = print(1+3))
-    #Empty line is aded, thus select just the 1st element
-    expect_equal(capture.output(print_all(cont1))[1],
-                 capture.output(print(4)))
-
-    # Expr 2
-    cont2 <- add_as_command(obj = print(mtcars))
-    expect_identical(capture.output(print_all(cont2))[1:10],
-                     capture.output(print(mtcars))[1:10])
-
-    # Expre 3
-    expect_false("OBJ" %in% ls())
-
-    cont3 <- add_as_command(obj = OBJ <- mtcars)
-    print_all(cont3)
-
-    expect_true("OBJ" %in% ls())
-    expect_identical(OBJ, mtcars)
-
-})
+# test_that("print_all(), add_as_command() works correnctly", {
+#
+#
+#     # Expr 1
+#     cont1 <- add_as_command(obj = print(1+3))
+#     #Empty line is aded, thus select just the 1st element
+#     expect_equal(capture.output(print_all(cont1))[1],
+#                  capture.output(print(4)))
+#
+#     # Expr 2
+#     cont2 <- add_as_command(obj = print(mtcars))
+#     expect_identical(capture.output(print_all(cont2))[1:10],
+#                      capture.output(print(mtcars))[1:10])
+#
+#     # Expre 3
+#     expect_false("OBJ" %in% ls())
+#
+#     cont3 <- add_as_command(obj = OBJ <- mtcars)
+#     print_all(cont3)
+#
+#     expect_true("OBJ" %in% ls())
+#     expect_identical(OBJ, mtcars)
+#
+# })
 
 #  ------------------------------------------------------------------------
 
 
-test_that("print_all(), add_as_cmd() works correnctly", {
+test_that("print_all() and add_as_cmd() works correnctly", {
 
 
     # Expr 1
@@ -124,7 +124,7 @@ test_that("print_all(), add_as_cmd() works correnctly", {
 
 
 #  ------------------------------------------------------------------------
-test_that("print_all(), add_as_cmd_str() works correnctly", {
+test_that("print_all() and add_as_cmd_str() works correnctly", {
 
     # Icorrect classes of imput `obj`
     expect_error(add_as_cmd_str(obj = 1),          "`obj` is not a string.")

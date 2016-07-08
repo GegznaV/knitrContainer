@@ -18,10 +18,11 @@ knitr::opts_chunk$set(
 [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master)
 
 
+<!-- **knitrContainer** - collect and print multiple objects in a `Knitr` R Markdown report -->
   
-Development version of R package **knitrContainer** 
-===================================================
-Collect and Print Multiple Objects in a `Knitr` R Markdown Report
+R package `knitrContainer` 
+=============================
+
 
 About `knitrContainer`
 ----------------------

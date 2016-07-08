@@ -43,7 +43,7 @@ container <- knitrContainer()
 class(container)
 container
 
-## ------------------------------------------------------------------------
+## -------------------------------------------------
 # Section headings
 container <- add_as_section(container, "Plots")
 
@@ -99,7 +99,7 @@ container <- add_as_text(container, SUMMARY)
 container <- add_as_heading2(container, "As is")
 container <- add_as_is(container, SUMMARY)
 
-## ------------------------------------------------------------------------
+## -------------------------------------------------
 print(container)
 
 is.knitrContainer(container) 
@@ -109,19 +109,19 @@ as.knitrContainer(ggplot_obj)
 
 class(container)
 
-## ------------------------------------------------------------------------
+## -------------------------------------------------
 Join(container, container)   %>% length()
 
-## ------------------------------------------------------------------------
+## -------------------------------------------------
 Join(container, ggplot_obj)   %>% length()
 
-## ------------------------------------------------------------------------
+## -------------------------------------------------
 Join(ggplot_obj, plotly_obj)
 
-## ---- results = 'asis'---------------------------------------------------
+## ---- results = 'asis'----------------------------
 print_all(container)
 
-## ------------------------------------------------------------------------
+## -------------------------------------------------
 container2 <- knitrContainer()
 # Add as data and add as code to evaluate 
 
@@ -132,14 +132,14 @@ container2 %<>% add_as_data(mtcars, give.name = "cars_data")
 
 # Add as code to evaluate
 container2 %<>% add_as_text(
-    c("Use `add_as_command` to add unquoted code which manipulates the dataset ",
+    c("Use `add_as_cmd` to add unquoted code which manipulates the dataset ",
       "'cars_data', e.g. prints its variable names or plots it."))
-container2 %<>% add_as_command(print(names(cars_data[1:3])))
-container2 %<>% add_as_command(plot(cars_data[1:3]))
+container2 %<>% add_as_cmd(print(names(cars_data[1:3])))
+container2 %<>% add_as_cmd(plot(cars_data[1:3]))
 
-## ---- results = 'asis'---------------------------------------------------
+## ---- results = 'asis'----------------------------
 print_all(container2)
 
-## ----session info--------------------------------------------------------
+## ----session info---------------------------------
 devtools::session_info()
 

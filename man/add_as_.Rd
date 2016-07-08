@@ -7,12 +7,10 @@
 \alias{add_as_code}
 \alias{add_as_code_js}
 \alias{add_as_code_r}
-\alias{add_as_command}
 \alias{add_as_data}
 \alias{add_as_is}
 \alias{add_as_output}
 \alias{add_as_pander}
-\alias{add_as_paragraph}
 \alias{add_as_plotly_widget}
 \alias{add_as_strings}
 \alias{add_as_text}
@@ -26,8 +24,6 @@ add_as_pander(container = NULL, obj, ...)
 
 add_as_text(container = NULL, obj)
 
-add_as_paragraph(container = NULL, obj)
-
 add_as_strings(container = NULL, obj)
 
 add_as_code(container = NULL, obj, comment = FALSE, highlight = FALSE)
@@ -40,8 +36,6 @@ add_as_output(container = NULL, obj, comment = TRUE, highlight = FALSE)
 
 add_as_data(container = NULL, obj, give.name = match.call()$obj \%>\% c
   \%>\% as.character \%>\% make.names \%>\% substr(1, 60))
-
-add_as_command(container = NULL, obj)
 
 add_as_cmd(container = NULL, obj)
 
@@ -112,9 +106,6 @@ plots and not \code{plotly} plots.
 \code{container}. Function \code{print_all} will print the object
 as text.
 
-\code{add_as_paragraph} is the same as \code{add_as_text} - converts input to
-chatacter vector and saves it as one paragraph.\cr
-
 \code{add_as_strings} converts input to vectors of chatacter and saves every
 vector as sepatate strings (i.e. separate paragraphs).\cr
 
@@ -137,14 +128,12 @@ When function \code{print_all} the object is not printed, but just
  parent frame) to the object which name is entered as value of parameter
  \code{give.name}.
 
-\code{add_as_command()} takes \emph{unquoted} expression and
+\code{add_as_cmd()} takes \emph{unquoted} expression and
 converts it to a string.
 The expression is going to be evaluated when function
 \code{print_all} is applied.\cr
 
-\code{add_as_cmd()} is the same as \code{add_as_command()}.
-
-\code{add_as_cmd_str()} is the same as \code{add_as_command()}, just object
+\code{add_as_cmd_str()} is the same as \code{add_as_cmd()}, just object
 must be entered entered as a string.
 }
 \examples{

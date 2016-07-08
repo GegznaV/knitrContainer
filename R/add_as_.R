@@ -51,8 +51,6 @@
 #' \code{container}. Function \code{print_all} will print the object
 #' as text.
 #'
-#'
-#'
 #' @template container
 #' @template obj
 #'
@@ -145,17 +143,6 @@ add_as_text <- function(container = NULL, obj){
     return(container)
 }
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#' @rdname add_as_
-#' @export
-#' @details
-#' \code{add_as_paragraph} is the same as \code{add_as_text} - converts input to
-#' chatacter vector and saves it as one paragraph.\cr
-add_as_paragraph <- function(container = NULL, obj){
-    if (missing(obj)) stop("`obj` is missing.")
-    container <- add_as_text(container, obj)
-    return(container)
-}
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname add_as_
@@ -172,7 +159,7 @@ add_as_strings <- function(container = NULL, obj){
     obj <- capture.output(cat(as.character(obj), sep="\n"))
 
     # Add added_as TYPE
-    obj <- added_as(obj, "Strings")
+    obj <- added_as(obj, "Text")
 
     # Add to container
     container <- add_as_is(container, obj)
@@ -199,7 +186,7 @@ add_as_code <- function(container = NULL, obj, comment = FALSE,
     obj <- format_as_code(obj, comment, highlight)
 
     # Add added_as TYPE
-    obj <- added_as(obj, "Formatted")  # <----------------------- Pakeisti i "formatted"
+    obj <- added_as(obj, "Code")
 
     # Add to container
     container <- add_as_is(container, obj)
@@ -298,11 +285,11 @@ add_as_data <- function(container = NULL, obj,
 #' @export
 #'
 #' @details
-#' \code{add_as_command()} takes \emph{unquoted} expression and
+#' \code{add_as_cmd()} takes \emph{unquoted} expression and
 #' converts it to a string.
 #' The expression is going to be evaluated when function
 #' \code{print_all} is applied.\cr
-add_as_command <- function(container = NULL, obj){
+add_as_cmd <- function(container = NULL, obj){
     if (missing(obj)) stop("`obj` is missing.")
 
     container <- as.knitrContainer(container)
@@ -317,23 +304,7 @@ add_as_command <- function(container = NULL, obj){
 #' @export
 #'
 #' @details
-#' \code{add_as_cmd()} is the same as \code{add_as_command()}.
-#'
-add_as_cmd <- function(container = NULL, obj){
-    if (missing(obj)) stop("`obj` is missing.")
-
-    container <- as.knitrContainer(container)
-    obj <- substitute(obj) %>% c %>%  as.character
-    obj <- added_as(obj, "Command")
-    container <- add_as_is(container,obj)
-    return(container)
-}
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#' @rdname add_as_
-#' @export
-#'
-#' @details
-#' \code{add_as_cmd_str()} is the same as \code{add_as_command()}, just object
+#' \code{add_as_cmd_str()} is the same as \code{add_as_cmd()}, just object
 #' must be entered entered as a string.
 #'
 add_as_cmd_str <- function(container = NULL, obj){

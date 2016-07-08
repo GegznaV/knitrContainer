@@ -100,3 +100,58 @@
 #     return(container)
 # }
 #
+
+
+
+#  add_as_command ---------------------------------------------------------
+#' #' @rdname add_as_
+#' #' @export
+#' #'
+#' #' @details
+#' #' \code{add_as_command()} takes \emph{unquoted} expression and
+#' #' converts it to a string.
+#' #' The expression is going to be evaluated when function
+#' #' \code{print_all} is applied.\cr
+#' add_as_command <- function(container = NULL, obj){
+#'     if (missing(obj)) stop("`obj` is missing.")
+#'
+#'     container <- as.knitrContainer(container)
+#'     # obj <- substitute(obj)  # problem as it is printed only once
+#'     obj <- substitute(obj) %>% c %>%  as.character
+#'     obj <- added_as(obj, "Command")
+#'     container <- add_as_is(container,obj)
+#'     return(container)
+#' }
+#' # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#' #' @rdname add_as_
+#' #' @export
+#' #'
+#' #' @details
+#' #' \code{add_as_cmd()} is the same as \code{add_as_command()}.
+#' #'
+#' add_as_cmd <- function(container = NULL, obj){
+#'     if (missing(obj)) stop("`obj` is missing.")
+#'
+#'     container <- as.knitrContainer(container)
+#'
+#'     obj <- substitute(obj) %>% c %>%  as.character
+#'     obj <- added_as(obj, "Command")
+#'     container <- add_as_is(container,obj)
+#'     return(container)
+#' }
+#'
+#'
+
+
+# add_as_paragraph ------------------------------
+#' # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#' #' @rdname add_as_
+#' #' @export
+#' #' @details
+#' #' \code{add_as_paragraph} is the same as \code{add_as_text} - converts input to
+#' #' chatacter vector and saves it as one paragraph.\cr
+#' add_as_paragraph <- function(container = NULL, obj){
+#'     if (missing(obj)) stop("`obj` is missing.")
+#'     container <- add_as_text(container, obj)
+#'     return(container)
+#' }

@@ -71,11 +71,13 @@ test_that("Parameter `preview` in summary of knitrContainer() works", {
 #
 test_that("Column `Preview` of summary.knitrContainer() is correct.", {
 
+    knitr::opts_chunk$set(comment = "##")
+
     # Create container
     cont <- knitrContainer()
     cont <- add_as_text(cont, "Text")
     cont <- add_as_data(cont, cars)
-    cont <- add_as_command(cont, summary(cars))
+    cont <- add_as_cmd(cont, summary(cars))
     cont <- add_as_is(cont, cars)
     cont <- add_as_code(cont, cars)
     cont <- add_as_code_r(cont, cars)

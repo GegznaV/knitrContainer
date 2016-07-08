@@ -19,7 +19,7 @@
 #'
 #' @template container
 #' @param env Environment in which evaluation of expressions an assignments
-#' (objects added with \code{\link{add_as_command}} and \code{\link{add_as_data}})
+#' (objects added with \code{\link{add_as_cmd}} and \code{\link{add_as_data}})
 #' take place.
 #' @param ... not used.
 #' @export
@@ -32,6 +32,14 @@
 #' @family \code{knitrContainer} functions
 #'
 print_all <- function(container, env = parent.frame(), ...){
+    # # Warn if `knitr` code chunk option is not "asis"\
+    # if (knitr::opts_current$get("results") != "asis")
+    #     warning(paste('The option "results" of current chunk is not "asis".',
+    #                   'The output might be incorrect.',
+    #                   'Use option `results = "asis"`'))
+
+
+
     # STOP if:
 
     # -- if container inherits incorrectly

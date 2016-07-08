@@ -27,11 +27,15 @@ test_that("parameter `comment` of format_as_code() works", {
     knitr::opts_chunk$set(comment = "## >>>")
     rez4 <- format_as_code(NULL, comment = TRUE)
 
+    knitr::opts_chunk$set(comment = NA)
+    rez5 <- format_as_code(NULL, comment = TRUE)
+
     # Length of each output:
     expect_length(rez1,3)
     expect_length(rez2,3)
     expect_length(rez3,3)
     expect_length(rez4,3)
+    expect_length(rez5,3)
 
     # Symbols of comment
     expect_equal(rez1[2]," NULL")
@@ -42,6 +46,11 @@ test_that("parameter `comment` of format_as_code() works", {
 
     # reads `knitr::opts_chunk` correctly:
     expect_equal(rez4[2],"## >>> NULL")
+
+    # reads `knitr::opts_chunk` correctly:
+    expect_equal(rez5[2]," NULL")
+
+
 })
 #  ------------------------------------------------------------------------
 test_that("parameter `highlight` of format_as_code() works", {

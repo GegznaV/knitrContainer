@@ -74,7 +74,7 @@ add_as_section <- function(container = NULL, obj, level = 1){
                    #line adds required number of symbols (#):
                    paste0(rep("#",times = level), collapse = ""),
                    as.character(obj))
-    obj <- added_as(obj, "Section")
+    obj <- added_as(obj, "Heading")
     container <- add_as_is(container, obj)
     return(container)
 }
