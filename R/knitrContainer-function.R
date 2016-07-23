@@ -27,7 +27,9 @@
 #'
 knitrContainer <- function(){
     container <- list()
-    class(container) <- c("knitrContainer", setdiff(class(container), "knitrContainer"))
+    class(container) <- c("knitrContainer",
+                          setdiff(class(container), "knitrContainer"))
+    attr(container, "package") <- "knitrContainer"
     return(container)
 }
 

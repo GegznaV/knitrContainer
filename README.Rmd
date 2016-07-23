@@ -12,10 +12,16 @@ knitr::opts_chunk$set(
 )
 ```
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/knitrContainer)](https://cran.r-project.org/package=knitrContainer)  
+***
+
+[![CRAN version](http://www.r-pkg.org/badges/version/knitrContainer)](https://cran.r-project.org/package=knitrContainer)
 [![GitHub version](https://img.shields.io/badge/GitHub-v`r packageVersion("knitrContainer")`-brightgreen.svg)](https://github.com/GegznaV/knitrContainer)
 [![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer)
 [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master)
+[![Last-update](https://img.shields.io/badge/last%20update-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](/commits/master)
+
+***
+
 
 
 <!-- **knitrContainer** - collect and print multiple objects in a `Knitr` R Markdown report -->
@@ -129,8 +135,5 @@ Meaning of symbols in function descriptions:
 
 * * *
 
- <p align="right"> 
- File updated on <b>`r Sys.Date()`</b> with version of package  <b>`r packageVersion("knitrContainer")`</b>
- </p>    
 
 
