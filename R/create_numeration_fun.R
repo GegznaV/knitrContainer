@@ -14,7 +14,12 @@
 #'        markdown.
 #' @param add_space Logical. If \code{TRUE} (default), a space between prefix
 #'                 and the main body of caption/description is added.
-#' @param env An environment to store the count number.
+#' @param env (environment object) An environment to store the count number.
+#'
+#' @param varName (string) A string with variable name to be created in
+#'         environment `env` in which number of counts is stored.
+#'
+#'
 #'
 #' @return A function to number objects and add caption/description.
 #'         The default result of created function is a string.
@@ -67,16 +72,16 @@ create_numeration_fun <- function(prefix_start = NULL,
                           start_at     = 1L,
                           add_space    = TRUE,
                           prefix_bold  = TRUE,
-                          env = new.env()){
+                          env = new.env(),
+                          varName = make.names(paste0(prefix_start, prefix_end))){
 
-    # Create a name for counts
-    countName <- make.names(paste0(prefix_start, prefix_end))
+    # Create a variable name `varName` for counts in environment `env`
 
     if(start_at < 1)
         stop("`startAt` must be integer, greater than or equal to 1.")
 
     # Initialize count
-    if(is.null(env[[countName]])) assign(countName, start_at - 1 , envir = env)
+    if(is.null(env[[varName]])) assign(varName, start_at - 1 , envir = env)
 
     s_bold  <- if(prefix_bold)  "**" else ""
     s_space <- if(add_space)    " "  else ""
@@ -85,15 +90,15 @@ create_numeration_fun <- function(prefix_start = NULL,
 
         switch(output[1],
            count = {
-                count <- env[[countName]]
+                count <- env[[varName]]
                 return(count)
            },
 
            caption = {
                 # Add 1 or reset
-                count <- if (restart == TRUE) 1 else env[[countName]] + 1
+                count <- if (restart == TRUE) 1 else env[[varName]] + 1
                 # Save current count
-                assign(countName, count, envir = env)
+                assign(varName, count, envir = env)
 
                 # Create whole string and trim whitespace
                 res <- trimws(
@@ -114,32 +119,33 @@ create_numeration_fun <- function(prefix_start = NULL,
 #'
 #' @rdname create_numeration_fun
 #' @export
-create_numeration_fun0 <- function(fmt      = "%g %s",
+create_numeration_fun0 <- function(fmt = "%g %s",
                            start_at = 1L,
-                           env = new.env()){
+                           env = new.env(),
+                           varName = make.names(fmt)){
 
-    # Create a name for counts
-    countName <- make.names(fmt)
+    # Create a variable name `varName` for counts in environment `env`
 
     if(start_at < 1)
         stop("`startAt` must be integer, greater than or equal to 1.")
 
     # Initialize count
-    if(is.null(env[[countName]])) assign(countName, start_at - 1 , envir = env)
+    if(is.null(env[[varName]]))
+        assign(varName, start_at - 1 , envir = env)
 
     function(caption = "", restart = FALSE, output = c("caption","count")){
 
         switch(output[1],
            count = {
-                count <- env[[countName]]
+                count <- env[[varName]]
                 return(count)
            },
 
            caption = {
                 # Add 1 or reset
-                count <- if (restart == TRUE) 1 else env[[countName]] + 1
+                count <- if (restart == TRUE) 1 else env[[varName]] + 1
                 # Save current count
-                assign(countName, count, envir = env)
+                assign(varName, count, envir = env)
 
                 # Create whole string and trim whitespace
                 res <- sprintf(fmt, count, caption)

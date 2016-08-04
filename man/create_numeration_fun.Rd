@@ -6,9 +6,11 @@
 \title{Create function to number objects (figures, tables, etc.)}
 \usage{
 create_numeration_fun(prefix_start = NULL, prefix_end = NULL,
-  start_at = 1L, add_space = TRUE, prefix_bold = TRUE, env = new.env())
+  start_at = 1L, add_space = TRUE, prefix_bold = TRUE, env = new.env(),
+  varName = make.names(paste0(prefix_start, prefix_end)))
 
-create_numeration_fun0(fmt = "\%g \%s", start_at = 1L, env = new.env())
+create_numeration_fun0(fmt = "\%g \%s", start_at = 1L, env = new.env(),
+  varName = make.names(fmt))
 }
 \arguments{
 \item{prefix_start}{Sting that will be used in prefix \bold{before}
@@ -27,7 +29,10 @@ and the main body of caption/description is added.}
 used to enclose the prefix, ant it will be interpreted as bold in R
 markdown.}
 
-\item{env}{An environment to store the count number.}
+\item{env}{(environment object) An environment to store the count number.}
+
+\item{varName}{(string) A string with variable name to be created in
+environment `env` in which number of counts is stored.}
 
 \item{fmt}{a character vector of format strings, each of up to 8192 bytes
 to be passed to function \code{\link[base]{sprintf}}. \code{fmt}
