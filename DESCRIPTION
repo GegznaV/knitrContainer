@@ -33,7 +33,8 @@ Imports:
     htmltools,
     pander,
     utils,
-    knitr
+    knitr,
+    EBImage
 Suggests:
     rmarkdown,
     testthat
