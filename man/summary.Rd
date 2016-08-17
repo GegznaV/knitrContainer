@@ -41,7 +41,7 @@ Vilmantas Gegzna
 }
 \seealso{
 Other X.code.knitrContainer..functions: \code{\link{Join}},
-  \code{\link{add_as_section}}, \code{\link{add_as_}},
+  \code{\link{add_as_heading}}, \code{\link{add_as_}},
   \code{\link{as.knitrContainer}},
   \code{\link{knitrContainer-class}},
   \code{\link{print_all}}, \code{\link{print}}

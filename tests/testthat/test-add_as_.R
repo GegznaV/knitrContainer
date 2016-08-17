@@ -11,7 +11,7 @@ test_that("`add_as_*()` functions throw error when `obj` is missing.", {
     expect_error(add_as_text())
     expect_error(add_as_plotly_widget())
     expect_error(add_as_pander())
-    expect_error(add_as_section())
+    expect_error(add_as_heading())
 
     # expect_error(add_as_command())
     expect_error(add_as_cmd())
@@ -19,12 +19,15 @@ test_that("`add_as_*()` functions throw error when `obj` is missing.", {
     expect_error(add_as_data())
 
 
-    # expect_error(add_as_subsection())
     # expect_error(add_as_heading1())
     # expect_error(add_as_heading2())
     # expect_error(add_as_heading3())
     # expect_error(add_as_heading4())
+    # expect_error(add_as_heading5())
+    # expect_error(add_as_heading6())
 
+    # expect_error(add_as_section())
+    # expect_error(add_as_subsection())
 })
 
 

@@ -4,7 +4,7 @@
 #'
 #'
 #' @param figPath (vector of stings) relative or full path to original figure.
-#' @param figPath (vector of stings) relative or full path to thumblail.
+#' @param tnPath (vector of stings) relative or full path to thumblail.
 #'                By default, suffix "_small" is added to file name.
 #' @param w (integer|\code{NULL}) width of resized image in pixels.  Default is \code{300}.
 #' @param h (integer|\code{NULL}) height of resized image in pixels. Default is \code{NULL}.
@@ -21,20 +21,27 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' \dontCheck{
+#' figPath = "Figures/2016-08-02-11875.jpg"
 #'
-#'
-#' figPath = "Figures/2016-08-02/PAP_RK_2015/C15-1-11875.jpg"
-#'
-#' Full name of thumbnail
+#' # Full name of a thumbnail
 #' sep     <- .Platform$file.sep
 #' tnPath  <- sub(pattern     = paste0("(.*", sep, ")?(Figures)(", sep, ".*)"),
 #'               replacement = paste0("\\1\\2_small\\3"),
 #'              x = figPath)
 #'
+#' # Creates a thumbnail and returns a path to it.
+#'
 #' tn <- create_thumbnail(figPath)
 #'
 #' browseURL(tn)
 #' file.remove(tn)
+#'
+#' }}
+#'
+#' @importFrom utils installed.packages
+#' @import EBImage
 
 create_thumbnail <- function(figPath,
                              tnPath = sub("(.*)(\\..*?)$", "\\1_small\\2", figPath),
@@ -63,7 +70,6 @@ create_thumbnail <- function(figPath,
         {
             # Install package "EBImage" if missing
             if (!"EBImage"  %in% installed.packages()){
-                #' require("EBImage")
                 source("http://bioconductor.org/biocLite.R")
                 biocLite("EBImage")
             }

@@ -19,8 +19,8 @@ test_that("summary of knitrContainer() with 1 object is correct.", {
 
 test_that("Parameter `n` (which length is 1) in summary of knitrContainer() works", {
 
-    cont <- add_as_section(obj = "TEST")
-    cont <- add_as_subsection(cont, obj = "TEST")
+    cont <- add_as_heading1(obj = "TEST")
+    cont <- add_as_heading2(cont, obj = "TEST")
     cont <- add_as_text(cont, obj = "TEST")
 
     # Truncated number of lines
@@ -34,8 +34,8 @@ test_that("Parameter `n` (which length is 1) in summary of knitrContainer() work
 
 test_that("Parameter `n` (which length is 2) in summary of knitrContainer() works", {
 
-    cont <- add_as_section(obj = "TEST")
-    cont <- add_as_subsection(cont, obj = "TEST")
+    cont <- add_as_heading1(obj = "TEST")
+    cont <- add_as_heading2(cont, obj = "TEST")
     cont <- add_as_text(cont, obj = "TEST")
     cont <- add_as_text(cont, obj = "TEST")
     cont <- add_as_text(cont, obj = "TEST")
@@ -54,8 +54,8 @@ test_that("Parameter `n` (which length is 2) in summary of knitrContainer() work
 
 
 test_that("Parameter `preview` in summary of knitrContainer() works", {
-    cont <- add_as_section(obj = "TEST")
-    cont <- add_as_subsection(cont, obj = "TEST")
+    cont <- add_as_heading1(obj = "TEST")
+    cont <- add_as_heading2(cont, obj = "TEST")
     cont <- add_as_text(cont, obj = "TEST")
 
     # Truncated length of Preview field
@@ -111,8 +111,8 @@ test_that("Output of print.knitrContainer() is correct.", {
     expect_match(summary_1[7], "1 As is")
 
 
-    cont <- add_as_section(obj = "TEST")
-    cont <- add_as_subsection(cont, obj = "TEST")
+    cont <- add_as_heading1(obj = "TEST")
+    cont <- add_as_heading2(cont, obj = "TEST")
     cont <- add_as_text(cont, obj = "TEST")
 
     summary_2 <- capture.output(print(cont, n=2))
@@ -128,8 +128,8 @@ test_that("Output of print.knitrContainer() and summary.knitrContainer() match."
     print_EMPTY   <- capture.output(print(knitrContainer()))
     expect_equal(summary_EMPTY, print_EMPTY)
 
-    cont <- add_as_section(obj = "TEST")
-    cont <- add_as_subsection(cont, obj = "TEST")
+    cont <- add_as_heading1(obj = "TEST")
+    cont <- add_as_heading2(cont, obj = "TEST")
     cont <- add_as_text(cont, obj = "TEST")
     print_2   <- capture.output(print(cont,   n=2))
     summary_2 <- capture.output(summary(cont, n=2))

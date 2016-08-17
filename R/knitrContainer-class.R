@@ -43,26 +43,26 @@
 #'
 #'
 #' container <- knitrContainer()
-#' container <- add_as_section(container, "Plots")
+#' container <- add_as_heading1(container, "Plots")
 #'
-#' container <- add_as_section(container, "Add plotly", level = 2)
+#' container <- add_as_heading2(container, "Add plotly")
 #' container <- add_as_plotly_widget(container, plotly_obj)
 #'
-#' container <- add_as_section(container, "Add ggplot as plotly", level = 2)
+#' container <- add_as_heading2(container, "Add ggplot as plotly")
 #' container <- add_as_plotly_widget(container, ggplot_obj)
 #'
-#' container <- add_as_section(container, "Add ggplot", level = 2)
+#' container <- add_as_heading2(container, "Add ggplot")
 #' container <- add_as_is(container, ggplot_obj)
 #'
-#' container <- add_as_section(container, "Pander and text", level = 1)
+#' container <- add_as_heading1(container, "Pander and text")
 #'
-#' container <- add_as_section(container, "As pander", level = 2)
+#' container <- add_as_heading2(container, "As pander")
 #' container <- add_as_pander(container, summary(mtcars))
 #'
-#' container <- add_as_section(container, "As text", level = 2)
+#' container <- add_as_heading2(container, "As text")
 #' container <- add_as_text(container, summary(mtcars))
 #'
-#' container <- add_as_section(container, "As is", level = 2)
+#' container <- add_as_heading2(container, "As is")
 #' container <- add_as_is(container, summary(mtcars))
 #'
 #' container <- add_as_is(container, plotly_obj)

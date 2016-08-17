@@ -10,16 +10,19 @@
 #'
 #' @title Add object to \code{knitrContainer}
 #'
-#' @description Functions to transform and add objects to \code{knitrContainer}.
-#' Objects, that can be included in R \code{\link[base]{list}}, can also be
+#' @description Functions to transform and add objects to
+#' \code{knitrContainer}.
+#' Objects, that can be included in R \code{\link[base]{list}},
+#'  can also be
 #' included in \code{knitrContainer}.
 #'
-#' \code{\link{add_as_section}()} subfamily functions have separate description
+#' \code{\link{add_as_heading}()} subfamily functions have separate description
 #' page.
 #'
 #' @details
 #'
-#' Following functions convert and format an object \code{obj} such that it could
+#' Following functions convert and format an object \code{obj}
+#' such that it could
 #' be appropriatly printed (or evaluated) by applying function
 #' \code{\link{print_all}}().
 #'
@@ -35,7 +38,7 @@
 #'  formats as \bold{text} and includes it in the \code{container}. Function
 #'  \code{print_all} will print it as text (`as-is`).
 #'
-#' \code{\link{add_as_section}()} converts \code{obj} to
+#' \code{\link{add_as_heading}()} converts \code{obj} to
 #' \code{\link[base]{character}},
 #'  formats it as a \bold{heading of section} and includes it in the
 #'  \code{container}.
@@ -127,7 +130,7 @@ add_as_text <- function(container = NULL, obj){
     container <- as.knitrContainer(container)
 
     # Extract added_as TYPE before it is lost
-    # This line is needed by `add_as_section()` and its wrappers
+    # This line is needed by `add_as_heading()` and its wrappers
     TYPE <- added_as(obj) %if.NULL% "Text"
 
     # Transform obj to appropriate form

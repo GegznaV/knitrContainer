@@ -66,15 +66,18 @@ code highlighting will be applied. Default is "r".}
 \code{match.call()$obj \%>\% c \%>\% as.character \%>\% make.names \%>\% substr(1,60)}.}
 }
 \description{
-Functions to transform and add objects to \code{knitrContainer}.
-Objects, that can be included in R \code{\link[base]{list}}, can also be
+Functions to transform and add objects to
+\code{knitrContainer}.
+Objects, that can be included in R \code{\link[base]{list}},
+ can also be
 included in \code{knitrContainer}.
 
-\code{\link{add_as_section}()} subfamily functions have separate description
+\code{\link{add_as_heading}()} subfamily functions have separate description
 page.
 }
 \details{
-Following functions convert and format an object \code{obj} such that it could
+Following functions convert and format an object \code{obj}
+such that it could
 be appropriatly printed (or evaluated) by applying function
 \code{\link{print_all}}().
 
@@ -90,7 +93,7 @@ plots and not \code{plotly} plots.
  formats as \bold{text} and includes it in the \code{container}. Function
  \code{print_all} will print it as text (`as-is`).
 
-\code{\link{add_as_section}()} converts \code{obj} to
+\code{\link{add_as_heading}()} converts \code{obj} to
 \code{\link[base]{character}},
  formats it as a \bold{heading of section} and includes it in the
  \code{container}.
@@ -145,7 +148,7 @@ Vilmantas Gegzna
 }
 \seealso{
 Other X.code.knitrContainer..functions: \code{\link{Join}},
-  \code{\link{add_as_section}},
+  \code{\link{add_as_heading}},
   \code{\link{as.knitrContainer}},
   \code{\link{knitrContainer-class}},
   \code{\link{print_all}}, \code{\link{print}},

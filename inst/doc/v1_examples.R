@@ -43,24 +43,24 @@ container <- knitrContainer()
 class(container)
 container
 
-## -------------------------------------------------
+## ------------------------------------------------------------------------
 # Section headings
-container <- add_as_section(container, "Plots")
+container <- add_as_heading1(container, "Plots")
 
 # Add `plotly` objects as `htmlwidgets`
-container <- add_as_section(container, "Add `plotly` as `plotly htmlwidget`", level = 2)
+container <- add_as_heading2(container, "Add `plotly` as `plotly htmlwidget`")
 container <- add_as_plotly_widget(container, plotly_obj)
 
 # Add `ggplot` objects as plotly `htmlwidgets`
-container <- add_as_section(container, "Add `ggplot` as `plotly htmlwidget`", level = 2)
+container <- add_as_heading2(container, "Add `ggplot` as `plotly htmlwidget`")
 container <- add_as_plotly_widget(container, ggplot_obj)
 
 # Add `ggplot` objects as `ggplot` objects
-container <- add_as_section(container, "Add `ggplot` as-is", level = 2)
+container <- add_as_heading2(container, "Add `ggplot` as-is")
 container <- add_as_is(container, ggplot_obj)
 
 # If `plotly` objects are aded as-is, they might not be plotted
-container <- add_as_section(container, "Attention: Not Plotted", level = 1)
+container <- add_as_heading1(container, "Attention: Not Plotted")
 container <- add_as_is(container, plotly_obj)
 container <- add_as_text(container, paste("As you noticed, the last",  
       "`plotly` object was not plotted as it was added with ",  
@@ -99,7 +99,7 @@ container <- add_as_text(container, SUMMARY)
 container <- add_as_heading2(container, "As is")
 container <- add_as_is(container, SUMMARY)
 
-## -------------------------------------------------
+## ------------------------------------------------------------------------
 print(container)
 
 is.knitrContainer(container) 
@@ -109,19 +109,19 @@ as.knitrContainer(ggplot_obj)
 
 class(container)
 
-## -------------------------------------------------
+## ------------------------------------------------------------------------
 Join(container, container)   %>% length()
 
-## -------------------------------------------------
+## ------------------------------------------------------------------------
 Join(container, ggplot_obj)   %>% length()
 
-## -------------------------------------------------
+## ------------------------------------------------------------------------
 Join(ggplot_obj, plotly_obj)
 
-## ---- results = 'asis'----------------------------
+## ---- results = 'asis'---------------------------------------------------
 print_all(container)
 
-## -------------------------------------------------
+## ------------------------------------------------------------------------
 container2 <- knitrContainer()
 # Add as data and add as code to evaluate 
 
@@ -137,9 +137,9 @@ container2 %<>% add_as_text(
 container2 %<>% add_as_cmd(print(names(cars_data[1:3])))
 container2 %<>% add_as_cmd(plot(cars_data[1:3]))
 
-## ---- results = 'asis'----------------------------
+## ---- results = 'asis'---------------------------------------------------
 print_all(container2)
 
-## ----session info---------------------------------
+## ----session info--------------------------------------------------------
 devtools::session_info()
 

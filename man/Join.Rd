@@ -27,7 +27,7 @@ knitrContainer
 Vilmantas Gegzna
 }
 \seealso{
-Other X.code.knitrContainer..functions: \code{\link{add_as_section}},
+Other X.code.knitrContainer..functions: \code{\link{add_as_heading}},
   \code{\link{add_as_}}, \code{\link{as.knitrContainer}},
   \code{\link{knitrContainer-class}},
   \code{\link{print_all}}, \code{\link{print}},

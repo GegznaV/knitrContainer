@@ -11,6 +11,9 @@ create_thumbnail(figPath, tnPath = sub("(.*)(\\\\..*?)$", "\\\\1_small\\\\2",
 \arguments{
 \item{figPath}{(vector of stings) relative or full path to original figure.}
 
+\item{tnPath}{(vector of stings) relative or full path to thumblail.
+By default, suffix "_small" is added to file name.}
+
 \item{w}{(integer|\code{NULL}) width of resized image in pixels.  Default is \code{300}.}
 
 \item{h}{(integer|\code{NULL}) height of resized image in pixels. Default is \code{NULL}.}
@@ -26,9 +29,6 @@ thumbnail with the same name should be overwritten. Default is \code{FALSE}.}
 
 \item{...}{further parameters (except x, files and quality) to be passed to
 function \code{\link[EBImage]{writeImage}()}.}
-
-\item{figPath}{(vector of stings) relative or full path to thumblail.
-By default, suffix "_small" is added to file name.}
 }
 \value{
 Function creates a thumbnail and returns a path to to it.
@@ -37,20 +37,24 @@ Function creates a thumbnail and returns a path to to it.
 Create a thumbnail of an image.
 }
 \examples{
+\dontrun{
+\dontCheck{
+figPath = "Figures/2016-08-02-11875.jpg"
 
-
-figPath = "Figures/2016-08-02/PAP_RK_2015/C15-1-11875.jpg"
-
-Full name of thumbnail
+# Full name of a thumbnail
 sep     <- .Platform$file.sep
 tnPath  <- sub(pattern     = paste0("(.*", sep, ")?(Figures)(", sep, ".*)"),
               replacement = paste0("\\\\1\\\\2_small\\\\3"),
              x = figPath)
 
+# Creates a thumbnail and returns a path to it.
+
 tn <- create_thumbnail(figPath)
 
 browseURL(tn)
 file.remove(tn)
-require("EBImage")
+
+}}
+
 }
 

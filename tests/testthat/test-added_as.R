@@ -51,10 +51,14 @@ test_that("attribute `added_as` is added correctly (Heading).", {
     # As section ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     expect_match(added_as(add_as_section(obj    = "text")[[1]]),   "Heading")
     expect_match(added_as(add_as_subsection(obj = "text")[[1]]),   "Heading")
+
+    expect_match(added_as(add_as_heading (obj   = "text")[[1]]),   "Heading")
     expect_match(added_as(add_as_heading1(obj   = "text")[[1]]),   "Heading")
     expect_match(added_as(add_as_heading2(obj   = "text")[[1]]),   "Heading")
     expect_match(added_as(add_as_heading3(obj   = "text")[[1]]),   "Heading")
     expect_match(added_as(add_as_heading4(obj   = "text")[[1]]),   "Heading")
+    expect_match(added_as(add_as_heading5(obj   = "text")[[1]]),   "Heading")
+    expect_match(added_as(add_as_heading6(obj   = "text")[[1]]),   "Heading")
 })
 
 test_that("attribute `added_as` is added correctly (Code).", {
