@@ -68,11 +68,11 @@ create_thumbnail <- function(figPath,
 
         if (!file.exists(tnPath) | isTRUE(overwrite))
         {
-            # Install package "EBImage" if missing
-            if (!"EBImage"  %in% installed.packages()){
-                source("http://bioconductor.org/biocLite.R")
-                biocLite("EBImage")
-            }
+            # # Install package "EBImage" if missing
+            # if (!"EBImage"  %in% installed.packages()){
+            #     source("http://bioconductor.org/biocLite.R")
+            #     biocLite("EBImage")
+            # }
 
             # Get name of thumbnail's folder
             tnDir  <- dirname(tnPath)

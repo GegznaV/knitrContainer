@@ -12,7 +12,7 @@ Description: The purpose of `knitrContainer` is to collect objects (especially
              that is includible in R list, such as text/strings, objects printable
              with `pander`, as well as `ggplot2` and `plotly` plots, etc.
 Version: 0.0.21
-Date: 2016-08-17
+Date: 2016-08-18
 Encoding: UTF-8
 Authors@R: person("Vilmantas", "Gegzna", email = "GegznaV@gmail.com", role = c("aut", "cre"))
 Maintainer: Vilmantas Gegzna <GegznaV@gmail.com>
