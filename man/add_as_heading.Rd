@@ -14,29 +14,29 @@
 \usage{
 add_as_heading(container = NULL, obj, level = 1)
 
-add_as_section(container = NULL, obj = "", level = 1)
+add_as_section(container = NULL, obj, level = 1)
 
-add_as_subsection(container = NULL, obj = "")
+add_as_subsection(container = NULL, obj)
 
-add_as_heading1(container = NULL, obj = "")
+add_as_heading1(container = NULL, obj)
 
-add_as_heading2(container = NULL, obj = "")
+add_as_heading2(container = NULL, obj)
 
-add_as_heading3(container = NULL, obj = "")
+add_as_heading3(container = NULL, obj)
 
-add_as_heading4(container = NULL, obj = "")
+add_as_heading4(container = NULL, obj)
 
-add_as_heading5(container = NULL, obj = "")
+add_as_heading5(container = NULL, obj)
 
-add_as_heading6(container = NULL, obj = "")
+add_as_heading6(container = NULL, obj)
 }
 \arguments{
 \item{container}{\code{knitr_container} object.}
 
-\item{obj}{A string (a piece of text).}
+\item{obj}{(string) a piece of text to be used as heading.}
 
-\item{level}{The level of heading/section to be added. Default is 1
-(top level section).}
+\item{level}{(integer) The level of heading (between 1 and 6).
+1 is the top level section.}
 }
 \description{
 \code{add_as_heading()} converts \code{obj} to \code{\link[base]{character}},
@@ -84,11 +84,11 @@ container \%<>\% add_as_heading(obj = "Heading 6", level = 6)
 container \%<>\% add_as_section(obj = "Heading 1")
 container \%<>\% add_as_subsection(obj = "Heading 2")
 
-# Extract and print the contents of the container
+# Print the contents of the container
 print_all(container)
 
 
-# Operator `\%<>\%`
+# Operator `\%<>\%` updates the object `container`
   ?`\%<>\%`
 
 # These 2 lines are equivalent:

@@ -2,17 +2,17 @@ Package: knitrContainer
 Type: Package
 Title: Collect and Print Multiple Objects in a `Knitr` R Markdown Report
 Description: The purpose of `knitrContainer` is to collect objects (especially
-             those which are genereted in loops) to a list-type container and
-             print them in a `knitr`/ R Markdown report.
-             WHY? Some objects such as `pander` tables and `plotly` plots, are not
-             printed from inside a loop and are not displayed in `knitr` reports.
-             `knitrContainer` solves this problem by providing convenience
-             functions to get these objects printed and included in `HTML` files.
-             WHAT OBJECTS? An object used by `knitrContainer` can be any object,
-             that is includible in R list, such as text/strings, objects printable
-             with `pander`, as well as `ggplot2` and `plotly` plots, etc.
-Version: 0.0.21
-Date: 2016-08-18
+    those which are genereted in loops) to a list-type container and
+    print them in a `knitr`/ R Markdown report.
+    WHY? Some objects such as `pander` tables and `plotly` plots, are not
+    printed from inside a loop and are not displayed in `knitr` reports.
+    `knitrContainer` solves this problem by providing convenience
+    functions to get these objects printed and included in `HTML` files.
+    WHAT OBJECTS? An object used by `knitrContainer` can be any object,
+    that is includible in R list, such as text/strings, objects printable
+    with `pander`, as well as `ggplot2` and `plotly` plots, etc.
+Version: 0.0.22
+Date: 2016-08-19
 Encoding: UTF-8
 Authors@R: person("Vilmantas", "Gegzna", email = "GegznaV@gmail.com", role = c("aut", "cre"))
 Maintainer: Vilmantas Gegzna <GegznaV@gmail.com>
@@ -38,3 +38,23 @@ Imports:
 Suggests:
     rmarkdown,
     testthat
+Collate:
+    '0_to_remove.R'
+    'knitrContainer-class.R'
+    '1_knitrContainer-package.R'
+    'Join.R'
+    'add_as_.R'
+    'add_as_heading.R'
+    'added_as.R'
+    'as.knitrContainer.R'
+    'attach_obj.R'
+    'create_numeration_fun.R'
+    'create_thumbnail.R'
+    'extract.R'
+    'format_as_code.R'
+    'is.knitrContainer.R'
+    'knitrContainer-function.R'
+    'print.knitrContainer.R'
+    'print_all.R'
+    'replace.R'
+    'summary.knitrContainer.R'

@@ -45,6 +45,7 @@
 #'
 #' @import magrittr
 #' @importFrom utils capture.output object.size
+#' @include knitrContainer-class.R
 
 NULL
 #> NULL

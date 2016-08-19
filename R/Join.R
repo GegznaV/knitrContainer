@@ -36,3 +36,34 @@ Join <- function(..., list = NULL) {
 
     return(list)
 }
+
+
+#
+# #' @rdname Join
+# #' @inheritParams base::c
+# #'
+# #' @method c knitrContainer
+# #' @export
+# c.knitrContainer <- function(..., recursive = FALSE) {
+#
+#     list <- list(...)
+#
+#     # Convert non `knitrContainers` to `knitrContainers`
+#     list <- lapply(list, function(obj){
+#         if (!inherits(obj, "knitrContainer")){
+#             obj <- as.knitrContainer(obj)
+#         } else {
+#             obj
+#         }
+#     }
+#     )
+#
+#     # Merge and return the result
+#
+#     list %<>%
+#         Reduce(f = function(...) {c.default(...,
+#                                             recursive = recursive)}) %>%
+#         as.knitrContainer
+#
+#     return(list)
+# }

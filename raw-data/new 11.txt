@@ -1,0 +1,62 @@
+#' @section Regular expressions:
+#'
+#' \code{\link{regcapturedmatches}} \cr
+#' \code{\link{regexp2df}} \cr
+#'
+#'
+#' @section Various:
+#'
+#'
+#' \code{\link{bru}} \cr
+#' \code{\link{fCap}} \cr
+#' \code{\link{make_firstCapitals}} \cr
+#' \code{\link{list_functions}} \cr
+
+
+
+#' [.] Extract regular expression matches captured by names
+#'
+#' regcapturedmatches.R: extracts captured matches from match data obtained
+#'  by regexpr, gregexpr or regexec.
+#'
+#'
+#' @param x (A list of) strings.
+#' @param m Parsed data, a result from a regular expression function.
+#'
+#' @return A list with captured matches
+#'
+#'
+#' @author Daniel Marcelino / MrFlick
+#' @source
+#' \url{https://gist.github.com/danielmarcelino/8209cfdf2cd993eeb1b3}\cr
+#'
+#' \url{https://gist.github.com/MrFlick/10413321}\cr
+#'
+#' \url{http://stackoverflow.com/questions/33288075/from-matlab-to-r-capture-named-fields-with-regular-expressions-to-a-dataframe}
+#'
+#' @examples
+#'
+#' x<-c("larry:35,M","alison:22,F","dave","lily:55,F")
+#' m<-regexpr("(.*):(\\d+),([MF])", x, perl=TRUE)
+#' spTMP:::regcapturedmatches(x,m)
+#'
+# @export
+
+
+#' @details The syntax how to use \bold{named tokens} is: \cr
+#' '\emph{...}\bold{(?<}\emph{...}>\emph{...})\emph{...}' \cr
+#' '\emph{expr1}\bold{(?<}\emph{Name}\bold{>}\emph{expr-to-capture}\bold{)}\emph{expr2}'
+#'
+#' \itemize{
+#'   \item{ \bold{Name} - the name of the token.\emph{Note:} that spaces and
+#'   other special symbols,
+#'   inappropriate for variable names, are not allowed and will result in error.}
+#'   \item{ \bold{expr-to-capture} - regular expression to be captured as a
+#'   value of a variable.}
+#'   \item{\bold{expr1, expr2} - (optional) expressions, that must match, but
+#'   that are not captured.}
+#' }
+#' \cr
+
+
+

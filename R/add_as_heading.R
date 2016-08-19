@@ -6,9 +6,9 @@
 #'  \code{container}. Function \code{print_objects} will print the object as text.
 #'
 #' @template container
-#' @param obj A string (a piece of text).
-#' @param level The level of heading/section to be added. Default is 1
-#'        (top level section).
+#' @param obj (string) a piece of text to be used as heading.
+#' @param level (integer) The level of heading (between 1 and 6).
+#'               1 is the top level section.
 #'
 #'
 #' @details
@@ -56,11 +56,11 @@
 #' container %<>% add_as_section(obj = "Heading 1")
 #' container %<>% add_as_subsection(obj = "Heading 2")
 #'
-#' # Extract and print the contents of the container
+#' # Print the contents of the container
 #' print_all(container)
 #'
 #'
-#' # Operator `%<>%`
+#' # Operator `%<>%` updates the object `container`
 #'   ?`%<>%`
 #'
 #' # These 2 lines are equivalent:
@@ -77,53 +77,58 @@ add_as_heading <- function(container = NULL, obj, level = 1){
 
     container <- as.knitrContainer(container)
 
-    obj <- sprintf("\n\n%s %s\n\n  ",
+    # Process the string
+    obj <- sprintf("\n\n%s %s\n",
                    #line adds required number of symbols (#):
                    paste0(rep("#",times = level), collapse = ""),
                    as.character(obj))
+    # Add attributes
     obj <- added_as(obj, "Heading")
+    attr(obj, "heading_level") <- level
+
+    # Add object to container
     container <- add_as_is(container, obj)
     return(container)
 }
 #' @rdname add_as_heading
 #' @export
-add_as_section <- function(container = NULL, obj = "", level = 1){
+add_as_section <- function(container = NULL, obj, level = 1){
     add_as_heading(container = container, obj = obj, level = level)
 }
 
 #' @rdname add_as_heading
 #' @export
-add_as_subsection <- function(container = NULL, obj = ""){
+add_as_subsection <- function(container = NULL, obj){
     add_as_heading(container = container, obj = obj, level = 2)
 }
 #' @rdname add_as_heading
 #' @export
-add_as_heading1 <- function(container = NULL, obj = ""){
+add_as_heading1 <- function(container = NULL, obj){
     add_as_heading(container = container, obj = obj, level = 1)
 }
 #' @rdname add_as_heading
 #' @export
-add_as_heading2 <- function(container = NULL, obj = ""){
+add_as_heading2 <- function(container = NULL, obj){
     add_as_heading(container = container, obj = obj, level = 2)
 }
 #' @rdname add_as_heading
 #' @export
-add_as_heading3 <- function(container = NULL, obj = ""){
+add_as_heading3 <- function(container = NULL, obj){
     add_as_heading(container = container, obj = obj, level = 3)
 }
 #' @rdname add_as_heading
 #' @export
-add_as_heading4 <- function(container = NULL, obj = ""){
+add_as_heading4 <- function(container = NULL, obj){
     add_as_heading(container = container, obj = obj, level = 4)
 }
 #' @rdname add_as_heading
 #' @export
-add_as_heading5 <- function(container = NULL, obj = ""){
+add_as_heading5 <- function(container = NULL, obj){
     add_as_heading(container = container, obj = obj, level = 5)
 }
 #' @rdname add_as_heading
 #' @export
-add_as_heading6 <- function(container = NULL, obj = ""){
+add_as_heading6 <- function(container = NULL, obj){
     add_as_heading(container = container, obj = obj, level = 6)
 }
 #  ------------------------------------------------------------------------

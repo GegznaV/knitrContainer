@@ -104,12 +104,12 @@ print_all <- function(container, env = parent.frame(), ...){
                     # noquote critical here also turn off auto.asis very important
                     noquote(paste0(x, collapse = "\n")) %>% cat
 
-                } else  if (inherits(x,"htmlwidget")) {
+                } else if (inherits(x,"htmlwidget")) {
                     # print the html piece of the htmlwidgets
                     htmltools::renderTags(x)$html %>% cat
 
                 } else {
-                    # Remove aattribute "added_as" to prevent from printing it
+                    # Remove attribute "added_as" to prevent from printing it
                     attributes(x)$added_as <- NULL
                     # Print
                     print(x)

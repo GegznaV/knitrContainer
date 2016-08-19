@@ -3,7 +3,7 @@
 
 ------------------------------------------------------------------------
 
-[![CRAN version](http://www.r-pkg.org/badges/version/knitrContainer)](https://cran.r-project.org/package=knitrContainer) [![GitHub version](https://img.shields.io/badge/GitHub-v0.0.21-brightgreen.svg)](https://github.com/GegznaV/knitrContainer) [![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer) [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master) [![Last-update](https://img.shields.io/badge/last%20update-2016--08--18-yellowgreen.svg)](/commits/master)
+[![CRAN version](http://www.r-pkg.org/badges/version/knitrContainer)](https://cran.r-project.org/package=knitrContainer) [![GitHub version](https://img.shields.io/badge/GitHub-v0.0.22-brightgreen.svg)](https://github.com/GegznaV/knitrContainer) [![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer) [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master) [![Last-update](https://img.shields.io/badge/last%20update-2016--08--19-yellowgreen.svg)](/commits/master)
 
 ------------------------------------------------------------------------
 
