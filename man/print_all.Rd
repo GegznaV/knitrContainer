@@ -6,7 +6,7 @@
 \alias{print_objects}
 \title{[!] Print objects from \code{knitrContainer}}
 \usage{
-print_all(container, env = parent.frame(), ...)
+print_all(container, env = parent.frame(), print_widget = FALSE, ...)
 
 extract_and_print(container, env = parent.frame(), ...)
 
@@ -18,6 +18,9 @@ print_objects(container, env = parent.frame(), ...)
 \item{env}{Environment in which evaluation of expressions an assignments
 (objects added with \code{\link{add_as_cmd}} and \code{\link{add_as_data}})
 take place.}
+
+\item{print_widget}{Should htmlwidget be printed as an object(\code{TRUE})
+or not as html code (\code{FALSE} (default)).}
 
 \item{...}{not used.}
 }

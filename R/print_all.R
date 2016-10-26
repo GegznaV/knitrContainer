@@ -21,6 +21,8 @@
 #' @param env Environment in which evaluation of expressions an assignments
 #' (objects added with \code{\link{add_as_cmd}} and \code{\link{add_as_data}})
 #' take place.
+#' @param print_widget Should htmlwidget be printed as an object(\code{TRUE})
+#'                     or not as html code (\code{FALSE} (default)).
 #' @param ... not used.
 #' @export
 #'
@@ -31,14 +33,12 @@
 #' @author Vilmantas Gegzna
 #' @family \code{knitrContainer} functions
 #'
-print_all <- function(container, env = parent.frame(), ...){
+print_all <- function(container, env = parent.frame(), print_widget = FALSE, ...){
     # # Warn if `knitr` code chunk option is not "asis"\
     # if (knitr::opts_current$get("results") != "asis")
     #     warning(paste('The option "results" of current chunk is not "asis".',
     #                   'The output might be incorrect.',
     #                   'Use option `results = "asis"`'))
-
-
 
     # STOP if:
 
@@ -98,15 +98,20 @@ print_all <- function(container, env = parent.frame(), ...){
             #  If more types are need, following piece of code should be extended
             #  to handle appropriately.
            {
-                cat("  \n")
+                cat("\n")
+                # cat("  \n")
 
                 if (inherits(x, "character") & added_as(x)!= "As is"){
                     # noquote critical here also turn off auto.asis very important
                     noquote(paste0(x, collapse = "\n")) %>% cat
 
                 } else if (inherits(x,"htmlwidget")) {
-                    # print the html piece of the htmlwidgets
-                    htmltools::renderTags(x)$html %>% cat
+                    if (print_widget == FALSE){
+                        # print the html piece of the htmlwidgets
+                        htmltools::renderTags(x)$html %>% cat
+                    } else {
+                        print(x)
+                    }
 
                 } else {
                     # Remove attribute "added_as" to prevent from printing it
@@ -114,7 +119,8 @@ print_all <- function(container, env = parent.frame(), ...){
                     # Print
                     print(x)
                 }
-                cat("\n\n  ")
+                cat("\n\n")
+                # cat("\n\n  ")
            }
         ) #end switch
     }
