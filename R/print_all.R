@@ -113,6 +113,10 @@ print_all <- function(container, env = parent.frame(), print_widget = FALSE, ...
                         print(x)
                     }
 
+                } else if (inherits(x,"gtable")) {
+                    grid::grid.newpage()
+                    grid::grid.draw(x)
+
                 } else {
                     # Remove attribute "added_as" to prevent from printing it
                     attributes(x)$added_as <- NULL

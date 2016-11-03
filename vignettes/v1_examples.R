@@ -33,8 +33,8 @@ library(ggplot2)
 library(plotly)
 
 ## ------------------------------------------------------------------------
-plotly_obj <- plot_ly(economics, x = date, y = uempmed, type = "scatter",
-             showlegend = FALSE)
+plotly_obj <- plot_ly(CO2, x = ~conc, y = ~uptake,
+                       type = "box", showlegend = FALSE)
 
 ggplot_obj <- qplot(mpg, wt, data = mtcars, colour = cyl)
 
