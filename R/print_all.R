@@ -21,8 +21,8 @@
 #' @param env Environment in which evaluation of expressions an assignments
 #' (objects added with \code{\link{add_as_cmd}} and \code{\link{add_as_data}})
 #' take place.
-#' @param print_widget Should htmlwidget be printed as an object(\code{TRUE})
-#'                     or not as html code (\code{FALSE} (default)).
+#' @param widget_as_html (TURE, FALSE, "auto") Should htmlwidget be printed as
+#'        an HTML code or as an object (default is \code{"auto"}).
 #' @param ... not used.
 #' @export
 #'
@@ -33,12 +33,25 @@
 #' @author Vilmantas Gegzna
 #' @family \code{knitrContainer} functions
 #'
-print_all <- function(container, env = parent.frame(), print_widget = FALSE, ...){
-    # # Warn if `knitr` code chunk option is not "asis"\
-    # if (knitr::opts_current$get("results") != "asis")
-    #     warning(paste('The option "results" of current chunk is not "asis".',
-    #                   'The output might be incorrect.',
-    #                   'Use option `results = "asis"`'))
+print_all <- function(container, env = parent.frame(), widget_as_html = "auto", ...){
+
+    # Warn if `knitr` code chunk option is not "asis"\
+    knitr_rez <- knitr::opts_current$get("results")
+    inside_knitr <- !is.null(knitr_rez)
+
+    if (inside_knitr & !identical(knitr_rez,"asis")){
+        warning(
+            paste0('\nThe option "results" of the current knitr chunk is set to "',
+                  knitr_rez,'".\n',
+                      'This may lead to incorrect output.\n',
+                      'Use option `results = "asis"`')
+            )
+        }
+
+    # If function is called during knitting process and is rendered
+    # as HTML file, a widget is also printed as an HTML code:
+    if (widget_as_html == "auto")
+        widget_as_html <- !is.null(knitr::opts_knit$get("out.format"))
 
     # STOP if:
 
@@ -106,7 +119,7 @@ print_all <- function(container, env = parent.frame(), print_widget = FALSE, ...
                     noquote(paste0(x, collapse = "\n")) %>% cat
 
                 } else if (inherits(x,"htmlwidget")) {
-                    if (print_widget == FALSE){
+                    if (widget_as_html == TRUE){
                         # print the html piece of the htmlwidgets
                         htmltools::renderTags(x)$html %>% cat
                     } else {
@@ -132,20 +145,24 @@ print_all <- function(container, env = parent.frame(), print_widget = FALSE, ...
     # Attach the Dependencies ================================================
     # since they do not get included with renderTags(...)$html
 
-    # Find the htmlwidgets
-    widget_objs <- Filter(function(x){inherits(x,'htmlwidget')},container)
+    if(widget_as_html == TRUE) {
 
-    # Extract dependencies
-    list_dependencies <- function(hw){htmltools::renderTags(hw)$dependencies}
-    deps <- lapply(widget_objs, list_dependencies)
+        # Find the htmlwidgets
+        widget_objs <- Filter(function(x){inherits(x, 'htmlwidget')}, container)
 
-    # Attach dependencies
-    htmltools::attachDependencies(
-        htmltools::tagList(),
-        unlist(deps,recursive=FALSE))
+        # Extract dependencies
+        list_dependencies <- function(obj){htmltools::renderTags(obj)$dependencies}
+        dependencies <- lapply(widget_objs, list_dependencies)
+
+        # Attach dependencies
+        htmltools::attachDependencies(
+            htmltools::tagList(),
+            unlist(dependencies, recursive = FALSE)
+        )
+    }
 }
 
-#  ------------------------------------------------------------------------
+#  ---------------------------------------------------------------------------
 #' @export
 #' @rdname print_all
 extract_and_print <- function(container, env = parent.frame(), ...) {
@@ -153,12 +170,12 @@ extract_and_print <- function(container, env = parent.frame(), ...) {
     print_all(container, env = env, ...)
 }
 
-#  ------------------------------------------------------------------------
+#  ---------------------------------------------------------------------------
 #' @export
 #' @rdname print_all
 print_objects <- function(container, env = parent.frame(), ...){
     .Deprecated("print_all")
     print_all(container, env = env, ...)
 }
-#  ------------------------------------------------------------------------
+#  ---------------------------------------------------------------------------
 # %>% knitr::asis_output(.)

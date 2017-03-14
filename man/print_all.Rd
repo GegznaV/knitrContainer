@@ -6,7 +6,7 @@
 \alias{print_objects}
 \title{[!] Print objects from \code{knitrContainer}}
 \usage{
-print_all(container, env = parent.frame(), print_widget = FALSE, ...)
+print_all(container, env = parent.frame(), widget_as_html = "auto", ...)
 
 extract_and_print(container, env = parent.frame(), ...)
 
@@ -19,8 +19,8 @@ print_objects(container, env = parent.frame(), ...)
 (objects added with \code{\link{add_as_cmd}} and \code{\link{add_as_data}})
 take place.}
 
-\item{print_widget}{Should htmlwidget be printed as an object(\code{TRUE})
-or not as html code (\code{FALSE} (default)).}
+\item{widget_as_html}{(TURE, FALSE, "auto") Should htmlwidget be printed as
+an HTML code or as an object (default is \code{"auto"}).}
 
 \item{...}{not used.}
 }
