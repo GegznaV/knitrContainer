@@ -23,6 +23,10 @@ knitr::opts_chunk$set(
 ***
 
 
+```{r, fig.align='center', out.height='30%', out.width='30%',echo=FALSE}
+knitr::include_graphics("http://gegznav.github.io/kniterContainer/logo.png")
+```
+
 
 <!-- **knitrContainer** - collect and print multiple objects in a `Knitr` R Markdown report -->
   

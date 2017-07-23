@@ -1,0 +1,12 @@
+favicon: "favicon.png"
+
+template:
+  params:
+    bootswatch: sandstone
+
+navbar:
+  title: "knitrContainer | R package"
+  type: default
+  right:
+  - icon: fa-github fa-lg
+    href: https://github.com/GegznaV/knitrContainer

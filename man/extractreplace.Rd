@@ -2,9 +2,9 @@
 % Please edit documentation in R/extract.R
 \docType{methods}
 \name{[.knitrContainer}
-\alias{$.knitrContainer}
 \alias{[.knitrContainer}
 \alias{[[.knitrContainer}
+\alias{$.knitrContainer}
 \title{Extract and Replace parts of knitrContainer objects}
 \usage{
 \method{"["}{knitrContainer}(x, i, ..., section = NULL, level = 1,
@@ -73,4 +73,3 @@ element returned.
 }
 \keyword{manip}
 \keyword{methods}
-

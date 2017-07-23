@@ -76,16 +76,15 @@ Join(container, container)
 Join(container, ggplot_obj)
 Join(ggplot_obj)
 }
-\author{
-Vilmantas Gegzna
-}
 \seealso{
 Examples in vignette .
 
-Other X.code.knitrContainer..functions: \code{\link{Join}},
+Other \code{knitrContainer} functions: \code{\link{Join}},
   \code{\link{add_as_heading}}, \code{\link{add_as_}},
   \code{\link{as.knitrContainer}}, \code{\link{print_all}},
   \code{\link{print}}, \code{\link{summary}}
 }
+\author{
+Vilmantas Gegzna
+}
 \keyword{classes}
-

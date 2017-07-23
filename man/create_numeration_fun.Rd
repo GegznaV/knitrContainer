@@ -90,4 +90,3 @@ iSection <- create_numeration_fun("Section ")
 iSection(); iTable(); iSection(); iFig(); iSection();
 
 }
-

@@ -37,9 +37,7 @@ includible in an R list and that is printable, such as:
 \item{etc.}
 }
 }
-\author{
-Vilmantas Gegzna
-}
+
 \references{
 Some ideas for functions in \code{knitrContainer} package are taken from
  \href{https://github.com/ropensci/plotly/issues/273#issuecomment-217982315}{this answer} on github.com.
@@ -47,4 +45,6 @@ Some ideas for functions in \code{knitrContainer} package are taken from
 \seealso{
 \href{https://github.com/GegznaV/knitrContainer}{\code{knitrContainer}'s gitHub repository}.
 }
-
+\author{
+Vilmantas Gegzna
+}

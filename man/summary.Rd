@@ -18,13 +18,23 @@ Default \code{n = 100}.}
 \item{preview}{number of characters to be previewed in summary.
 Default is 40.}
 
-\item{units}{the units to be used in printing the size.  Allowed
-    values are
-    \code{"b"}, \code{"Kb"}, \code{"Mb"}, \code{"Gb"}, \code{"Tb"}, \code{"Pb"},
-    \code{"B"}, \code{"KB"}, \code{"MB"}, \code{"GB"}, \code{"TB"}, \code{"PB"},
-    \code{"KiB"}, \code{"MiB"}, \code{"GiB"}, \code{"TiB"},
-    \code{"PiB"}, \code{"EiB"}, \code{"ZiB"}, \code{"YiB"},
-    and \code{"auto"} (see \sQuote{Details}).  Can be abbreviated.}
+\item{units}{the units to be used in formatting and printing the size.
+    Allowed values for the different \code{standard}s are
+    \describe{
+      \item{\code{standard = "legacy"}:}{
+	\code{"b"}, \code{"Kb"}, \code{"Mb"}, \code{"Gb"}, \code{"Tb"}, \code{"Pb"},
+	\code{"B"}, \code{"KB"}, \code{"MB"}, \code{"GB"}, \code{"TB"} and \code{"PB"}.}
+      \item{\code{standard = "IEC"}:}{
+	\code{"B"}, \code{"KiB"}, \code{"MiB"}, \code{"GiB"},
+	\code{"TiB"}, \code{"PiB"}, \code{"EiB"}, \code{"ZiB"} and \code{"YiB"}.}
+      \item{\code{standard = "SI"}:}{
+	\code{"B"}, \code{"kB"}, \code{"MB"}, \code{"GB"}, \code{"TB"},
+	\code{"PB"}, \code{"EB"}, \code{"ZB"} and \code{"YB"}.}
+    }
+    For all standards, \code{unit = "auto"} is also allowed.
+    If \code{standard = "auto"}, any of the "legacy" and \acronym{IEC}
+    units are allowed.
+    See \sQuote{Formatting and printing object sizes} for details.}
 
 \item{...}{arguments to be passed to or from other methods.}
 }
@@ -36,14 +46,13 @@ Print summary of \code{knitrContainer} object.
 # Find examples in link `knitrContainer-class`
 
 }
-\author{
-Vilmantas Gegzna
-}
 \seealso{
-Other X.code.knitrContainer..functions: \code{\link{Join}},
+Other \code{knitrContainer} functions: \code{\link{Join}},
   \code{\link{add_as_heading}}, \code{\link{add_as_}},
   \code{\link{as.knitrContainer}},
   \code{\link{knitrContainer-class}},
   \code{\link{print_all}}, \code{\link{print}}
 }
-
+\author{
+Vilmantas Gegzna
+}

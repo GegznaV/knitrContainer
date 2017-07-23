@@ -32,4 +32,3 @@ If force.TYPE == TRUE, new value of `TYPE` will be added any way.
 \author{
 Vilmantas Gegzna
 }
-

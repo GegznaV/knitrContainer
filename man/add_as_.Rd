@@ -2,18 +2,18 @@
 % Please edit documentation in R/add_as_.R
 \name{add_as_}
 \alias{add_as_}
+\alias{add_as_is}
+\alias{add_as_plotly_widget}
+\alias{add_as_pander}
+\alias{add_as_text}
+\alias{add_as_strings}
+\alias{add_as_code}
+\alias{add_as_code_r}
+\alias{add_as_code_js}
+\alias{add_as_output}
+\alias{add_as_data}
 \alias{add_as_cmd}
 \alias{add_as_cmd_str}
-\alias{add_as_code}
-\alias{add_as_code_js}
-\alias{add_as_code_r}
-\alias{add_as_data}
-\alias{add_as_is}
-\alias{add_as_output}
-\alias{add_as_pander}
-\alias{add_as_plotly_widget}
-\alias{add_as_strings}
-\alias{add_as_text}
 \title{Add object to \code{knitrContainer}}
 \usage{
 add_as_is(container = NULL, obj)
@@ -143,15 +143,14 @@ must be entered entered as a string.
 # Find examples in link `knitrContainer-class`
 
 }
-\author{
-Vilmantas Gegzna
-}
 \seealso{
-Other X.code.knitrContainer..functions: \code{\link{Join}},
+Other \code{knitrContainer} functions: \code{\link{Join}},
   \code{\link{add_as_heading}},
   \code{\link{as.knitrContainer}},
   \code{\link{knitrContainer-class}},
   \code{\link{print_all}}, \code{\link{print}},
   \code{\link{summary}}
 }
-
+\author{
+Vilmantas Gegzna
+}

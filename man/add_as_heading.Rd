@@ -2,14 +2,14 @@
 % Please edit documentation in R/add_as_heading.R
 \name{add_as_heading}
 \alias{add_as_heading}
+\alias{add_as_section}
+\alias{add_as_subsection}
 \alias{add_as_heading1}
 \alias{add_as_heading2}
 \alias{add_as_heading3}
 \alias{add_as_heading4}
 \alias{add_as_heading5}
 \alias{add_as_heading6}
-\alias{add_as_section}
-\alias{add_as_subsection}
 \title{Add text as a heading (section name) to \code{knitrContainer}}
 \usage{
 add_as_heading(container = NULL, obj, level = 1)
@@ -97,14 +97,13 @@ print_all(container)
 
 
 }
-\author{
-Vilmantas Gegzna
-}
 \seealso{
-Other X.code.knitrContainer..functions: \code{\link{Join}},
+Other \code{knitrContainer} functions: \code{\link{Join}},
   \code{\link{add_as_}}, \code{\link{as.knitrContainer}},
   \code{\link{knitrContainer-class}},
   \code{\link{print_all}}, \code{\link{print}},
   \code{\link{summary}}
 }
-
+\author{
+Vilmantas Gegzna
+}
