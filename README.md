@@ -3,11 +3,11 @@
 
 ------------------------------------------------------------------------
 
-[![CRAN version](http://www.r-pkg.org/badges/version/knitrContainer)](https://cran.r-project.org/package=knitrContainer) [![GitHub version](https://img.shields.io/badge/GitHub-v0.0.27-brightgreen.svg)](https://github.com/GegznaV/knitrContainer) [![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer) [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master) [![Last-update](https://img.shields.io/badge/last%20update-2017--07--23-yellowgreen.svg)](/commits/master)
+[![CRAN version](http://www.r-pkg.org/badges/version/knitrContainer)](https://cran.r-project.org/package=knitrContainer) [![GitHub version](https://img.shields.io/badge/GitHub-v0.0.27-brightgreen.svg)](https://github.com/GegznaV/knitrContainer) [![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer) [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master) [![Last-update](https://img.shields.io/badge/last%20update-2017--07--24-yellowgreen.svg)](/commits/master)
 
 ------------------------------------------------------------------------
 
-<img src="https://raw.githubusercontent.com/GegznaV/knitrContainer/master/docs/logo.png" width="30%" height="30%" style="display: block; margin: auto;" />
+<img src="https://raw.githubusercontent.com/GegznaV/knitrContainer/master/docs/logo.png" width="40%" height="40%" style="display: block; margin: auto;" />
 
 <!-- **knitrContainer** - collect and print multiple objects in a `Knitr` R Markdown report -->
 R package `knitrContainer`

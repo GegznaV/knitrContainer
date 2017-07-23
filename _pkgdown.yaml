@@ -2,11 +2,21 @@ favicon: "favicon.png"
 
 template:
   params:
-    bootswatch: sandstone
+    bootswatch: spacelab
+
 
 navbar:
   title: "knitrContainer | R package"
   type: default
+  left:
+  - icon: fa-home fa-lg
+    href: /index.html
+  - text: Functions
+    href: reference/index.html
+  - text: Tutorials and Examples
+    menu:
+    - text: Examples how to use `knitrContainer`
+      href: articles/v1_examples.html
   right:
   - icon: fa-github fa-lg
     href: https://github.com/GegznaV/knitrContainer

@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 ***
 
 
-```{r, fig.align='center', out.height='30%', out.width='30%',echo=FALSE}
+```{r, fig.align='center', out.height='40%', out.width='40%',echo=FALSE}
 knitr::include_graphics("https://raw.githubusercontent.com/GegznaV/knitrContainer/master/docs/logo.png")
 ```
 
