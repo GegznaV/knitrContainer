@@ -45,7 +45,7 @@
 #'  Function \code{print_all} will print it as text.
 #'
 #' \code{add_as_plotly_widget()} converts \pkg{plotly} and \pkg{ggplot2} objects
-#'  to plotly htmlwidget (details in \code{\link[plotly]{as.widget}}) and
+#'  to plotly htmlwidget (details in \code{\link[plotly]{as_widget}}) and
 #'  includes it in the \code{container}. Function \code{print_all} will
 #'  print it as plotly htmlwidget and attach \code{html} dependencies.
 #'
@@ -88,7 +88,7 @@ add_as_plotly_widget <- function(container = NULL, obj){
 
     container <- as.knitrContainer(container)
 
-    obj <- plotly::as.widget(obj)
+    obj <- plotly::as_widget(obj)
     obj <- added_as(obj, "Plotly widget")
 
     container <- add_as_is(container,obj)
