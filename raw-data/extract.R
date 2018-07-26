@@ -1,5 +1,6 @@
 
 
+
 ###-----------------------------------------------------------------------------
 ###
 ### .extract - internal function doing the work for extracting with [] and [[]]
@@ -8,12 +9,11 @@
 ##' @noRd
 .extract <- function(x, i, j, l,
                      ...,
-                     wl.index = FALSE
-){
-    if (! missing (i))
-        x@data <- x@data[i,, drop = FALSE]
+                     wl.index = FALSE) {
+    if (!missing (i))
+        x@data <- x@data[i, , drop = FALSE]
 
-    if (!missing (j)){
+    if (!missing (j)) {
         x@data <- x@data[, j, drop = FALSE]
         x@label <- x@label[c (".wavelength", colnames(x@data))]
     }
@@ -25,7 +25,7 @@
             if (!wl.index)
                 l <- wl2i (x, l)
 
-            x@data$spc <- x@data$spc[,l, drop = FALSE]
+            x@data$spc <- x@data$spc[, l, drop = FALSE]
             .wl(x) <- x@wavelength[l]
         }
     }
@@ -88,32 +88,36 @@
 ##' @method "[" knitrContainer
 ##' @export
 "[.knitrContainer" <-
-          function (x, i, ...,
-                    section = NULL,
-                    level = 1,
-                    drop = FALSE)  # drop has to be at end
-          {
-              if (drop)  warning ("Ignoring `drop = TRUE`.")
-              #
-              dots <- list(...)
-              if (length(dots) > 0L)
-                  warning ("Ignoring additional parameters: ",
-                           paste(names(dots), collapse = ", "))
+    function(x,
+             i,
+             ...,
+             section = NULL,
+             level = 1,
+             drop = FALSE)
+        # drop has to be at end
+    {
+        if (drop)
+            warning("Ignoring `drop = TRUE`.")
+        #
+        dots <- list(...)
+        if (length(dots) > 0L)
+            warning ("Ignoring additional parameters: ",
+                     paste(names(dots), collapse = ", "))
 
-              unclass(x)
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              if (is.numeric(section)){
-                  x <- x[.which_section(x, level) %in% section]
-              }
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              if (missing(i))       {
-                  x <- x
-              } else {
-                  x <- unclass(x)[i, drop = drop]
-              }
-              as.knitrContainer(x) # return value
+        unclass(x)
+        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        if (is.numeric(section)) {
+            x <- x[.which_section(x, level) %in% section]
+        }
+        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        if (missing(i))       {
+            x <- x
+        } else {
+            x <- unclass(x)[i, drop = drop]
+        }
+        as.knitrContainer(x) # return value
 
-  }
+    }
 
 ##' @rdname extractreplace
 ##' @param name name of the data column to extract.
@@ -131,38 +135,45 @@
 ##' @param name name of the data column to extract.
 ##' @method "$" knitrContainer
 ##' @export
-"$.knitrContainer" <- function (x, name)
-    {
-        validObject(x)
-       if (name == ".") ## shortcut
-           data.frame(belongs_to_section = .which_section(a))
-       else if (name == ".."){
-           data.frame(belongs_to_section  = .which_section(a),
-                                 added_as = sapply(a, added_as))
-        } else
-            x[tolower(sapply(a, added_as)) %in% tolower(name)]
-   }
+"$.knitrContainer" <- function(x, name)
+{
+    validObject(x)
+    if (name == ".")
+        ## shortcut
+        data.frame(belongs_to_section = .which_section(a))
+    else if (name == "..") {
+        data.frame(belongs_to_section  = .which_section(a),
+                   added_as = sapply(a, added_as))
+    } else
+        x[tolower(sapply(a, added_as)) %in% tolower(name)]
+}
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.pastenames <- function (...)
+.pastenames <- function(...)
 {
     if (nargs() == 1L & is.list(..1))
         dots <- ..1
-    else dots <- list(...)
+    else
+        dots <- list(...)
     names <- names(dots)
     names <- sapply(names, function(x) {
         if (nchar(x) > 0L)
             sprintf("%s = ", x)
-        else ""
+        else
+            ""
     })
     paste(names, dots, collapse = ", ", sep = "")
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.which_section <- function(x, level = 1){
+.which_section <- function(x, level = 1) {
     hl <- function(xi) {
-        r <- attributes(xi)$heading_level;
-        if (is.null(r)) 0 else r
+        r <- attributes(xi)$heading_level
+
+        if (is.null(r))
+            0
+        else
+            r
     }
     (sapply(x, hl) == level)  %>% cumsum
 }

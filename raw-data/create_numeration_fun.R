@@ -120,9 +120,9 @@ create_numeration_fun <- function(prefix_start = NULL,
 #' @rdname create_numeration_fun
 #' @export
 create_numeration_fun0 <- function(fmt = "%g %s",
-                           start_at = 1L,
-                           env = new.env(),
-                           varName = make.names(fmt)){
+                           start_at    = 1L,
+                           env         = new.env(),
+                           varName     = make.names(fmt)){
 
     # Create a variable name `varName` for counts in environment `env`
 
