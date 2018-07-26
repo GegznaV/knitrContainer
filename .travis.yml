@@ -6,7 +6,5 @@ warnings_are_errors: false
 cache: packages
 r_github_packages:
   - jimhester/covr
-bioc_packages:
-  - EBImage
 after_success:
   - Rscript -e 'covr::codecov()'

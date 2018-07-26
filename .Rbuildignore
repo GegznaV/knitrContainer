@@ -8,3 +8,4 @@ README.Rmd
 Raw-data
 ^_pkgdown\.yml$
 ^docs$
+_pkgdown.yml

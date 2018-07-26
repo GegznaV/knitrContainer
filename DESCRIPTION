@@ -11,8 +11,8 @@ Description: The purpose of `knitrContainer` is to collect objects (especially
     WHAT OBJECTS? An object used by `knitrContainer` can be any object,
     that is includible in R list, such as text/strings, objects printable
     with `pander`, as well as `ggplot2` and `plotly` plots, etc.
-Version: 0.0.27
-Date: 2016-11-13
+Version: 0.0.28
+Date: 2017-07-26
 Encoding: UTF-8
 Authors@R: person("Vilmantas", "Gegzna", email = "GegznaV@gmail.com", role = c("aut", "cre"))
 Maintainer: Vilmantas Gegzna <GegznaV@gmail.com>
@@ -34,12 +34,11 @@ Imports:
     htmltools,
     pander,
     utils,
-    knitr,
-    EBImage
+    knitr
 Suggests:
     rmarkdown,
     testthat
-Collate:
+Collate: 
     '0_to_remove.R'
     'knitrContainer-class.R'
     '1_knitrContainer-package.R'
@@ -49,13 +48,9 @@ Collate:
     'added_as.R'
     'as.knitrContainer.R'
     'attach_obj.R'
-    'create_numeration_fun.R'
-    'create_thumbnail.R'
-    'extract.R'
     'format_as_code.R'
     'is.knitrContainer.R'
     'knitrContainer-function.R'
     'print.knitrContainer.R'
     'print_all.R'
-    'replace.R'
     'summary.knitrContainer.R'
