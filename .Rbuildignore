@@ -6,3 +6,5 @@ README.Rmd
 \.travis.yml
 ^\.travis\.yml$
 Raw-data
+^_pkgdown\.yml$
+^docs$
