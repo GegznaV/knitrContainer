@@ -34,7 +34,7 @@ library(plotly)
 
 ## ------------------------------------------------------------------------
 plotly_obj <- plot_ly(CO2, x = ~conc, y = ~uptake,
-                       type = "box", showlegend = FALSE)
+                      type = "box", showlegend = FALSE)
 
 ggplot_obj <- qplot(mpg, wt, data = mtcars, colour = cyl)
 

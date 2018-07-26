@@ -36,7 +36,7 @@
 #' library(plotly)
 #' library(ggplot2)
 #'
-#' plotly_obj <- plot_ly(economics, x = date, y = uempmed, type = "scatter",
+#' plotly_obj <- plot_ly(economics, x = ~date, y = ~uempmed, type = "scatter",
 #'              showlegend = FALSE)
 #'
 #' ggplot_obj <- qplot(mpg, wt, data = mtcars, colour = cyl)
