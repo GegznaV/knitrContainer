@@ -41,9 +41,6 @@ container <- add_as_heading1(container, "Plots")
 container <- add_as_heading2(container, "Add plotly")
 container <- add_as_plotly_widget(container, plotly_obj)
 
-container <- add_as_heading2(container, "Add ggplot as plotly")
-container <- add_as_plotly_widget(container, ggplot_obj)
-
 container <- add_as_heading2(container, "Add ggplot")
 container <- add_as_is(container, ggplot_obj)
 

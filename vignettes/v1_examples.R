@@ -26,7 +26,7 @@ optDEF <- knitr::opts_chunk$get()
 ## ---- eval = FALSE-------------------------------------------------------
 #  ?`%<>%`
 
-## ----Load main package, message = FALSE, warning = FALSE-----------------
+## ----Load main packages, message = FALSE, warning = FALSE----------------
 library(knitrContainer)
 
 library(ggplot2)
@@ -53,7 +53,7 @@ container <- add_as_plotly_widget(container, plotly_obj)
 
 # Add `ggplot` objects as plotly `htmlwidgets`
 container <- add_as_heading2(container, "Add `ggplot` as `plotly htmlwidget`")
-container <- add_as_plotly_widget(container, ggplot_obj)
+container <- add_as_plotly_widget(container, ggplotly(ggplot_obj))
 
 # Add `ggplot` objects as `ggplot` objects
 container <- add_as_heading2(container, "Add `ggplot` as-is")
@@ -110,10 +110,10 @@ as.knitrContainer(ggplot_obj)
 class(container)
 
 ## ------------------------------------------------------------------------
-Join(container, container)   %>% length()
+Join(container, container) %>% length()
 
 ## ------------------------------------------------------------------------
-Join(container, ggplot_obj)   %>% length()
+Join(container, ggplot_obj) %>% length()
 
 ## ------------------------------------------------------------------------
 Join(ggplot_obj, plotly_obj)

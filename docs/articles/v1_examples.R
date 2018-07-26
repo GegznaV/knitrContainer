@@ -53,7 +53,7 @@ container <- add_as_plotly_widget(container, plotly_obj)
 
 # Add `ggplot` objects as plotly `htmlwidgets`
 container <- add_as_heading2(container, "Add `ggplot` as `plotly htmlwidget`")
-container <- add_as_plotly_widget(container, ggplot_obj)
+container <- add_as_ggplotly(container, ggplot_obj)
 
 # Add `ggplot` objects as `ggplot` objects
 container <- add_as_heading2(container, "Add `ggplot` as-is")
@@ -62,8 +62,8 @@ container <- add_as_is(container, ggplot_obj)
 # If `plotly` objects are aded as-is, they might not be plotted
 container <- add_as_heading1(container, "Attention: Not Plotted")
 container <- add_as_is(container, plotly_obj)
-container <- add_as_text(container, paste("As you noticed, the last",  
-      "`plotly` object was not plotted as it was added with ",  
+container <- add_as_text(container, paste("As you noticed, the last",
+      "`plotly` object was not plotted as it was added with ",
       "`add_as_is()` and not with `add_as_plotly_widget()`"))
 
 # --- Calculations ---
@@ -102,10 +102,10 @@ container <- add_as_is(container, SUMMARY)
 ## ------------------------------------------------------------------------
 print(container)
 
-is.knitrContainer(container) 
+is.knitrContainer(container)
 is.knitrContainer(ggplot_obj)
 
-as.knitrContainer(ggplot_obj) 
+as.knitrContainer(ggplot_obj)
 
 class(container)
 
@@ -123,7 +123,7 @@ print_all(container)
 
 ## ------------------------------------------------------------------------
 container2 <- knitrContainer()
-# Add as data and add as code to evaluate 
+# Add as data and add as code to evaluate
 
 # Add as data
 container2 %<>% add_as_text(
