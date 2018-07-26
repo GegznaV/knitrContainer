@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -72,24 +72,24 @@ Technically knitrContainer object is a list with attached
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">knitrContainer</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.27</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.28</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Functions</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Tutorials and Examples
+    Articles
      
     <span class="caret"></span>
   </a>
@@ -167,8 +167,9 @@ Technically knitrContainer object is a list with attached
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    layout</span></div><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 
-<span class='no'>plotly_obj</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/plotly/topics/plot_ly'>plot_ly</a></span>(<span class='no'>economics</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>date</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>uempmed</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"scatter"</span>,
-             <span class='kw'>showlegend</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in plot_ly(economics, x = date, y = uempmed, type = "scatter", showlegend = FALSE): object 'uempmed' not found</span></div><div class='input'>
+<span class='no'>plotly_obj</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/plotly/topics/plot_ly'>plot_ly</a></span>(<span class='no'>economics</span>, <span class='kw'>x</span> <span class='kw'>=</span> ~<span class='no'>date</span>, <span class='kw'>y</span> <span class='kw'>=</span> ~<span class='no'>uempmed</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"scatter"</span>,
+             <span class='kw'>showlegend</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
 <span class='no'>ggplot_obj</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/qplot'>qplot</a></span>(<span class='no'>mpg</span>, <span class='no'>wt</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>cyl</span>)
 
 
@@ -176,13 +177,8 @@ Technically knitrContainer object is a list with attached
 <span class='no'>container</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_as_heading.html'>add_as_heading1</a></span>(<span class='no'>container</span>, <span class='st'>"Plots"</span>)
 
 <span class='no'>container</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_as_heading.html'>add_as_heading2</a></span>(<span class='no'>container</span>, <span class='st'>"Add plotly"</span>)
-<span class='no'>container</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_as_.html'>add_as_plotly_widget</a></span>(<span class='no'>container</span>, <span class='no'>plotly_obj</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'plotly::as.widget' is deprecated.</span>
-#&gt; <span class='warning'>Use 'as_widget' instead.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='error'>Error in plotly::as.widget(obj): object 'plotly_obj' not found</span></div><div class='input'>
-<span class='no'>container</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_as_heading.html'>add_as_heading2</a></span>(<span class='no'>container</span>, <span class='st'>"Add ggplot as plotly"</span>)
-<span class='no'>container</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_as_.html'>add_as_plotly_widget</a></span>(<span class='no'>container</span>, <span class='no'>ggplot_obj</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'plotly::as.widget' is deprecated.</span>
-#&gt; <span class='warning'>Use 'as_widget' instead.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='input'>
+<span class='no'>container</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_as_.html'>add_as_plotly_widget</a></span>(<span class='no'>container</span>, <span class='no'>plotly_obj</span>)
+
 <span class='no'>container</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_as_heading.html'>add_as_heading2</a></span>(<span class='no'>container</span>, <span class='st'>"Add ggplot"</span>)
 <span class='no'>container</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_as_.html'>add_as_is</a></span>(<span class='no'>container</span>, <span class='no'>ggplot_obj</span>)
 
@@ -197,45 +193,60 @@ Technically knitrContainer object is a list with attached
 <span class='no'>container</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_as_heading.html'>add_as_heading2</a></span>(<span class='no'>container</span>, <span class='st'>"As is"</span>)
 <span class='no'>container</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_as_.html'>add_as_is</a></span>(<span class='no'>container</span>, <span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>mtcars</span>))
 
-<span class='no'>container</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_as_.html'>add_as_is</a></span>(<span class='no'>container</span>, <span class='no'>plotly_obj</span>)</div><div class='output co'>#&gt; <span class='error'>Error in added_as(obj, "As is"): object 'plotly_obj' not found</span></div><div class='input'>
+<span class='no'>container</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_as_.html'>add_as_is</a></span>(<span class='no'>container</span>, <span class='no'>plotly_obj</span>)
+
 <span class='fu'><a href='summary.html'>summary</a></span>(<span class='no'>container</span>)</div><div class='output co'>#&gt; ================================================================================
 #&gt;  *** knitr container *** 
 #&gt; 
 #&gt; Contains 13 object(s):
 #&gt; 
-#&gt;    Added.as      Preview                                  Size    Classes   
-#&gt; 1  Heading       # Plots                                  0.5 Kb  character 
-#&gt; 2  Heading       ## Add plotly                            0.5 Kb  character 
-#&gt; 3  Heading       ## Add ggplot as plotly                  0.5 Kb  character 
-#&gt; 4  Plotly widget                                          13.9 Kb gg, ggplot
-#&gt; 5  Heading       ## Add ggplot                            0.5 Kb  character 
-#&gt; 6  As is                                                  13.9 Kb gg, ggplot
-#&gt; 7  Heading       # Pander and text                        0.5 Kb  character 
-#&gt; 8  Heading       ## As pander                             0.5 Kb  character 
-#&gt; 9  Pander object                                          4.7 Kb  character 
-#&gt; 10 Heading       ## As text                               0.5 Kb  character 
-#&gt; 11 Text          Min.   :10.40   1st Qu.:15.43   Media... 1.4 Kb  character 
-#&gt; 12 Heading       ## As is                                 0.5 Kb  character 
-#&gt; 13 As is                                                  6.1 Kb  table     
+#&gt;    Added.as      Preview                                  Size   
+#&gt; 1  Heading       # Plots                                  0.5 Kb 
+#&gt; 2  Heading       ## Add plotly                            0.5 Kb 
+#&gt; 3  Plotly widget                                          33.8 Kb
+#&gt; 4  Heading       ## Add ggplot                            0.5 Kb 
+#&gt; 5  As is                                                  13.9 Kb
+#&gt; 6  Heading       # Pander and text                        0.5 Kb 
+#&gt; 7  Heading       ## As pander                             0.5 Kb 
+#&gt; 8  Pander object                                          4.7 Kb 
+#&gt; 9  Heading       ## As text                               0.5 Kb 
+#&gt; 10 Text          Min.   :10.40   1st Qu.:15.43   Media... 1.4 Kb 
+#&gt; 11 Heading       ## As is                                 0.5 Kb 
+#&gt; 12 As is                                                  6.1 Kb 
+#&gt; 13 As is                                                  33.8 Kb
+#&gt;    Classes           
+#&gt; 1  character         
+#&gt; 2  character         
+#&gt; 3  plotly, htmlwidget
+#&gt; 4  character         
+#&gt; 5  gg, ggplot        
+#&gt; 6  character         
+#&gt; 7  character         
+#&gt; 8  character         
+#&gt; 9  character         
+#&gt; 10 character         
+#&gt; 11 character         
+#&gt; 12 table             
+#&gt; 13 plotly, htmlwidget
 #&gt; ================================================================================</div><div class='input'><span class='fu'><a href='print.html'>print</a></span>(<span class='no'>container</span>)</div><div class='output co'>#&gt; ================================================================================
 #&gt;  *** knitr container *** 
 #&gt; 
 #&gt; Contains 13 object(s):
 #&gt; 
-#&gt;    Added.as      Preview                   Size    Classes   
-#&gt; 1  Heading       # Plots                   0.5 Kb  character 
-#&gt; 2  Heading       ## Add plotly             0.5 Kb  character 
-#&gt; 3  Heading       ## Add ggplot as plotly   0.5 Kb  character 
-#&gt; 4  Plotly widget                           13.9 Kb gg, ggplot
-#&gt; 5  Heading       ## Add ggplot             0.5 Kb  character 
-#&gt; 6  As is                                   13.9 Kb gg, ggplot
-#&gt; 7  Heading       # Pander and text         0.5 Kb  character 
-#&gt; 8  Heading       ## As pander              0.5 Kb  character 
-#&gt; 9  Pander object                           4.7 Kb  character 
-#&gt; 10 Heading       ## As text                0.5 Kb  character 
-#&gt; 11 Text          Min.   :10.40   1st Qu... 1.4 Kb  character 
-#&gt; 12 Heading       ## As is                  0.5 Kb  character 
-#&gt; 13 As is                                   6.1 Kb  table     
+#&gt;    Added.as      Preview                   Size    Classes           
+#&gt; 1  Heading       # Plots                   0.5 Kb  character         
+#&gt; 2  Heading       ## Add plotly             0.5 Kb  character         
+#&gt; 3  Plotly widget                           33.8 Kb plotly, htmlwidget
+#&gt; 4  Heading       ## Add ggplot             0.5 Kb  character         
+#&gt; 5  As is                                   13.9 Kb gg, ggplot        
+#&gt; 6  Heading       # Pander and text         0.5 Kb  character         
+#&gt; 7  Heading       ## As pander              0.5 Kb  character         
+#&gt; 8  Pander object                           4.7 Kb  character         
+#&gt; 9  Heading       ## As text                0.5 Kb  character         
+#&gt; 10 Text          Min.   :10.40   1st Qu... 1.4 Kb  character         
+#&gt; 11 Heading       ## As is                  0.5 Kb  character         
+#&gt; 12 As is                                   6.1 Kb  table             
+#&gt; 13 As is                                   33.8 Kb plotly, htmlwidget
 #&gt; ================================================================================</div><div class='input'><span class='fu'><a href='print_all.html'>print_all</a></span>(<span class='no'>container</span>)</div><div class='output co'>#&gt; 
 #&gt; 
 #&gt; 
@@ -248,13 +259,9 @@ Technically knitrContainer object is a list with attached
 #&gt; ## Add plotly
 #&gt; 
 #&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; ## Add ggplot as plotly
-#&gt; 
-#&gt; 
-#&gt; </div><div class='img'><img src='knitrContainer-class-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
+#&gt; </div><div class='output co'>#&gt; <span class='message'>No scatter mode specifed:</span>
+#&gt; <span class='message'>  Setting the mode to markers</span>
+#&gt; <span class='message'>  Read more about this attribute -&gt; https://plot.ly/r/reference/#scatter-mode</span></div><div class='output co'>#&gt; 
 #&gt; 
 #&gt; 
 #&gt; 
@@ -262,7 +269,7 @@ Technically knitrContainer object is a list with attached
 #&gt; ## Add ggplot
 #&gt; 
 #&gt; 
-#&gt; </div><div class='img'><img src='knitrContainer-class-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
+#&gt; </div><div class='output co'>#&gt; 
 #&gt; 
 #&gt; 
 #&gt; 
@@ -371,6 +378,10 @@ Technically knitrContainer object is a list with attached
 #&gt;  3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
 #&gt;  Max.   :1.0000   Max.   :5.000   Max.   :8.000  
 #&gt; 
+#&gt; 
+#&gt; </div><div class='output co'>#&gt; <span class='message'>No scatter mode specifed:</span>
+#&gt; <span class='message'>  Setting the mode to markers</span>
+#&gt; <span class='message'>  Read more about this attribute -&gt; https://plot.ly/r/reference/#scatter-mode</span></div><div class='img'><img src='knitrContainer-class-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
 #&gt; </div><div class='input'>
 <span class='fu'><a href='knitrContainer.html'>is.knitrContainer</a></span>(<span class='no'>container</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='knitrContainer.html'>is.knitrContainer</a></span>(<span class='no'>ggplot_obj</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
 <span class='fu'><a href='knitrContainer.html'>as.knitrContainer</a></span>(<span class='no'>ggplot_obj</span>)</div><div class='output co'>#&gt; ================================================================================
@@ -388,53 +399,53 @@ Technically knitrContainer object is a list with attached
 #&gt; 
 #&gt; Contains 26 object(s):
 #&gt; 
-#&gt;    Added.as      Preview                   Size    Classes   
-#&gt; 1  Heading       # Plots                   0.5 Kb  character 
-#&gt; 2  Heading       ## Add plotly             0.5 Kb  character 
-#&gt; 3  Heading       ## Add ggplot as plotly   0.5 Kb  character 
-#&gt; 4  Plotly widget                           13.9 Kb gg, ggplot
-#&gt; 5  Heading       ## Add ggplot             0.5 Kb  character 
-#&gt; 6  As is                                   13.9 Kb gg, ggplot
-#&gt; 7  Heading       # Pander and text         0.5 Kb  character 
-#&gt; 8  Heading       ## As pander              0.5 Kb  character 
-#&gt; 9  Pander object                           4.7 Kb  character 
-#&gt; 10 Heading       ## As text                0.5 Kb  character 
-#&gt; 11 Text          Min.   :10.40   1st Qu... 1.4 Kb  character 
-#&gt; 12 Heading       ## As is                  0.5 Kb  character 
-#&gt; 13 As is                                   6.1 Kb  table     
-#&gt; 14 Heading       # Plots                   0.5 Kb  character 
-#&gt; 15 Heading       ## Add plotly             0.5 Kb  character 
-#&gt; 16 Heading       ## Add ggplot as plotly   0.5 Kb  character 
-#&gt; 17 Plotly widget                           13.9 Kb gg, ggplot
-#&gt; 18 Heading       ## Add ggplot             0.5 Kb  character 
-#&gt; 19 As is                                   13.9 Kb gg, ggplot
-#&gt; 20 Heading       # Pander and text         0.5 Kb  character 
-#&gt; 21 Heading       ## As pander              0.5 Kb  character 
-#&gt; 22 Pander object                           4.7 Kb  character 
-#&gt; 23 Heading       ## As text                0.5 Kb  character 
-#&gt; 24 Text          Min.   :10.40   1st Qu... 1.4 Kb  character 
-#&gt; 25 Heading       ## As is                  0.5 Kb  character 
-#&gt; 26 As is                                   6.1 Kb  table     
+#&gt;    Added.as      Preview                   Size    Classes           
+#&gt; 1  Heading       # Plots                   0.5 Kb  character         
+#&gt; 2  Heading       ## Add plotly             0.5 Kb  character         
+#&gt; 3  Plotly widget                           33.8 Kb plotly, htmlwidget
+#&gt; 4  Heading       ## Add ggplot             0.5 Kb  character         
+#&gt; 5  As is                                   13.9 Kb gg, ggplot        
+#&gt; 6  Heading       # Pander and text         0.5 Kb  character         
+#&gt; 7  Heading       ## As pander              0.5 Kb  character         
+#&gt; 8  Pander object                           4.7 Kb  character         
+#&gt; 9  Heading       ## As text                0.5 Kb  character         
+#&gt; 10 Text          Min.   :10.40   1st Qu... 1.4 Kb  character         
+#&gt; 11 Heading       ## As is                  0.5 Kb  character         
+#&gt; 12 As is                                   6.1 Kb  table             
+#&gt; 13 As is                                   33.8 Kb plotly, htmlwidget
+#&gt; 14 Heading       # Plots                   0.5 Kb  character         
+#&gt; 15 Heading       ## Add plotly             0.5 Kb  character         
+#&gt; 16 Plotly widget                           33.8 Kb plotly, htmlwidget
+#&gt; 17 Heading       ## Add ggplot             0.5 Kb  character         
+#&gt; 18 As is                                   13.9 Kb gg, ggplot        
+#&gt; 19 Heading       # Pander and text         0.5 Kb  character         
+#&gt; 20 Heading       ## As pander              0.5 Kb  character         
+#&gt; 21 Pander object                           4.7 Kb  character         
+#&gt; 22 Heading       ## As text                0.5 Kb  character         
+#&gt; 23 Text          Min.   :10.40   1st Qu... 1.4 Kb  character         
+#&gt; 24 Heading       ## As is                  0.5 Kb  character         
+#&gt; 25 As is                                   6.1 Kb  table             
+#&gt; 26 As is                                   33.8 Kb plotly, htmlwidget
 #&gt; ================================================================================</div><div class='input'><span class='fu'><a href='Join.html'>Join</a></span>(<span class='no'>container</span>, <span class='no'>ggplot_obj</span>)</div><div class='output co'>#&gt; ================================================================================
 #&gt;  *** knitr container *** 
 #&gt; 
 #&gt; Contains 14 object(s):
 #&gt; 
-#&gt;    Added.as      Preview                   Size    Classes   
-#&gt; 1  Heading       # Plots                   0.5 Kb  character 
-#&gt; 2  Heading       ## Add plotly             0.5 Kb  character 
-#&gt; 3  Heading       ## Add ggplot as plotly   0.5 Kb  character 
-#&gt; 4  Plotly widget                           13.9 Kb gg, ggplot
-#&gt; 5  Heading       ## Add ggplot             0.5 Kb  character 
-#&gt; 6  As is                                   13.9 Kb gg, ggplot
-#&gt; 7  Heading       # Pander and text         0.5 Kb  character 
-#&gt; 8  Heading       ## As pander              0.5 Kb  character 
-#&gt; 9  Pander object                           4.7 Kb  character 
-#&gt; 10 Heading       ## As text                0.5 Kb  character 
-#&gt; 11 Text          Min.   :10.40   1st Qu... 1.4 Kb  character 
-#&gt; 12 Heading       ## As is                  0.5 Kb  character 
-#&gt; 13 As is                                   6.1 Kb  table     
-#&gt; 14 As is                                   13.9 Kb gg, ggplot
+#&gt;    Added.as      Preview                   Size    Classes           
+#&gt; 1  Heading       # Plots                   0.5 Kb  character         
+#&gt; 2  Heading       ## Add plotly             0.5 Kb  character         
+#&gt; 3  Plotly widget                           33.8 Kb plotly, htmlwidget
+#&gt; 4  Heading       ## Add ggplot             0.5 Kb  character         
+#&gt; 5  As is                                   13.9 Kb gg, ggplot        
+#&gt; 6  Heading       # Pander and text         0.5 Kb  character         
+#&gt; 7  Heading       ## As pander              0.5 Kb  character         
+#&gt; 8  Pander object                           4.7 Kb  character         
+#&gt; 9  Heading       ## As text                0.5 Kb  character         
+#&gt; 10 Text          Min.   :10.40   1st Qu... 1.4 Kb  character         
+#&gt; 11 Heading       ## As is                  0.5 Kb  character         
+#&gt; 12 As is                                   6.1 Kb  table             
+#&gt; 13 As is                                   33.8 Kb plotly, htmlwidget
+#&gt; 14 As is                                   13.9 Kb gg, ggplot        
 #&gt; ================================================================================</div><div class='input'><span class='fu'><a href='Join.html'>Join</a></span>(<span class='no'>ggplot_obj</span>)</div><div class='output co'>#&gt; ================================================================================
 #&gt;  *** knitr container *** 
 #&gt; 

@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -67,24 +67,24 @@ page." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">knitrContainer</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.27</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.28</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Functions</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Tutorials and Examples
+    Articles
      
     <span class="caret"></span>
   </a>
@@ -218,8 +218,8 @@ plots and not <code>plotly</code> plots.</p>
  formats it as a <b>heading of section</b> and includes it in the
  <code>container</code>.
  Function <code>print_all</code> will print it as text.</p>
-<p><code>add_as_plotly_widget()</code> converts <span class="pkg">plotly</span> and <span class="pkg">ggplot2</span> objects
- to plotly htmlwidget (details in <code><a href='http://www.rdocumentation.org/packages/plotly/topics/as.widget'>as.widget</a></code>) and
+<p><code>add_as_plotly_widget()</code> converts <span class="pkg">plotly</span> objects
+ to plotly htmlwidget (details in <code><a href='http://www.rdocumentation.org/packages/plotly/topics/as_widget'>as_widget</a></code>) and
  includes it in the <code>container</code>. Function <code>print_all</code> will
  print it as plotly htmlwidget and attach <code>html</code> dependencies.</p>
 <p><code>add_as_pander()</code> formats supported types of <code>obj</code> with An R Pandoc
