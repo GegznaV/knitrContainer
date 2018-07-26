@@ -33,13 +33,13 @@
 #' @author Vilmantas Gegzna
 #' @family \code{knitrContainer} functions
 #'
-print_all <- function(container, env = parent.frame(), widget_as_html = "auto", ...){
+print_all <- function(container, env = parent.frame(), widget_as_html = "auto", ...) {
 
     # Warn if `knitr` code chunk option is not "asis"\
     knitr_rez <- knitr::opts_current$get("results")
     inside_knitr <- !is.null(knitr_rez)
 
-    if (inside_knitr & !identical(knitr_rez,"asis")){
+    if (inside_knitr & !identical(knitr_rez,"asis")) {
         warning(
             paste0('\nThe option "results" of the current knitr chunk is set to "',
                   knitr_rez,'".\n',
@@ -56,18 +56,18 @@ print_all <- function(container, env = parent.frame(), widget_as_html = "auto", 
     # STOP if:
 
     # -- if container inherits incorrectly
-    if(!inherits(container, "knitrContainer"))
+    if (!inherits(container, "knitrContainer"))
         stop("Class of `container` must be `knitrContainer`.")
 
     # -- If container is emply
-    if (length(container)==0) {
+    if (length(container) == 0) {
         warning("*** knitrContainer is empty!!! ***")
         return(NULL)
     }
 
     # Print ===================================================================
     # Extract and print all of the content
-    for(j in 1:length(container)){
+    for (j in 1:length(container)){
         x <- container[[j]]
 
         switch(added_as(x),
@@ -114,12 +114,12 @@ print_all <- function(container, env = parent.frame(), widget_as_html = "auto", 
                 cat("\n")
                 # cat("  \n")
 
-                if (inherits(x, "character") & added_as(x)!= "As is"){
+                if (inherits(x, "character") & added_as(x) != "As is") {
                     # noquote critical here also turn off auto.asis very important
                     noquote(paste0(x, collapse = "\n")) %>% cat
 
                 } else if (inherits(x,"htmlwidget")) {
-                    if (widget_as_html == TRUE){
+                    if (widget_as_html == TRUE) {
                         # print the html piece of the htmlwidgets
                         htmltools::renderTags(x)$html %>% cat
                     } else {
@@ -145,13 +145,13 @@ print_all <- function(container, env = parent.frame(), widget_as_html = "auto", 
     # Attach the Dependencies ================================================
     # since they do not get included with renderTags(...)$html
 
-    if(widget_as_html == TRUE) {
+    if (widget_as_html == TRUE) {
 
         # Find the htmlwidgets
-        widget_objs <- Filter(function(x){inherits(x, 'htmlwidget')}, container)
+        widget_objs <- Filter(function(x) {inherits(x, 'htmlwidget')}, container)
 
         # Extract dependencies
-        list_dependencies <- function(obj){htmltools::renderTags(obj)$dependencies}
+        list_dependencies <- function(obj) {htmltools::renderTags(obj)$dependencies}
         dependencies <- lapply(widget_objs, list_dependencies)
 
         # Attach dependencies
