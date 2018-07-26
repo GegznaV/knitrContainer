@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Collect and Print Multiple Objects in a <code>Knitr</code> R Markdown Report � knitrContainer-package • knitrContainer</title>
+<title>Collect and Print Multiple Objects in a <code>Knitr</code> R Markdown Report — knitrContainer-package • knitrContainer</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,31 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Collect and Print Multiple Objects in a <code>Knitr</code> R Markdown Report — knitrContainer-package" />
+
+<meta property="og:description" content="The purpose of knitrContainer is to collect objects (especially
+ones generated in a loop) and print them in a knitr/rmarkdown
+report.
+WHY? Some objects such as pander tables and plotly plots,
+ are not printed from inside a loop and are not displayed in `knitr` reports.
+`knitrContainer` solves this problem by providing convenience
+functions to get these objects printed and included in HTML files." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -34,8 +52,7 @@
 <![endif]-->
 
 
-  	<link rel="icon" href="../favicon.png" />
-</head>
+  </head>
 
   <body>
     <div class="container template-reference-topic">
@@ -48,8 +65,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">knitrContainer | R package</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">knitrContainer</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.27</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -83,6 +104,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -90,26 +112,31 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Collect and Print Multiple Objects in a <code>Knitr</code> R Markdown Report</h1>
+    <small class="dont-index">Source: <a href='https://github.com/GegznaV/knitrContainer/blob/master/R/1_knitrContainer-package.R'><code>R/1_knitrContainer-package.R</code></a></small>
+    <div class="hidden name"><code>knitrContainer-package.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>The purpose of <code>knitrContainer</code> is to collect objects (<b>especially</b>
 ones generated in a loop) and print them in a <code>knitr</code>/<code>rmarkdown</code>
-report.</p>
+report.<br /></p>
 <p>WHY? Some objects such as <code>pander</code> tables and <code>plotly</code> plots,
  are not printed from inside a loop and are not displayed in `knitr` reports.
 `knitrContainer` solves this problem by providing convenience
 functions to get these objects printed and included in <code>HTML</code> files.</p>
     
+    </div>
 
         
     <h2 class="hasAnchor" id="objects"><a class="anchor" href="#objects"></a>Objects</h2>
 
-    <p><b>What objects can be collectd and printed with <code>knitrContainer</code>?</b></p>
+    
+    <p><b>What objects can be collectd and printed with <code>knitrContainer</code>?</b><br /></p>
 <p>An object used by <code>knitrContainer</code> can be any object, that is
 includible in an R list and that is printable, such as:</p><ul>
 <li><p>objects printable with <span class="pkg">pander</span>
@@ -130,7 +157,7 @@ includible in an R list and that is printable, such as:</p><ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><a href='https://github.com/GegznaV/knitrContainer'><code>knitrContainer</code>'s gitHub repository</a>.</p>
+    <div class='dont-index'><p><a href='https://github.com/GegznaV/knitrContainer'><code>knitrContainer</code>'s gitHub repository</a>.</p></div>
     
 
   </div>
@@ -158,11 +185,14 @@ Vilmantas Gegzna
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add object to <code>knitrContainer</code> � add_as_ • knitrContainer</title>
+<title>Add object to <code>knitrContainer</code> — add_as_ • knitrContainer</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,31 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Add object to <code>knitrContainer</code> — add_as_" />
+
+<meta property="og:description" content="Functions to transform and add objects to
+knitrContainer.
+Objects, that can be included in R list,
+ can also be
+included in knitrContainer.
+add_as_heading() subfamily functions have separate description
+page." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -34,8 +52,7 @@
 <![endif]-->
 
 
-  	<link rel="icon" href="../favicon.png" />
-</head>
+  </head>
 
   <body>
     <div class="container template-reference-topic">
@@ -48,8 +65,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">knitrContainer | R package</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">knitrContainer</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.27</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -83,6 +104,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -90,22 +112,25 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Add object to <code>knitrContainer</code></h1>
+    <small class="dont-index">Source: <a href='https://github.com/GegznaV/knitrContainer/blob/master/R/add_as_.R'><code>R/add_as_.R</code></a></small>
+    <div class="hidden name"><code>add_as_.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Functions to transform and add objects to
 <code>knitrContainer</code>.
 Objects, that can be included in R <code><a href='http://www.rdocumentation.org/packages/base/topics/list'>list</a></code>,
  can also be
-included in <code>knitrContainer</code>.
-
-    <code><a href='add_as_heading.html'>add_as_heading</a>()</code> subfamily functions have separate description
+included in <code>knitrContainer</code>.</p>
+<p><code><a href='add_as_heading.html'>add_as_heading</a>()</code> subfamily functions have separate description
 page.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>add_as_is</span>(<span class='kw'>container</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>obj</span>)
 
@@ -132,7 +157,7 @@ page.</p>
 
 <span class='fu'>add_as_cmd_str</span>(<span class='kw'>container</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>obj</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -149,10 +174,10 @@ page.</p>
     </tr>
     <tr>
       <th>comment</th>
-      <td><p>Either logical or a string:
+      <td><p>Either logical or a string:<br />
  If <code>TRUE</code> - default <code>knitr</code> chunk of code comment symbols are
- used (usually <code>##</code>). 
-If <code>FALSE</code> (default) or  <code>NA</code> - no comment is used. 
+ used (usually <code>##</code>). <br />
+If <code>FALSE</code> (default) or  <code>NA</code> - no comment is used. <br />
 If a string, the entered symbols are used as comment symbols.</p></td>
     </tr>
     <tr>
@@ -164,7 +189,7 @@ code highlighting will be applied. Default is "r".</p></td>
     <tr>
       <th>give.name</th>
       <td><p>A string, that gives a name of a data set passed as
-<code>obj</code>.
+<code>obj</code>.<br />
  **Default value** is the name passed as input <code>obj</code>.
  If the imput is is not a name of an object, then sequence of functions
  is applied to make a valind name from first 60 symbols of the input:
@@ -177,61 +202,61 @@ code highlighting will be applied. Default is "r".</p></td>
     <p>Following functions convert and format an object <code>obj</code>
 such that it could
 be appropriatly printed (or evaluated) by applying function
-<code><a href='print_all.html'>print_all</a></code>().
-    <code>add_as_is()</code> includes object <code>obj</code> in the <code>container</code> without
+<code><a href='print_all.html'>print_all</a></code>().</p>
+<p><code>add_as_is()</code> includes object <code>obj</code> in the <code>container</code> without
 transformation (<b>"as is"</b>). Function <code>print_all</code> will print
 it using regular <code>print</code> function. Note that in R Markdaown <code>Rmd</code>
 file <code>knitr</code> chunk option <code>results='asis'</code> may distort the
 "beautiful" formatting of the printed object. This function is appropriate
 to ingludde <span class="pkg">ggplot2</span> plots, if they have to be displayed as <code>gg</code>
-plots and not <code>plotly</code> plots.
-    <code>add_as_text()</code> converts <code>obj</code> to <code><a href='http://www.rdocumentation.org/packages/base/topics/character'>character</a></code>,
+plots and not <code>plotly</code> plots.</p>
+<p><code>add_as_text()</code> converts <code>obj</code> to <code><a href='http://www.rdocumentation.org/packages/base/topics/character'>character</a></code>,
  formats as <b>text</b> and includes it in the <code>container</code>. Function
- <code>print_all</code> will print it as text (`as-is`).
-    <code><a href='add_as_heading.html'>add_as_heading</a>()</code> converts <code>obj</code> to
+ <code>print_all</code> will print it as text (`as-is`).</p>
+<p><code><a href='add_as_heading.html'>add_as_heading</a>()</code> converts <code>obj</code> to
 <code><a href='http://www.rdocumentation.org/packages/base/topics/character'>character</a></code>,
  formats it as a <b>heading of section</b> and includes it in the
  <code>container</code>.
- Function <code>print_all</code> will print it as text.
-    <code>add_as_plotly_widget()</code> converts <span class="pkg">plotly</span> and <span class="pkg">ggplot2</span> objects
+ Function <code>print_all</code> will print it as text.</p>
+<p><code>add_as_plotly_widget()</code> converts <span class="pkg">plotly</span> and <span class="pkg">ggplot2</span> objects
  to plotly htmlwidget (details in <code><a href='http://www.rdocumentation.org/packages/plotly/topics/as.widget'>as.widget</a></code>) and
  includes it in the <code>container</code>. Function <code>print_all</code> will
- print it as plotly htmlwidget and attach <code>html</code> dependencies.
-    <code>add_as_pander()</code> formats supported types of <code>obj</code> with An R Pandoc
+ print it as plotly htmlwidget and attach <code>html</code> dependencies.</p>
+<p><code>add_as_pander()</code> formats supported types of <code>obj</code> with An R Pandoc
  Writer's function <code><a href='http://www.rdocumentation.org/packages/pander/topics/pander'>pander</a></code> and includes it in the
 <code>container</code>. Function <code>print_all</code> will print the object
-as text.
-    <code>add_as_strings</code> converts input to vectors of chatacter and saves every
-vector as sepatate strings (i.e. separate paragraphs).
-    <code>add_as_code()</code> saves object as text and prints it formatted as code
-(i.e., as formatted text).
-    <code>add_as_code_r()</code> saves object as text and prints it formatted as
-R code text.
-    <code>add_as_code_js()</code> saves object as text and prints it formatted as
-Java Script code.
-    <code>add_as_output()</code> saves object as text and prints it formatted as
-output text.
-    <code>add_as_data()</code> adds object (data frame, list, vector, etc.) to the
+as text.</p>
+<p><code>add_as_strings</code> converts input to vectors of chatacter and saves every
+vector as sepatate strings (i.e. separate paragraphs).<br /></p>
+<p><code>add_as_code()</code> saves object as text and prints it formatted as code
+(i.e., as formatted text). <br /></p>
+<p><code>add_as_code_r()</code> saves object as text and prints it formatted as
+R code text. <br /></p>
+<p><code>add_as_code_js()</code> saves object as text and prints it formatted as
+Java Script code. <br /></p>
+<p><code>add_as_output()</code> saves object as text and prints it formatted as
+output text. <br /></p>
+<p><code>add_as_data()</code> adds object (data frame, list, vector, etc.) to the
 container.
 When function <code>print_all</code> the object is not printed, but just
  extracted and assigned in the environment <code>env</code> (by default to the
  parent frame) to the object which name is entered as value of parameter
- <code>give.name</code>.
-    <code>add_as_cmd()</code> takes <em>unquoted</em> expression and
+ <code>give.name</code>.</p>
+<p><code>add_as_cmd()</code> takes <em>unquoted</em> expression and
 converts it to a string.
 The expression is going to be evaluated when function
-<code>print_all</code> is applied.
-    <code>add_as_cmd_str()</code> is the same as <code>add_as_cmd()</code>, just object
+<code>print_all</code> is applied.<br /></p>
+<p><code>add_as_cmd_str()</code> is the same as <code>add_as_cmd()</code>, just object
 must be entered entered as a string.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other <code>knitrContainer</code> functions: <code><a href='Join.html'>Join</a></code>,
+    <div class='dont-index'><p>Other <code>knitrContainer</code> functions: <code><a href='Join.html'>Join</a></code>,
   <code><a href='add_as_heading.html'>add_as_heading</a></code>,
   <code><a href='knitrContainer.html'>as.knitrContainer</a></code>,
   <code><a href='knitrContainer-class.html'>knitrContainer-class</a></code>,
   <code><a href='print_all.html'>print_all</a></code>, <code><a href='print.html'>print</a></code>,
-  <code><a href='summary.html'>summary</a></code></p>
+  <code><a href='summary.html'>summary</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -264,11 +289,14 @@ Vilmantas Gegzna
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

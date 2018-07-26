@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>[!] Print objects from <code>knitrContainer</code> � print_all • knitrContainer</title>
+<title>[!] Print objects from <code>knitrContainer</code> — print_all • knitrContainer</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,32 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="[!] Print objects from <code>knitrContainer</code> — print_all" />
+
+<meta property="og:description" content="Function is designed to be used in a knitr/rmarkdown file
+ which generates HTML output.
+ The function takes every element (i.e., object) of a
+ knitrContainer, prints it appropriately:
+ either as text (using cat),
+ as htmlwidget (using cat) or object as-is using
+ print. Then attaches HTML dependencies for
+ htmlwidgets to show them correctly." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -34,8 +53,7 @@
 <![endif]-->
 
 
-  	<link rel="icon" href="../favicon.png" />
-</head>
+  </head>
 
   <body>
     <div class="container template-reference-topic">
@@ -48,8 +66,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">knitrContainer | R package</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">knitrContainer</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.27</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -83,6 +105,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -90,15 +113,18 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>[!] Print objects from <code>knitrContainer</code></h1>
+    <small class="dont-index">Source: <a href='https://github.com/GegznaV/knitrContainer/blob/master/R/print_all.R'><code>R/print_all.R</code></a></small>
+    <div class="hidden name"><code>print_all.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Function is designed to be used in a <code>knitr</code>/<code>rmarkdown</code> file
- which generates <code>HTML</code> output.
+ which generates <code>HTML</code> output.<br />
  The function takes every element (i.e., object) of a
  <code>knitrContainer</code>, prints it appropriately:
  either as text (using <code><a href='http://www.rdocumentation.org/packages/base/topics/cat'>cat</a></code>),
@@ -106,6 +132,7 @@
  <code><a href='http://www.rdocumentation.org/packages/base/topics/print'>print</a></code>. Then attaches <code>HTML</code> dependencies for
  <code><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/htmlwidgets-package'>htmlwidgets</a></code> to show them correctly.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>print_all</span>(<span class='no'>container</span>, <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>(), <span class='kw'>widget_as_html</span> <span class='kw'>=</span> <span class='st'>"auto"</span>, <span class='no'>...</span>)
 
@@ -113,7 +140,7 @@
 
 <span class='fu'>print_objects</span>(<span class='no'>container</span>, <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>(), <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -143,11 +170,11 @@ an HTML code or as an object (default is <code>"auto"</code>).</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other <code>knitrContainer</code> functions: <code><a href='Join.html'>Join</a></code>,
+    <div class='dont-index'><p>Other <code>knitrContainer</code> functions: <code><a href='Join.html'>Join</a></code>,
   <code><a href='add_as_heading.html'>add_as_heading</a></code>, <code><a href='add_as_.html'>add_as_</a></code>,
   <code><a href='knitrContainer.html'>as.knitrContainer</a></code>,
   <code><a href='knitrContainer-class.html'>knitrContainer-class</a></code>, <code><a href='print.html'>print</a></code>,
-  <code><a href='summary.html'>summary</a></code></p>
+  <code><a href='summary.html'>summary</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -181,11 +208,14 @@ Vilmantas Gegzna
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+
