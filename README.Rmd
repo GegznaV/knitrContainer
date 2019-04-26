@@ -14,12 +14,12 @@ knitr::opts_chunk$set(
 
 ***
 
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN version](http://www.r-pkg.org/badges/version/knitrContainer)](https://cran.r-project.org/package=knitrContainer)
 [![GitHub version](https://img.shields.io/badge/GitHub-v`r packageVersion("knitrContainer")`-brightgreen.svg)](https://github.com/GegznaV/knitrContainer)
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer)
-[![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master)
 [![Last-update](https://img.shields.io/badge/last%20update-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](/commits/master)
+[![Travis-CI Build Status](https://travis-ci.org/GegznaV/knitrContainer.svg?branch=master)](https://travis-ci.org/GegznaV/knitrContainer)
+[![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master)
 
 ***
 
@@ -39,7 +39,7 @@ About `knitrContainer`
 ----------------------
 
 `knitrContainer` is an [R](https://cran.r-project.org/) package. Its purpose is
-to collect objects (*especially* those generated in loops) and print them in [`knitr`](http://yihui.name/knitr/) - [R Markdown](http://rmarkdown.rstudio.com/) reports.
+to collect objects (*especially* those generated in loops) and print them in [`knitr`](http://yihui.name/knitr/) -- [R Markdown](http://rmarkdown.rstudio.com/) reports.
 
 ###  Why was it created? 
 

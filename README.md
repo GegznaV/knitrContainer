@@ -3,15 +3,15 @@
 
 -----
 
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN
 version](http://www.r-pkg.org/badges/version/knitrContainer)](https://cran.r-project.org/package=knitrContainer)
 [![GitHub
 version](https://img.shields.io/badge/GitHub-v0.0.28-brightgreen.svg)](https://github.com/GegznaV/knitrContainer)
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Last-update](https://img.shields.io/badge/last%20update-2018--07--27-yellowgreen.svg)](/commits/master)
 [![Travis-CI Build
-Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https://travis-ci.org/GegznaV/knitrContainer)
+Status](https://travis-ci.org/GegznaV/knitrContainer.svg?branch=master)](https://travis-ci.org/GegznaV/knitrContainer)
 [![codecov.io](https://codecov.io/github/GegznaV/knitrContainer/coverage.svg?branch=master)](https://codecov.io/github/GegznaV/knitrContainer?branch=master)
-[![Last-update](https://img.shields.io/badge/last%20update-2018--07--26-yellowgreen.svg)](/commits/master)
 
 -----
 
@@ -25,7 +25,7 @@ Status](https://travis-ci.org/GegznaV/knitrContainer.png?branch=master)](https:/
 
 `knitrContainer` is an [R](https://cran.r-project.org/) package. Its
 purpose is to collect objects (*especially* those generated in loops)
-and print them in [`knitr`](http://yihui.name/knitr/) - [R
+and print them in [`knitr`](http://yihui.name/knitr/) – [R
 Markdown](http://rmarkdown.rstudio.com/) reports.
 
 ### Why was it created?
